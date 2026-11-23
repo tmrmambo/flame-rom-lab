@@ -56,7 +56,7 @@ for b in boot vendor_boot; do
     esac
     ( cd "$d" && find . | sort ) > "$OUT/boot/${b}_${rdn}_ls.txt"
     ( cd "$d" && find . -ls ) > "$OUT/boot/${b}_${rdn}_lsl.txt" 2>&1
-    ( cd "$d" && find . \( -type f -o -type l \) -size -1M | while read -r f; do
+    ( cd "$d" && find . \( -type f -o -type l \) -size -1024k | while read -r f; do
         [ -f "$f" ] && [ -s "$f" ] && grep -Iq . "$f" 2>/dev/null && install -D "$f" "$OUT/boot/${b}/${rdn}/${f#./}"
       done )
     log "ramdisk $b/$rdn: $kind, files=$(find "$d" -type f | wc -l)"

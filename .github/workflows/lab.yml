@@ -75,6 +75,26 @@ jobs:
           compression-level: 0
           retention-days: 3
 
+  boot:
+    if: ${{ inputs.mode == 'boot' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup tools
+        run: bash ci/setup_tools.sh
+      - name: Boot chain
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/boot_only.sh "$URL"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: boot
+          path: bundle_boot.tar.gz
+          compression-level: 0
+          retention-days: 3
+
   trial-super:
     if: ${{ inputs.mode == 'trial-super' }}
     runs-on: ubuntu-latest

@@ -1,0 +1,7 @@
+bundle/
+out/
+dl/
+*.tgz
+*.img
+*.zst
+*.zip

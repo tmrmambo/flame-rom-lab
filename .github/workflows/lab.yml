@@ -1,0 +1,84 @@
+name: lab
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "smoke | extract | jadx | build | verify"
+        required: true
+        default: smoke
+      firmware_url:
+        description: "Firmware tgz URL"
+        required: false
+        default: "https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/OS3.0.303.0.WGUINXM/flame_in_global_images_OS3.0.303.0.WGUINXM_20261010.0000.00_16.0_in_a8222f7a67.tgz"
+      test_size_gb:
+        description: "Smoke: size of the round-trip test artifact in GB"
+        required: false
+        default: "3"
+
+jobs:
+  smoke:
+    if: ${{ inputs.mode == 'smoke' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Machine info (before cleanup)
+        run: |
+          echo "== cpu/mem"; nproc; free -g
+          echo "== df before"; df -h
+          echo "== big dirs"; sudo du -xsh /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache /usr/local/share/boost /usr/local/julia* /usr/share/swift 2>/dev/null || true
+
+      - name: Cleanup preinstalled software
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost /usr/share/swift /usr/local/julia* \
+            /usr/local/share/chromium /usr/local/lib/node_modules
+          sudo docker image prune --all --force >/dev/null 2>&1 || true
+          sudo apt-get clean
+          echo "== df after"; df -h
+
+      - name: Check firmware URL reachable from runner
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: |
+          curl -sIL --max-time 30 "$URL" | grep -iE '^HTTP/|content-length|etag'
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq erofs-utils android-sdk-libsparse-utils aria2 zstd \
+            openjdk-17-jdk-headless aapt apktool xxd python3-pip 2>&1 | tail -n 5
+          echo "== versions / availability"
+          for t in mkfs.erofs fsck.erofs dump.erofs simg2img img2simg aria2c zstd java aapt apktool python3; do
+            printf '%-12s ' "$t"; (command -v "$t" || echo MISSING)
+          done
+          # tools not in apt: report whether they are obtainable
+          for t in lpunpack lpmake lpdump avbtool aapt2 jadx; do
+            printf '%-12s ' "$t"; (command -v "$t" || echo "not in apt (to fetch)")
+          done
+
+      - name: Probe obtainable non-apt tools
+        run: |
+          python3 -m pip --version
+          python3 -m pip download --no-deps -d /tmp/p avbtool 2>&1 | tail -n 2 || true
+          curl -sIL --max-time 20 https://github.com/skylot/jadx/releases/latest | grep -iE '^HTTP/' | tail -n 1
+          curl -sIL --max-time 20 https://dl.google.com/android/repository/platform-tools-latest-linux.zip | grep -iE '^HTTP/|content-length' | tail -n 2
+
+      - name: Generate round-trip test file
+        env:
+          GB: ${{ inputs.test_size_gb }}
+        run: |
+          mkdir -p rt
+          head -c "${GB}G" /dev/urandom > rt/test.bin
+          sha256sum rt/test.bin | tee rt/test.sha256
+          ls -l rt; df -h /
+
+      - name: Upload round-trip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: roundtrip
+          path: rt/
+          compression-level: 0
+          retention-days: 1

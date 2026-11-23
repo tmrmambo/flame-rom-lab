@@ -52,6 +52,29 @@ jobs:
       - uses: actions/checkout@v4
       - run: bash ci/setup_tools.sh
 
+  extract:
+    if: ${{ inputs.mode == 'extract' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Free space
+        run: bash ci/free_space.sh
+      - name: Setup tools
+        run: bash ci/setup_tools.sh
+      - name: Extract bundle
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/extract.sh "$URL"
+      - name: Upload bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle
+          path: bundle.tar.gz
+          compression-level: 0
+          retention-days: 3
+
   trial-super:
     if: ${{ inputs.mode == 'trial-super' }}
     runs-on: ubuntu-latest

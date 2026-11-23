@@ -11,7 +11,7 @@ echo "$BIN" >> "${GITHUB_PATH:-/dev/null}"
 echo "::group::apt"
 sudo apt-get update -qq
 sudo apt-get install -y -qq erofs-utils android-sdk-libsparse-utils aria2 zstd \
-  openjdk-17-jdk-headless aapt apktool xxd file attr python3 unzip 2>&1 | tail -n 3
+  openjdk-17-jdk-headless aapt apktool xxd file attr python3 unzip lz4 cpio binutils 2>&1 | tail -n 3
 echo "::endgroup::"
 
 echo "::group::partition tools (Rprop/aosp15_partition_tools, prebuilt AOSP15, glibc x86_64)"

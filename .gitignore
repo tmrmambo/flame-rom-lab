@@ -7,3 +7,5 @@ dl/
 *.zip
 tools/
 logs_*.txt
+reports/
+bundle_boot/

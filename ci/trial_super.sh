@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Trial: download firmware, pull super.img out, convert to raw, dump layout, unpack
-# logical partitions, probe each filesystem and prove EROFS extraction works.
+# logical partitions, probe each filesystem and prove extraction works (EROFS + ext4).
 # Output: report/ (small text files only) -> uploaded as artifact.
 set -uo pipefail
 URL="${1:?firmware url required}"
@@ -21,12 +21,11 @@ echo "::endgroup::"
 
 echo "::group::extract super.img (+ small files for later use)"
 tar -tzf fw.tgz > "$R/02_tar_listing.txt"
-wc -l "$R/02_tar_listing.txt"
 tar -xzf fw.tgz --wildcards '*/images/super.img' '*/images/vbmeta.img' '*/images/vbmeta_system.img' \
     '*/images/anti_version.txt' '*/images/boot.img' '*/images/vendor_boot.img' '*/images/dtbo.img' \
     '*/misc.txt' --strip-components=1
 ls -l images misc.txt | tee "$R/03_extracted.txt"
-rm -f fw.tgz                    # free ~6.5 GB
+rm -f fw.tgz
 df -h / | tee "$R/03_df_after_extract.txt"
 echo "::endgroup::"
 
@@ -39,12 +38,10 @@ else
   mv images/super.img super.raw
 fi
 ls -l super.raw | tee -a "$R/04_super_file.txt"
-df -h / | tee "$R/04_df_after_raw.txt"
 echo "::endgroup::"
 
 echo "::group::lp layout"
 lpdumps super.raw > "$R/05_lpdump.txt" 2>&1; echo "lpdumps exit=$?" | tee -a "$R/05_lpdump.txt"
-head -n 80 "$R/05_lpdump.txt"
 echo "::endgroup::"
 
 echo "::group::lpunpack"
@@ -59,23 +56,47 @@ echo "::group::probe partitions"
 : > "$R/07_fs_probe.txt"
 for f in parts/*.img; do
   n=$(basename "$f" .img)
-  echo "--- $n  $(stat -c %s "$f") bytes  $(file -b "$f" | cut -c1-80)" | tee -a "$R/07_fs_probe.txt"
-  dump.erofs -s "$f" 2>&1 | head -n 12 >> "$R/07_fs_probe.txt" || true
+  [ -s "$f" ] || continue
+  echo "--- $n  $(stat -c %s "$f") bytes  $(file -b "$f" | cut -c1-100)" | tee -a "$R/07_fs_probe.txt"
 done
 echo "::endgroup::"
 
-echo "::group::EROFS extraction proof"
-fsck.erofs --help 2>&1 | head -n 25 | tee "$R/08_fsck_help.txt"
-# smallest erofs partition first
-SMALL=$(ls -S parts/*.img | tail -n 1)
-echo "extract test on: $SMALL" | tee "$R/08_extract_test.txt"
-mkdir -p ex_test
-fsck.erofs --extract=ex_test --force --overwrite "$SMALL" > "$R/08_extract_log.txt" 2>&1
-echo "fsck extract exit=$?" | tee -a "$R/08_extract_test.txt"
-tail -n 5 "$R/08_extract_log.txt" | tee -a "$R/08_extract_test.txt"
-echo "files: $(find ex_test -type f | wc -l)  dirs: $(find ex_test -type d | wc -l)  symlinks: $(find ex_test -type l | wc -l)" | tee -a "$R/08_extract_test.txt"
-echo "xattr sample (selinux context preserved?):" | tee -a "$R/08_extract_test.txt"
-( cd ex_test && f=$(find . -type f | head -n 1) && getfattr -d -m - "$f" 2>&1 | head -n 5 ) | tee -a "$R/08_extract_test.txt"
+echo "::group::extraction proof (EROFS with xattrs, kernel mount, ext4 loop mount)"
+fsck.erofs --help 2>&1 | head -n 25 > "$R/08_fsck_help.txt"
+: > "$R/08_extract_test.txt"
+# smallest NON-EMPTY erofs partition
+SMALL=$(find parts -name '*.img' -size +0 -printf '%s %p\n' | sort -n | while read -r sz f; do
+  file -b "$f" | grep -q EROFS && { echo "$f"; break; }; done)
+echo "erofs extract test on: $SMALL" | tee -a "$R/08_extract_test.txt"
+mkdir -p ex_erofs
+fsck.erofs --extract=ex_erofs --xattrs --force --overwrite "$SMALL" > "$R/08_erofs_extract_log.txt" 2>&1
+echo "fsck.erofs exit=$?" | tee -a "$R/08_extract_test.txt"
+tail -n 4 "$R/08_erofs_extract_log.txt" | tee -a "$R/08_extract_test.txt"
+echo "files=$(find ex_erofs -type f | wc -l) dirs=$(find ex_erofs -type d | wc -l) symlinks=$(find ex_erofs -type l | wc -l)" | tee -a "$R/08_extract_test.txt"
+echo "xattr sample:" | tee -a "$R/08_extract_test.txt"
+( cd ex_erofs && for f in $(find . -type f | head -n 3); do getfattr -h -d -m - "$f" 2>&1 | head -n 4; done ) | tee -a "$R/08_extract_test.txt"
+
+mkdir -p mnt_erofs
+sudo mount -t erofs -o loop,ro "$SMALL" mnt_erofs 2>&1 | tee -a "$R/08_extract_test.txt"
+if mountpoint -q mnt_erofs; then
+  echo "kernel erofs mount: OK" | tee -a "$R/08_extract_test.txt"
+  sudo getfattr -h -d -m - "mnt_erofs/$(cd mnt_erofs && find . -type f | head -n 1)" 2>&1 | head -n 4 | tee -a "$R/08_extract_test.txt"
+  sudo umount mnt_erofs
+else
+  echo "kernel erofs mount: NOT AVAILABLE" | tee -a "$R/08_extract_test.txt"
+fi
+
+echo "--- ext4 system" | tee -a "$R/08_extract_test.txt"
+mkdir -p mnt_sys
+sudo mount -t ext4 -o loop,ro,noload parts/system_a.img mnt_sys 2>&1 | tee -a "$R/08_extract_test.txt"
+if mountpoint -q mnt_sys; then
+  echo "ext4 mount OK; top level:" | tee -a "$R/08_extract_test.txt"
+  ls mnt_sys | head -n 30 | tee -a "$R/08_extract_test.txt"
+  sudo getfattr -h -n security.selinux mnt_sys/system/bin/sh mnt_sys/system/build.prop 2>&1 | head -n 6 | tee -a "$R/08_extract_test.txt"
+  sudo find mnt_sys -type f | wc -l | sed 's/^/ext4 file count: /' | tee -a "$R/08_extract_test.txt"
+  sudo umount mnt_sys
+fi
+dumpe2fs -h parts/system_a.img 2>&1 | head -n 45 > "$R/08_ext4_dumpe2fs.txt" || true
 echo "::endgroup::"
 
 cp images/anti_version.txt misc.txt "$R/" 2>/dev/null || true

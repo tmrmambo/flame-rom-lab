@@ -41,6 +41,16 @@ curl -fsSL --retry 3 -o /tmp/jadx.zip "https://github.com/skylot/jadx/releases/d
   && ln -sf "$HOME/jadx/bin/jadx" "$BIN/jadx" && sha256sum /tmp/jadx.zip
 echo "::endgroup::"
 
+echo "::group::aapt2 (Google maven; apt's is too old for Android 16 resource tables)"
+AAPT2_V=9.5.2-16666295
+if curl -fsSL --retry 3 -o /tmp/aapt2.jar "https://dl.google.com/android/maven2/com/android/tools/build/aapt2/${AAPT2_V}/aapt2-${AAPT2_V}-linux.jar" \
+   && unzip -q -o -j /tmp/aapt2.jar aapt2 -d "$BIN"; then
+  chmod +x "$BIN/aapt2"; sha256sum /tmp/aapt2.jar; "$BIN/aapt2" version
+else
+  echo "FAILED to fetch new aapt2"
+fi
+echo "::endgroup::"
+
 echo "== availability summary"
 for t in mkfs.erofs fsck.erofs dump.erofs simg2img img2simg aria2c zstd java aapt aapt2 apktool lpmake lpunpack lpdumps lpadd avbtool jadx; do
   printf '%-12s ' "$t"; (command -v "$t" || echo MISSING)

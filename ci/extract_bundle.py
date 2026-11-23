@@ -183,18 +183,27 @@ def scan_zip(path, dex=True):
 def scan_apk(args):
     part, rel, p = args
     res = {'part': part, 'path': rel, 'size': os.path.getsize(p)}
+    if res['size'] == 0:
+        res['error'] = 'zero-byte placeholder'
+        res['scan'] = {}
+        return res
+    last = ''
     try:
-        r = subprocess.run(['aapt2', 'dump', 'xmltree', '--file', 'AndroidManifest.xml', p],
-                           capture_output=True, text=True, timeout=180)
-        txt = r.stdout
-        if r.returncode != 0 or not txt:
-            res['error'] = (r.stderr or 'empty manifest')[:200]
-        else:
-            d = os.path.join(OUT, 'manifests', part, rel.lstrip('/') + '.txt')
-            os.makedirs(os.path.dirname(d), exist_ok=True)
-            with open(d, 'w', encoding='utf-8') as f:
-                f.write(txt)
-            res['manifest'] = summarize_manifest(parse_manifest(txt))
+        for exe in ('aapt2', '/usr/bin/aapt2'):   # new Google build first, apt build as fallback
+            r = subprocess.run([exe, 'dump', 'xmltree', '--file', 'AndroidManifest.xml', p],
+                               capture_output=True, text=True, timeout=180)
+            txt = r.stdout
+            if r.returncode == 0 and txt:
+                d = os.path.join(OUT, 'manifests', part, rel.lstrip('/') + '.txt')
+                os.makedirs(os.path.dirname(d), exist_ok=True)
+                with open(d, 'w', encoding='utf-8') as f:
+                    f.write(txt)
+                res['manifest'] = summarize_manifest(parse_manifest(txt))
+                last = ''
+                break
+            last = (r.stderr or 'empty manifest')[:200]
+        if last:
+            res['error'] = last
     except Exception as e:  # noqa
         res['error'] = str(e)[:200]
     res['scan'] = scan_zip(p)

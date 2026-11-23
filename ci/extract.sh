@@ -55,8 +55,9 @@ for b in boot vendor_boot; do
       *) log "unknown ramdisk type for $rdn: $kind" ;;
     esac
     ( cd "$d" && find . | sort ) > "$OUT/boot/${b}_${rdn}_ls.txt"
-    ( cd "$d" && find . -type f -size -1M | while read -r f; do
-        grep -Iq . "$f" 2>/dev/null && install -D "$f" "$OUT/boot/${b}/${rdn}/${f#./}"
+    ( cd "$d" && find . -ls ) > "$OUT/boot/${b}_${rdn}_lsl.txt" 2>&1
+    ( cd "$d" && find . \( -type f -o -type l \) -size -1M | while read -r f; do
+        [ -f "$f" ] && [ -s "$f" ] && grep -Iq . "$f" 2>/dev/null && install -D "$f" "$OUT/boot/${b}/${rdn}/${f#./}"
       done )
     log "ramdisk $b/$rdn: $kind, files=$(find "$d" -type f | wc -l)"
   done

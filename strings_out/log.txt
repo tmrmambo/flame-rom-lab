@@ -142,3 +142,24 @@ Traceback (most recent call last):
     chunk = read(handle, to_read)
 ConnectionResetError: [Errno 104] Connection reset by peer
 [08:22:25] text-file scan (props, xml, rc) for the same phrases
+[08:26:05] download
+[08:27:15] firmware image strings
+[08:27:15] skipped
+[08:27:15] super -> partitions
+[08:27:48] mounted mi_ext
+[08:27:48] mounted odm
+[08:27:51] mounted product
+[08:27:51] mounted system
+[08:27:51] mounted system_dlkm
+[08:27:51] mounted system_ext
+[08:27:51] mounted vendor
+[08:27:51] mounted vendor_dlkm
+[08:27:51] resource scan
+apks 412
+  scan problem /mnt/lab/system/system/priv-app/NetworkStackGoogle/NetworkStackGoogle-arm64_v8a.apk rc=1
+  scan problem /mnt/lab/mi_ext/product/app/Calendar/Calendar.apk rc=1
+  scan problem /mnt/lab/mi_ext/product/app/messaging/messaging.apk rc=1
+  scan problem /mnt/lab/mi_ext/product/priv-app/Contacts/Contacts.apk rc=1
+  scan problem /mnt/lab/mi_ext/system_ext/app/MtkCalendar/MtkCalendar.apk rc=1
+hits 29 problems 5
+[08:28:31] text-file scan (props, xml, rc) for the same phrases

@@ -75,6 +75,26 @@ jobs:
           compression-level: 0
           retention-days: 3
 
+  provision:
+    if: ${{ inputs.mode == 'provision' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ci/free_space.sh
+      - run: bash ci/setup_tools.sh
+      - name: Provision with resources
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/provision_job.sh "$URL"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: provision
+          path: provision_out.tar.gz
+          compression-level: 0
+          retention-days: 3
+
   strings:
     if: ${{ inputs.mode == 'strings' }}
     runs-on: ubuntu-latest

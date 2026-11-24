@@ -75,6 +75,26 @@ jobs:
           compression-level: 0
           retention-days: 3
 
+  strings:
+    if: ${{ inputs.mode == 'strings' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ci/free_space.sh
+      - run: bash ci/setup_tools.sh
+      - name: Find the Unsupported-software text
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/strings_job.sh "$URL"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: strings
+          path: strings_out.tar.gz
+          compression-level: 0
+          retention-days: 3
+
   apex:
     if: ${{ inputs.mode == 'apex' }}
     runs-on: ubuntu-latest

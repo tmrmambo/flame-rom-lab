@@ -9,3 +9,8 @@ tools/
 logs_*.txt
 reports/
 bundle_boot/
+jadx_src/
+jadx_out/
+bundle_apex/
+bundle_boot/
+reports/J1/pkgscan.py

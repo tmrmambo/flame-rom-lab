@@ -1,0 +1,196 @@
+### rd_recovery_ramdisk/system/lib64/libssl.so
+alpn_mismatch
+alps_mismatch
+quic_parameter_mismatch
+### rd_recovery_ramdisk/system/lib64/libcgrouprc.so
+ file version mismatch
+### rd_recovery_ramdisk/system/lib64/libziparchive.so
+Zip: gpb flag mismatch at bit 3. expected {%04x}, was {%04x}
+Zip: size mismatch on inflated file (%lu vs %lu)
+Zip: size/crc32 mismatch. expected {%lu, %lu, %x}, was {%lu, %lu, %x}
+### rd_recovery_ramdisk/system/lib64/librecovery_ui.so
+Mismatching number of tokens: 
+### rd_recovery_ramdisk/system/lib64/libcrypto.so
+AKID_MISMATCH
+ALPN_MISMATCH_ON_EARLY_DATA
+ALPS_MISMATCH_ON_EARLY_DATA
+ASN1_LENGTH_MISMATCH
+CA_DN_LENGTH_MISMATCH
+CERTIFICATE_AND_PRIVATE_KEY_MISMATCH
+CERT_LENGTH_MISMATCH
+CIPHER_MISMATCH_ON_EARLY_DATA
+### rd_recovery_ramdisk/system/lib64/libtinyxml2.so
+XML_ERROR_MISMATCHED_ELEMENT
+### rd_recovery_ramdisk/system/lib64/libvintf.so
+Kernel version mismatch; for level 
+### rd_recovery_ramdisk/system/lib64/libpng.so
+IDAT: ADLER32 checksum mismatch
+### rd_recovery_ramdisk/system/lib64/libz.so
+header crc mismatch
+### rd_recovery_ramdisk/system/lib64/libfec.so
+Boot image location and length mismatch.
+HASH_MISMATCH
+Mismatch between image version and libavb version.
+SIGNATURE_MISMATCH
+### rd_recovery_ramdisk/system/lib64/libc.so
+Terminate on a size mismatch between a sized-delete and the actual size of a chunk (as provided to new/new[]).
+Terminate on a type mismatch in allocation-deallocation functions, eg: malloc/delete, new/free, new/delete[], etc.
+_ZN5scudo24reportDeleteSizeMismatchEPvmm
+_ZN5scudo25reportDeallocTypeMismatchENS_15AllocatorActionEPvhh
+__bionic_setjmp_checksum_mismatch
+allocation type mismatch when %s address %p (%d vs %d)
+dealloc_type_mismatch
+delete_size_mismatch
+### rd_recovery_ramdisk/system/lib64/liblp.so
+ size mismatch (expected
+Extents count mismatch for partition 
+### rd_recovery_ramdisk/system/lib64/libbinder.so
+Address mismatch %lu vs %lu
+Bad state, session has id mismatch %s
+### rd_recovery_ramdisk/system/lib64/libfs_mgr.so
+Boot image location and length mismatch.
+HASH_MISMATCH
+Mismatch between image version and libavb version.
+SIGNATURE_MISMATCH
+total vbmeta size mismatch: 
+vbmeta digest mismatch
+### rd_recovery_ramdisk/system/lib64/libselinux.so
+Regex version mismatch, expected: %s actual: %s
+selabel_cmp: mismatched %s on entry %d: (%s, %x, %s) vs entry %d: (%s, %x, %s)
+### rd_recovery_ramdisk/system/lib64/librecovery_ui_ext.so
+Dictionary mismatch
+Failed to verify message, rom zone mismatch.
+Fuse kernel version mismatch: Kernel version %d.%d, Expected at least %d.6
+Header version mismatch, 
+Mismatching number of tokens: 
+header crc mismatch
+version_mismatch
+### rd_recovery_ramdisk/system/lib64/libc++.so
+The expression contained mismatched ( and ).
+The expression contained mismatched [ and ].
+The expression contained mismatched { and }.
+### rd_recovery_ramdisk/system/bin/fsck.f2fs
+	Mismatch segment0(%u) cp_blkaddr(%u)
+ --> Mismatch hash_code for "%s" [%x:%x]
+ --> inode [0x%x] mismatch i_mode [0x%x vs. 0x%x]
+Magic Mismatch, valid(0x%x) - read(0x%x)
+Segment count (%u) mismatch with total segments from devices (%u)
+### rd_recovery_ramdisk/system/bin/fastbootd
+Header version mismatch, 
+header crc mismatch
+### rd_recovery_ramdisk/system/bin/logd
+Dictionary mismatch
+### rd_recovery_ramdisk/system/bin/toybox
+>2(no-backup-if-mismatch)(dry-run)F#g#fulp#v(verbose)@d:i:Rs(quiet)[!sv]
+### rd_recovery_ramdisk/system/bin/init
+Header version mismatch, 
+header crc mismatch
+### rd_recovery_ramdisk/system/bin/update_engine_sideload
+ mismatch, last hash: 
+Disassembler and element size mismatch
+ErrorCode::kDownloadMetadataSignatureMismatch
+ErrorCode::kDownloadOperationHashMismatch
+ErrorCode::kPayloadHashMismatchError
+ErrorCode::kPayloadMismatchedType
+ErrorCode::kPayloadSizeMismatchError
+Header version mismatch, 
+### rd_recovery_ramdisk/system/bin/mkfs.erofs
+<E> erofs: chksum mismatch @ %llu
+<E> erofs: extra_devices(%u) is mismatched with source images(%u)
+### rd_recovery_ramdisk/system/bin/recovery
+Failed to verify message, rom zone mismatch.
+Fuse kernel version mismatch: Kernel version %d.%d, Expected at least %d.6
+Header version mismatch, 
+Mismatching number of tokens: 
+Zip: gpb flag mismatch at bit 3. expected {%04x}, was {%04x}
+Zip: size mismatch on inflated file (%lu vs %lu)
+Zip: size/crc32 mismatch. expected {%lu, %lu, %x}, was {%lu, %lu, %x}
+delayed ack mismatch: socket = 
+### rd_recovery_ramdisk/system/bin/servicemanager
+Service mismatch.
+### rd_recovery_ramdisk/system/bin/sload_f2fs
+	Mismatch segment0(%u) cp_blkaddr(%u)
+ --> Mismatch hash_code for "%s" [%x:%x]
+ --> inode [0x%x] mismatch i_mode [0x%x vs. 0x%x]
+Magic Mismatch, valid(0x%x) - read(0x%x)
+Segment count (%u) mismatch with total segments from devices (%u)
+### rd_recovery_ramdisk/system/bin/linker64
+Zip: gpb flag mismatch at bit 3. expected {%04x}, was {%04x}
+Zip: size/crc32 mismatch. expected {%lu, %lu, %x}, was {%lu, %lu, %x}
+header crc mismatch
+### rd_recovery_ramdisk/system/bin/adbd
+Dictionary mismatch
+delayed ack mismatch: socket = 
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/spi-msm-geni.ko
+%s: Length mismatch. Expected %d Callback %d
+3%s: Length mismatch. Expected %d Callback %d
+MSM_GPI_QUP_EOT_DESC_MISMATCH
+resume usage count mismatch:%d
+suspend usage count mismatch:%d
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/i2c-msm-geni.ko
+MSM_GPI_QUP_EOT_DESC_MISMATCH
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/msm_geni_serial.ko
+MSM_GPI_QUP_EOT_DESC_MISMATCH
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/pci-msm-drv.ko
+%s: PCIe: RC%d: mismatch between number of clock and frequency entries: %d != %d
+%s: PCIe: RC%d: mismatch between number of clock and suppressible entries: %d != %d
+3%s: PCIe: RC%d: mismatch between number of clock and frequency entries: %d != %d
+3%s: PCIe: RC%d: mismatch between number of clock and suppressible entries: %d != %d
+ERR:%s: PCIe: RC%d: mismatch between number of clock and frequency entries: %d != %d
+ERR:%s: PCIe: RC%d: mismatch between number of clock and suppressible entries: %d != %d
+PCIe: RC%d: Gen-speed mismatch:%d, expected:%d
+panic_genspeed_mismatch
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/msm_drm.ko
+%s:%d: <SDEROT_DBG> %s: session{%u,%u}f:%u mismatch from item{%u,%u}f:%u
+*ERROR* [msm-dsi-error]: %s: Mismatch between lanes in ULPS
+*ERROR* [msm-dsi-error]: DSI_%d: Mismatch in ULPS: lanes:%d, ulps_lanes:%d
+*ERROR* [msm-dsi-error]: [%s] Qsync min fps list mismatch with dfps
+*ERROR* [msm-dsi-error]: [%s] seamless mode mismatch failure rc=%d
+*ERROR* [msm-dsi-error]: topology and compression info mismatch dsc:%d vdc:%d num_enc:%d
+3%s:%d: <SDEROT_ERR> Format subsampling mismatch
+3%s:%d: <SDEROT_ERR> In ROI, subsample mismatch, w=%d, h=%d, vss%d, hss%d
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/ufs_qcom.ko
+%s len mismatch
+%s: Rx lane mismatch [config,reported] [%d,%d]
+%s: Tx lane mismatch [config,reported] [%d,%d]
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/drm_display_helper.ko
+I2C write value mismatch during TMDS output buffer %s
+crc4 mismatch 0x%x 0x%x
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/hdcp_qseecom_dlkm.ko
+3client-app minor version mismatch app(%d), client(%d)
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/snd-usb-audio-qmi.ko
+%s%s: handle mismatch
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/panel_event_notifier.ko
+3tag mismatch entry->tag:%d tag:%d
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/rpmh-regulator.ko
+3%s: %s: RPMh slave ID mismatch; config=%d (%s) != cmd-db=%d
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/socinfo.ko
+4socinfo: Mismatch between bootloaders and hlos
+4socinfo: part type mismatch
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/msm_gpi.ko
+EOT/DESC MISMATCH
+MSM_GPI_QUP_EOT_DESC_MISMATCH
+### rd_vendor_boot_vendor_ramdisk00/lib/modules/arm_smmu.ko
+not probing due to mismatched DT properties
+### rd_vendor_boot_vendor_ramdisk01/init
+ size mismatch (expected
+Boot image location and length mismatch.
+HASH_MISMATCH
+Header version mismatch, 
+Mismatch between image version and libavb version.
+Regex version mismatch, expected: %s actual: %s
+SIGNATURE_MISMATCH
+Terminate on a size mismatch between a sized-delete and the actual size of a chunk (as provided to new/new[]).
+### rd_vendor_boot_vendor_ramdisk01/system/bin/snapuserd_ramdisk
+ file version mismatch
+Header version mismatch, 
+Terminate on a size mismatch between a sized-delete and the actual size of a chunk (as provided to new/new[]).
+Terminate on a type mismatch in allocation-deallocation functions, eg: malloc/delete, new/free, new/delete[], etc.
+allocation type mismatch when %s address %p (%d vs %d)
+dealloc_type_mismatch
+delete_size_mismatch
+header crc mismatch
+### bi_recovery/kernel
+### bi_boot/kernel
+memblock_region
+register_memblock_regions

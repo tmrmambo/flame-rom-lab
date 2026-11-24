@@ -1,0 +1,6 @@
+[08:57:18] recovery/ramdisk: 704 files
+[08:57:18] vendor_boot/vendor-ramdisk-by-name: 0 files
+[08:57:18] vendor_boot/vendor_ramdisk00: 290 files
+[08:57:18] vendor_boot/vendor_ramdisk01: 4 files
+[08:57:18] == search: version_mismatch / unsupported / region lock strings in ramdisk files and kernels
+[08:57:23] == recovery binary + res (names only)

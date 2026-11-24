@@ -1,0 +1,5257 @@
+[
+ {
+  "target": "android.autoinstalls.config.Xiaomi.model",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "cn.wps.xiaomi.abroad.lite",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycore"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml",
+   "tree/system_ext/etc/forcedarkconfig/ForceDarkAppSettings.json"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycore": [
+    [
+     "u5/m.java",
+     75,
+     "androidx.activity.d.u(arrayList2, \"cn.wps.xiaomi.abroad.lite\", \"com.mi.globalbrowser\", \"com.miui.android.fashiongallery\", \"com.xiaomi.calendar\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.android.egg",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.android.intentresolver",
+  "action": "STUB",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 9,
+  "manifest_refs": [
+   "manifests/system_ext/priv-app/MiIntentResolver/MiIntentResolver.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/system/system/etc/permissions/com.android.intentresolver.xml",
+   "tree/system_ext/etc/permissions/privapp-permissions-miui-system-ext.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/applications/DefaultAppsHelper.java",
+     50,
+     "if (str.equals(RecentAppOpsAccess.ANDROID_SYSTEM_PACKAGE_NAME) || str.equals(\"com.android.intentresolver\")) {"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/gamebooster/service/GameBoosterService.java",
+     711,
+     "arrayList.add(\"com.android.intentresolver\");"
+    ],
+    [
+     "com/miui/gamebooster/service/VideoToolBoxService.java",
+     336,
+     "f20242z.add(\"com.android.intentresolver\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     165,
+     "REQUIRED_APPS.add(\"com.android.intentresolver\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/wm/ActivityStarterImpl.java",
+     123,
+     "private static final Set<String> PROJECTION_SWITCH_WHITE_LIST = new HashSet(Arrays.asList(\"com.lbe.security.miui\", \"com.miui.securitycenter\", \"com.ins"
+    ],
+    [
+     "com/android/server/wm/ActivityStarterImpl.java",
+     195,
+     "if (activityRecordForTokenLocked == null || !\"com.android.intentresolver\".equals(activityRecordForTokenLocked.packageName) || activityRecordForTokenLo"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.android.providers.downloads.ui",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "android.media",
+  "code_ref_labels": [
+   "NetworkBoost",
+   "com.android.settings",
+   "com.miui.daemon",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 21,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/product/etc/permissions/privapp-permissions-product.xml",
+   "tree/system/system/etc/permissions/privapp-permissions-miui-system.xml",
+   "tree/system/system/etc/sysconfig/hiddenapi-package-whitelist.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "NetworkBoost": [
+    [
+     "com/xiaomi/NetworkBoost/slaservice/SLAAppLib.java",
+     844,
+     "for (String str2 : \"CN\".equalsIgnoreCase(SystemProperties.get(\"ro.boot.hwc\")) ? new String[]{\"air.tv.douyu.android\", \"com.duowan.kiwi\", \"com.ss.androi"
+    ],
+    [
+     "com/xiaomi/NetworkBoost/slaservice/SLAAppLib.java",
+     1139,
+     "i = packageManager.getApplicationInfo(\"com.android.providers.downloads.ui\", 0).uid;"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     202,
+     "hashSet.add(\"com.android.providers.downloads.ui\");"
+    ],
+    [
+     "com/android/settings/applicationmode/AppController.java",
+     196,
+     "list.add(\"com.android.providers.downloads.ui\");"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/utils/scout/ScoutManager.java",
+     66,
+     "public static final Set APP_WHITELIST = new HashSet(Arrays.asList(\"com.mi.health\", \"com.mipay.wallet\", \"com.android.calendar\", \"com.mi.android.globalF"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/provider/PreSetApp.java",
+     27,
+     "mPreSetAppMap.put(\"com.android.providers.downloads.ui\", bool);"
+    ],
+    [
+     "com/miui/powerkeeper/provider/PreSetGroup.java",
+     28,
+     "mGroupHeadUidMap.put(\"com.android.providers.downloads.ui\", -1);"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/miui/superpower/AppSelectActivity.java",
+     213,
+     "arrayList2.add(\"com.android.providers.downloads.ui\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.android.soundrecorder",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "NetworkBoost",
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.guardprovider",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.miui.vsimcore",
+   "com.qualcomm.location",
+   "com.xiaomi.hypercomm",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 64,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/InCallUI/InCallUI.apk.txt",
+   "manifests/product/data-app/MIUINotes/MIUINotes.apk.txt",
+   "manifests/system/system/priv-app/TeleService/TeleService.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml",
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/mi_ext/system/etc/permissions/signature-permission-miext.xml",
+   "tree/product/etc/device_features/blaze.xml",
+   "tree/product/etc/device_features/flame.xml",
+   "tree/system/system/etc/permissions/privapp-permissions-qti.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.incallui",
+   "com.android.contacts",
+   "com.miui.notes",
+   "com.miui.audiomonitor"
+  ],
+  "n_perm_users": 4,
+  "samples": {
+   "NetworkBoost": [
+    [
+     "com/xiaomi/NetworkBoost/slaservice/GameLatencyPredict.java",
+     776,
+     "Log.d(TAG, \"No historical records\");"
+    ],
+    [
+     "com/xiaomi/NetworkBoost/slaservice/GameLatencyPredict.java",
+     1132,
+     "printWriter.println(\" total records=\" + this.mRecordList.size());"
+    ]
+   ],
+   "com.android.htmlviewer": [
+    [
+     "androidx/appcompat/widget/ActivityChooserModel.java",
+     39,
+     "static final String TAG_HISTORICAL_RECORDS = \"historical-records\";"
+    ],
+    [
+     "androidx/appcompat/widget/ActivityChooserModel.java",
+     379,
+     "throw new XmlPullParserException(\"Share records file does not start with historical-records tag.\");"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "androidx/fragment/app/FragmentManager.java",
+     831,
+     "throw new IllegalStateException(\"Internal error with the back stack records\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "androidx/fragment/app/FragmentManager.java",
+     845,
+     "throw new IllegalStateException(\"Internal error with the back stack records\");"
+    ],
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     183,
+     "hashSet.add(\"com.android.soundrecorder\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "androidx/fragment/app/FragmentManager.java",
+     2458,
+     "throw new IllegalStateException(\"Internal error with the back stack records\");"
+    ],
+    [
+     "com/android/systemui/qs/MiuiQSPanel.java",
+     249,
+     "printWriter.println(\"  Tile records:\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.android.updater",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.updater",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.qualcomm.location",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 32,
+  "manifest_refs": [
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt",
+   "manifests/product/app/Updater/Updater.apk.txt",
+   "manifests/product/priv-app/MiLauncherGlobal/MiLauncherGlobal.apk.txt",
+   "manifests/product/priv-app/MiuiHome/MiuiHome.apk.txt",
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt",
+   "manifests/system/system/priv-app/HTMLViewer/HTMLViewer.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/odm/etc/camera/cameraopt_reclaim.json",
+   "tree/system_ext/etc/perf_pkgconfig.xml",
+   "tree/system_ext/etc/permissions/package-shareduid-allowlist-miui-system-ext.xml",
+   "tree/system_ext/etc/sysconfig/power-save-conf.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.thememanager",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.miui.home",
+   "com.android.htmlviewer",
+   "com.android.phone",
+   "com.miui.daemon",
+   "com.miui.system",
+   "com.lbe.security.miui",
+   "com.android.systemui",
+   "com.android.settings"
+  ],
+  "n_perm_users": 11,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "com/android/htmlviewer/ota/OtaService.java",
+     34,
+     "private static final String ACTION_UPDATE_SUCCESSED = \"com.android.updater.action.UPDATE_SUCCESSED\";"
+    ],
+    [
+     "com/android/htmlviewer/ota/receiver/OtaCheckReceiver.java",
+     18,
+     "private static final String ACTION_UPDATE_SUCCESSED = \"com.android.updater.action.UPDATE_SUCCESSED\";"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     163,
+     "public static final String PACKAGE_NAME_UPDATER = \"com.android.updater\";"
+    ],
+    [
+     "com/android/provision/activities/DefaultActivity.java",
+     1334,
+     "State className3 = State.create(\"ActivationState\").setPackageName(Utils.PACKAGE_NAME_UPDATER).setClassName(\"com.android.updater.ActivationActivity\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     194,
+     "hashSet.add(\"com.android.updater\");"
+    ],
+    [
+     "com/android/settings/MiuiSettingsReceiver.java",
+     761,
+     "intent2.setAction(\"com.android.updater.action.OTA_UPDATE_SUCCESSED\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/systemui/MiuiOperatorCustomizedPolicy.java",
+     381,
+     "}, new IntentFilter(\"com.android.updater.action.COTA_CARRIER\"), 2);"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/updater/ExceptionCheck.java",
+     146,
+     "intent.setComponent(new ComponentName(\"com.android.updater\", \"com.android.updater.UpdateService\"));"
+    ],
+    [
+     "com/miui/daemon/mqsas/updater/ExceptionCheck.java",
+     146,
+     "intent.setComponent(new ComponentName(\"com.android.updater\", \"com.android.updater.UpdateService\"));"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.bsp.logmanager",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.miui.bugreport"
+  ],
+  "n_perm_users": 1,
+  "samples": {}
+ },
+ {
+  "target": "com.facebook.appmanager",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "miui-framework"
+  ],
+  "n_code_refs": 3,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/pangu/system/etc/permissions/facebook-hiddenapi-package-whitelist.xml",
+   "tree/product/pangu/system/etc/permissions/facebook-miui.xml",
+   "tree/system/system/etc/default-permissions/default-permissions-meta.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/optimizecenter/storage/AppSystemDataManager.java",
+     160,
+     "arrayList.add(\"com.facebook.appmanager\");"
+    ],
+    [
+     "p226r1/c.java",
+     104,
+     "arrayList3.add(\"com.facebook.appmanager\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     173,
+     "REQUIRED_APPS.add(\"com.facebook.appmanager\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.facebook.services",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "miui-services"
+  ],
+  "n_code_refs": 4,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/pangu/system/etc/permissions/facebook-hiddenapi-package-whitelist.xml",
+   "tree/product/pangu/system/etc/permissions/facebook-miui.xml",
+   "tree/system/system/etc/permissions/privapp-permissions-miui-system.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/optimizecenter/storage/AppSystemDataManager.java",
+     161,
+     "arrayList.add(\"com.facebook.services\");"
+    ],
+    [
+     "F7/a.java",
+     104,
+     "set.add(\"com.facebook.services\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/wm/ActivityStarterImpl.java",
+     126,
+     "private static final Set<String> BACKGROUND_START_WHITE_PACKAGE = new HashSet(Arrays.asList(\"com.tencent.mobileqq\", \"com.tencent.mm\", \"com.miui.voicea"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.facebook.system",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "miui-services"
+  ],
+  "n_code_refs": 3,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/pangu/system/etc/permissions/facebook-hiddenapi-package-whitelist.xml",
+   "tree/system/system/etc/permissions/privapp-permissions-miui-system.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/optimizecenter/storage/AppSystemDataManager.java",
+     162,
+     "arrayList.add(\"com.facebook.system\");"
+    ],
+    [
+     "p226r1/c.java",
+     106,
+     "arrayList3.add(\"com.facebook.system\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     377,
+     "sSilentlyUninstallPackages.add(\"com.facebook.system\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.fingerprints.sensortesttool",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.goodix.gftest",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "miui-framework"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     83,
+     "sAllowAutoStartPkgs.add(\"com.goodix.gftest\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.apps.docs",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework"
+  ],
+  "n_code_refs": 5,
+  "manifest_refs": [
+   "manifests/mi_ext/product/app/GoogleOne_arm64/GoogleOne_arm64.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/preferred-apps/google.xml",
+   "tree/product/etc/sysconfig/google-initial-package-stopped-states.xml",
+   "tree/product/etc/sysconfig/google.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/utils/GmsCoreUtils.java",
+     15,
+     "private static final String[] GOOGLE_APPS_ARRAY = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "p307x4/a.java",
+     46,
+     "String[] strArr = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com.google.android.apps.plus\", \"com"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "s3/c.java",
+     20,
+     "androidx.activity.d.u(arrayList, \"com.google.android.apps.inputmethod.hindi\", \"com.google.android.music\", \"com.google.android.apps.docs\", \"com.google."
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     88,
+     "XSPACE_DEFAULT_BLACK_LIST.add(\"com.google.android.apps.docs\");"
+    ],
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     127,
+     "XSPACE_DEFAULT_BLACK_LIST.add(\"com.google.android.apps.docs.editors.slides\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.apps.maps",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "com.google.android.apps.maps",
+  "code_ref_labels": [
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 11,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/Messages_arm64_hdpi/Messages_arm64_hdpi.apk.txt",
+   "manifests/product/priv-app/FamilyLinkParentalControls/FamilyLinkParentalControls.apk.txt",
+   "manifests/product/priv-app/PersonalSafety/PersonalSafety.apk.txt",
+   "manifests/product/priv-app/Phonesky/Phonesky.apk.txt",
+   "manifests/product/priv-app/Velvet/Velvet.apk.txt",
+   "manifests/product/priv-app/Wellbeing/Wellbeing.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/product/etc/sysconfig/google-initial-package-stopped-states.xml",
+   "tree/product/etc/sysconfig/google.xml"
+  ],
+  "perm_users_kept": [
+   "com.google.android.googlequicksearchbox"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/unionpower/corehandler/FanStateHandler.java",
+     539,
+     "f708e0.put(\"com.google.android.apps.maps\", null);"
+    ],
+    [
+     "com/miui/powerkeeper/utils/GmsCoreUtils.java",
+     15,
+     "private static final String[] GOOGLE_APPS_ARRAY = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/miui/superpower/SuperPowerConst.java",
+     38,
+     "hashSet.add(\"com.google.android.apps.maps\");"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "p226r1/c.java",
+     161,
+     "arrayList3.add(\"com.google.android.apps.maps\");"
+    ],
+    [
+     "p307x4/a.java",
+     46,
+     "String[] strArr = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com.google.android.apps.plus\", \"com"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "s3/c.java",
+     20,
+     "androidx.activity.d.u(arrayList, \"com.google.android.apps.inputmethod.hindi\", \"com.google.android.music\", \"com.google.android.apps.docs\", \"com.google."
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     89,
+     "XSPACE_DEFAULT_BLACK_LIST.add(\"com.google.android.apps.maps\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.apps.photos",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework"
+  ],
+  "n_code_refs": 12,
+  "manifest_refs": [
+   "manifests/mi_ext/product/app/GoogleOne_arm64/GoogleOne_arm64.apk.txt",
+   "manifests/mi_ext/product/priv-app/Messages_arm64_hdpi/Messages_arm64_hdpi.apk.txt",
+   "manifests/product/priv-app/Velvet/Velvet.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/default-permissions/default-permissions-google.xml",
+   "tree/product/etc/displayconfig/rhythmic_app_category_list_backup.xml",
+   "tree/product/etc/permissions/privapp-permissions-gms-international-product.xml",
+   "tree/product/etc/preferred-apps/google.xml",
+   "tree/product/etc/sysconfig/google-initial-package-stopped-states.xml",
+   "tree/product/etc/sysconfig/google.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/DefalutApplicationLoader.java",
+     206,
+     "if (5 == i && resolveInfo != null && (activityInfo = resolveInfo.activityInfo) != null && \"com.google.android.apps.photos\".equals(activityInfo.package"
+    ],
+    [
+     "com/android/settings/DefalutApplicationLoader.java",
+     217,
+     "packageManager.clearPackagePreferredActivities(\"com.google.android.apps.photos\");"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/utils/GmsCoreUtils.java",
+     15,
+     "private static final String[] GOOGLE_APPS_ARRAY = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "p226r1/c.java",
+     116,
+     "arrayList3.add(\"com.google.android.apps.photos\");"
+    ],
+    [
+     "p307x4/a.java",
+     46,
+     "String[] strArr = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com.google.android.apps.plus\", \"com"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "s3/c.java",
+     21,
+     "androidx.activity.d.u(arrayList, \"com.android.chrome\", \"com.google.android.videos\", \"com.google.android.apps.photos\", \"com.google.android.talk\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/media/VideoBoxVppStubImpl.java",
+     21,
+     "private static List<String> mVideoPkg = new ArrayList(Arrays.asList(SecurityManager.SKIP_INTERCEPT_PACKAGE, \"com.miui.video\", \"com.qiyi.video\", \"tv.pp"
+    ],
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     92,
+     "XSPACE_DEFAULT_BLACK_LIST.add(\"com.google.android.apps.photos\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.apps.tachyon",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "miui-framework"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/Messages_arm64_hdpi/Messages_arm64_hdpi.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/default-permissions/default-permissions-google.xml",
+   "tree/product/etc/permissions/privapp-permissions-gms-international-product.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "miui-framework": [
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     67,
+     "XSPACE_DEFAULT_BLACK_LIST.add(\"com.google.android.apps.tachyon\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.apps.youtube.music",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 5,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/etc/sysconfig/google-initial-package-stopped-states.xml",
+   "tree/product/etc/sysconfig/google.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "miui-framework": [
+    [
+     "android/media/AudioServiceInjector.java",
+     158,
+     "mMusicWhiteList = new HashSet(Arrays.asList(\"com.netease.cloudmusic\", \"com.tencent.qqmusic\", \"com.iloen.melon\", \"mp3.player.freemusic\", \"com.kugou.and"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/audio/AudioServiceStubImpl.java",
+     345,
+     "private static final List<String> PACKAGE_LIST_FOR_AON = new ArrayList(Arrays.asList(\"com.miui.video\", \"com.miui.mediaviewer\", \"com.miui.videoplayer\","
+    ],
+    [
+     "com/android/server/audio/AudioServiceStubImpl.java",
+     368,
+     "private static final String[] SUPPORTED_MUSICLIGHT_PACKAGE = {\"com.tencent.qqmusic\", \"com.netease.cloudmusic\", \"com.kugou.android\", \"cn.kuwo.player\", "
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.gm",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.guardprovider",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.qualcomm.location",
+   "com.xiaomi.hypercomm",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 57,
+  "manifest_refs": [
+   "manifests/mi_ext/product/app/GoogleOne_arm64/GoogleOne_arm64.apk.txt",
+   "manifests/mi_ext/product/priv-app/AndroidSystemIntelligence_Infrastructure_arm64/AndroidSystemIntelligence_Infrastructure_arm64.apk.txt",
+   "manifests/mi_ext/product/priv-app/Messages_arm64_hdpi/Messages_arm64_hdpi.apk.txt",
+   "manifests/mi_ext/product/priv-app/MiuiMmsGlobal/MiuiMmsGlobal.apk.txt",
+   "manifests/mi_ext/product/priv-app/PrivateComputeServices_arm64/PrivateComputeServices_arm64.apk.txt",
+   "manifests/mi_ext/product/priv-app/SearchSelector/SearchSelector.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/product/etc/local_adaptive_app_list.xml",
+   "tree/product/etc/permissions/privapp-permissions-gms-international-product.xml",
+   "tree/product/etc/permissions/split-permissions-google.xml",
+   "tree/product/etc/preferred-apps/google.xml"
+  ],
+  "perm_users_kept": [
+   "com.google.android.googlequicksearchbox"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "androidx/activity/result/contract/ActivityResultContracts.java",
+     385,
+     "public static final String GMS_ACTION_PICK_IMAGES = \"com.google.android.gms.provider.action.PICK_IMAGES\";"
+    ],
+    [
+     "androidx/activity/result/contract/ActivityResultContracts.java",
+     386,
+     "public static final String GMS_EXTRA_PICK_IMAGES_MAX = \"com.google.android.gms.provider.extra.PICK_IMAGES_MAX\";"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     251,
+     "arrayList.add(\"com.google.android.gms\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     204,
+     "hashSet.add(\"com.google.android.gm\");"
+    ],
+    [
+     "com/android/settings/MiuiSettings.java",
+     1723,
+     "Bundle bundle = packageManager.getActivityInfo(new ComponentName(\"com.google.android.gms\", \"com.google.android.gms.app.settings.GoogleSettingsIALink\")"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/systemui/qs/customize/MiuiTileQueryHelper$$ExternalSyntheticLambda1.java",
+     74,
+     "if (spec.equals(\"custom(com.google.android.gms/.nearby.sharing.SharingTileService)\")) {"
+    ],
+    [
+     "com/android/systemui/qs/pipeline/data/repository/MiuiDefaultTilesRepository.java",
+     53,
+     "return \",custom(com.google.android.gms/.nearby.sharing.SharingTileService),scanner,wallet,custom(com.miui.screenrecorder/.service.QuickService)\";"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/ot/pubsub/util/DeviceUtil.java",
+     141,
+     "parcelObtain.writeInterfaceToken(\"com.google.android.gms.ads.identifier.internal.IAdvertisingIdService\");"
+    ],
+    [
+     "com/ot/pubsub/util/DeviceUtil.java",
+     158,
+     "parcelObtain.writeInterfaceToken(\"com.google.android.gms.ads.identifier.internal.IAdvertisingIdService\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.gms.location.history",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.google.android.printservice.recommendation",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "miui-services"
+  ],
+  "n_code_refs": 5,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/system/system/etc/sysconfig/google-hiddenapi-package-allowlist.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     249,
+     "arrayList.add(\"com.google.android.printservice.recommendation\");"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/utils/GmsCoreUtils.java",
+     34,
+     "arrayList2.add(\"com.google.android.printservice.recommendation\");"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "G7/c.java",
+     39,
+     "hashSet2.add(\"com.google.android.printservice.recommendation\");"
+    ],
+    [
+     "p307x4/a.java",
+     66,
+     "arrayList3.add(\"com.google.android.printservice.recommendation\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     336,
+     "sAllowInstalledSystemApps.add(\"com.google.android.printservice.recommendation\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.videos",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework"
+  ],
+  "n_code_refs": 4,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/etc/sysconfig/google-initial-package-stopped-states.xml",
+   "tree/product/etc/sysconfig/google.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/utils/GmsCoreUtils.java",
+     15,
+     "private static final String[] GOOGLE_APPS_ARRAY = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "p307x4/a.java",
+     46,
+     "String[] strArr = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com.google.android.apps.plus\", \"com"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "s3/c.java",
+     21,
+     "androidx.activity.d.u(arrayList, \"com.android.chrome\", \"com.google.android.videos\", \"com.google.android.apps.photos\", \"com.google.android.talk\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     91,
+     "XSPACE_DEFAULT_BLACK_LIST.add(\"com.google.android.videos\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.google.android.youtube",
+  "action": "REMOVE",
+  "tier": "OPT",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "NetworkBoost",
+   "com.android.settings",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 16,
+  "manifest_refs": [
+   "manifests/product/data-app/MIUINotes/MIUINotes.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/product/etc/displayconfig/rhythmic_app_category_list_backup.xml",
+   "tree/product/etc/sysconfig/google-initial-package-stopped-states.xml",
+   "tree/product/etc/sysconfig/google.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "NetworkBoost": [
+    [
+     "com/xiaomi/NetworkBoost/slaservice/SLAAppLib.java",
+     729,
+     "for (String str2 : \"CN\".equalsIgnoreCase(SystemProperties.get(\"ro.boot.hwc\")) ? new String[]{mSLSVoIPAppPN, \"com.tencent.mobileqq\", \"com.eg.android.Al"
+    ],
+    [
+     "com/xiaomi/NetworkBoost/slaservice/SLAAppLib.java",
+     844,
+     "for (String str2 : \"CN\".equalsIgnoreCase(SystemProperties.get(\"ro.boot.hwc\")) ? new String[]{\"air.tv.douyu.android\", \"com.duowan.kiwi\", \"com.ss.androi"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     217,
+     "hashSet.add(\"com.google.android.youtube\");"
+    ],
+    [
+     "com/android/settings/display/DisplayUtils.java",
+     52,
+     "hashSet.add(\"com.google.android.youtube\");"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/utils/GmsCoreUtils.java",
+     15,
+     "private static final String[] GOOGLE_APPS_ARRAY = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "p226r1/c.java",
+     107,
+     "arrayList3.add(\"com.google.android.youtube\");"
+    ],
+    [
+     "p307x4/a.java",
+     46,
+     "String[] strArr = {\"com.google.android.gm\", \"com.google.android.apps.magazines\", \"com.google.android.apps.books\", \"com.google.android.apps.plus\", \"com"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "s3/c.java",
+     19,
+     "androidx.activity.d.u(arrayList, \"com.google.android.youtube\", \"com.google.android.googlequicksearchbox\", \"com.android.vending\", \"com.google.android.m"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.indus.appstore",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "miui-framework"
+  ],
+  "n_code_refs": 4,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/powercenter/legacypowerrank/PowerDetailActivity.java",
+     483,
+     "return (z10 && (\"com.facemoji.lite.xiaomi\".equals(strArr[0]) || \"com.kikaoem.xiaomi.qisiemoji.inputmethod\".equals(this.f25663e[0]) || \"com.preff.kb.xm"
+    ],
+    [
+     "p226r1/c.java",
+     274,
+     "arrayList7.add(\"com.indus.appstore\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/securityspace/XSpaceConstant.java",
+     133,
+     "XSPACE_DEFAULT_BLACK_LIST.add(\"com.indus.appstore\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.lbe.security.miui",
+  "action": "STUB",
+  "tier": "T3",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.guardprovider",
+   "com.miui.misightservice",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 19,
+  "manifest_refs": [
+   "manifests/product/data-app/MIUIDeskClockGlobal/MIUIDeskClockGlobal.apk.txt",
+   "manifests/system_ext/priv-app/AuthManager/AuthManager.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/odm/etc/camera/cameraopt_reclaim.json",
+   "tree/system_ext/etc/permissions/privapp-permissions-miui-system-ext.xml"
+  ],
+  "perm_users_kept": [
+   "com.miui.guardprovider",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.android.systemui",
+   "com.android.settings"
+  ],
+  "n_perm_users": 6,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/applications/AppInfoBase.java",
+     263,
+     "intent.setPackage(\"com.lbe.security.miui\");"
+    ],
+    [
+     "com/android/settings/applications/appinfo/DrawOverlayDetails.java",
+     67,
+     "intent.setPackage(\"com.lbe.security.miui\");"
+    ]
+   ],
+   "com.miui.guardprovider": [
+    [
+     "Z1/e.java",
+     18,
+     "context.getContentResolver().call(Uri.parse(\"content://com.lbe.security.miui.su\"), \"GrantGuardProvider\", (String) null, (Bundle) null);"
+    ]
+   ],
+   "com.miui.misightservice": [
+    [
+     "z0/t.java",
+     630,
+     "Bundle bundleCall = MiSightApplication.getContext().getContentResolver().call(Uri.parse(\"content://com.lbe.security.miui.permmgr\"), \"19\", str2, new Bu"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/fragment/AMSettingsFragment.java",
+     195,
+     "this.f17310a.getContentResolver().call(Uri.parse(\"content://\" + UserHandle.myUserId() + \"@com.lbe.security.miui.permmgr\"), String.valueOf(30), (String"
+    ],
+    [
+     "com/miui/gamebooster/beauty/BeautyService.java",
+     347,
+     "arrayList.add(\"com.lbe.security.miui\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     125,
+     "sAllowAutoStartPkgs.add(\"com.lbe.security.miui\");"
+    ],
+    [
+     "android/content/pm/PackageManagerImpl.java",
+     12,
+     "private static final String PKG_AUTH_MANAGER = \"com.lbe.security.miui\";"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.longcheertel.AutoTest",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.longcheertel.cit",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.miui.securitycenter"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/vendor/etc/selinux/vendor_seapp_contexts"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "K5/c.java",
+     223,
+     "if (j10 == j11 && ((\"com.miui.cit\".equals(str) || \"com.longcheertel.cit\".equals(str)) && z.j())) {"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.mi.android.globalFileexplorer",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 19,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/etc/displayconfig/rhythmic_app_category_list_backup.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.contacts",
+   "com.android.mms",
+   "com.xiaomi.aiasst.vision",
+   "com.miui.screenshot",
+   "com.miui.securityadd",
+   "com.miui.bugreport",
+   "com.milink.service",
+   "com.miui.calculator",
+   "com.android.deskclock",
+   "com.miui.notes",
+   "com.xiaomi.misettings",
+   "com.miui.accessibility"
+  ],
+  "n_perm_users": 15,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     195,
+     "hashSet.add(\"com.mi.android.globalFileexplorer\");"
+    ],
+    [
+     "com/android/settings/display/DisplayUtils.java",
+     30,
+     "hashSet.add(\"com.mi.android.globalFileexplorer\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/systemui/usb/StorageNotification.java",
+     349,
+     "intent2.setPackage(\"com.mi.android.globalFileexplorer\");"
+    ],
+    [
+     "com/android/systemui/usb/StorageNotification.java",
+     351,
+     "intent.setClassName(\"com.mi.android.globalFileexplorer\", \"com.android.fileexplorer.FileExplorerTabActivity\");"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/utils/scout/ScoutManager.java",
+     66,
+     "public static final Set APP_WHITELIST = new HashSet(Arrays.asList(\"com.mi.health\", \"com.mipay.wallet\", \"com.android.calendar\", \"com.mi.android.globalF"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/schedassi/SchedAssi.java",
+     80,
+     "} else if (packageNameByUid.equals(\"com.android.fileexplorer\") || packageNameByUid.equals(\"com.mi.android.globalFileexplorer\")) {"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/auth/BiometricActivity.java",
+     221,
+     "} else if (\"com.android.fileexplorer\".equals(str) || \"com.mi.android.globalFileexplorer\".equals(str)) {"
+    ],
+    [
+     "com/miui/privacypassword/b.java",
+     84,
+     "String str = Build.IS_INTERNATIONAL_BUILD ? \"privacy_password_module_com.mi.android.globalFileexplorer\" : \"privacy_password_module_com.android.fileexp"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.mi.appfinder",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "miui-services"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [
+   "manifests/product/priv-app/MiLauncherGlobal/MiLauncherGlobal.apk.txt",
+   "manifests/product/priv-app/MiuiHome/MiuiHome.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/permissions/privapp-permissions-miext.xml"
+  ],
+  "perm_users_kept": [
+   "com.mi.android.globallauncher",
+   "com.miui.home"
+  ],
+  "n_perm_users": 2,
+  "samples": {
+   "miui-services": [
+    [
+     "com/android/server/am/ProcessPolicy.java",
+     1215,
+     "map.put(\"com.mi.appfinder\", true);"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.mi.global.shop",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 9,
+  "manifest_refs": [
+   "manifests/system_ext/priv-app/Settings/Settings.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml",
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.incallui",
+   "com.android.contacts",
+   "com.android.mms",
+   "com.google.android.apps.setupwizard.searchselector",
+   "com.qualcomm.qti.devicestatisticsservice",
+   "com.miui.guardprovider",
+   "com.miui.notification",
+   "com.miui.screenshot",
+   "com.miui.securityadd",
+   "miui.systemui.plugin",
+   "com.android.thememanager",
+   "com.milink.service"
+  ],
+  "n_perm_users": 72,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/device/MiStoreUtil.java",
+     42,
+     "PackageInfo packageInfo = packageManager.getPackageInfo(\"com.mi.global.shop\", 0);"
+    ],
+    [
+     "com/android/settings/device/MiStoreUtil.java",
+     43,
+     "return packageInfo != null && packageInfo.versionCode >= 41010 && packageManager.getApplicationInfo(\"com.mi.global.shop\", 0).enabled;"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "u5/m.java",
+     59,
+     "androidx.activity.d.u(arrayList, \"com.xiaomi.mirror\", \"com.boundax.koreapreloadappinstaller\", \"com.mi.global.shop\", \"com.mi.global.pocostore\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/content/pm/ExtraPackageManager.java",
+     66,
+     "final String MI_GLOBAL_SHOP = \"com.mi.global.shop\";"
+    ],
+    [
+     "miui/content/pm/ExtraPackageManager.java",
+     102,
+     "this.ACCOUNT_WHITE_LIST = new WhiteListEntity[]{new WhiteListEntity(\"com.xiaomi.channel\", this.MITALK_SIGNATURES), new WhiteListEntity(\"com.duokan.rea"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/miui/server/EnableStateManager.java",
+     399,
+     "ApplicationInfo applicationInfo = packageManager.getApplicationInfo(\"com.mi.global.shop\", 0);"
+    ],
+    [
+     "com/miui/server/EnableStateManager.java",
+     405,
+     "packageManager.deletePackage(\"com.mi.global.shop\", null, 0);"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.mi.globalminusscreen",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "miui-framework"
+  ],
+  "n_code_refs": 2,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/mi_ext/product/etc/permissions/privapp-permissions-miext.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/securitycenter/WidgetProvider.java",
+     223,
+     "arrayList.add(\"com.mi.globalminusscreen\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/stepcounter/StepProvider.java",
+     405,
+     "this.mWhiteAppList.add(\"com.mi.globalminusscreen\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.milink.service",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 30,
+  "manifest_refs": [
+   "manifests/product/app/MiLinkOS3GlobalLiteV1/MiLinkOS3GlobalLiteV1.apk.txt",
+   "manifests/product/app/MiTrustService/MiTrustService.apk.txt",
+   "manifests/product/app/MIUISystemUIPlugin/MIUISystemUIPlugin.apk.txt",
+   "manifests/system/system/priv-app/Telecom/Telecom.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/odm/etc/camera/cameraopt_reclaim.json",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [
+   "miui.systemui.plugin",
+   "com.miui.notes",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.miui.home",
+   "com.android.intentresolver",
+   "com.android.systemui"
+  ],
+  "n_perm_users": 7,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/MiuiUtils.java",
+     1689,
+     "return isPackagesSupportMetaDataFeature(\"com.milink.service\", context, \"miui.supportConnectionSettingsPage\");"
+    ],
+    [
+     "com/android/settings/freeform/FreeformGuideSettings.java",
+     51,
+     "private final Uri WORLD_CIRCULATE_URI = Uri.parse(\"content://com.milink.service.circulate\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/notification/decor/DecorWindowManagerImpl.java",
+     238,
+     "hashSet.add(\"com.milink.service\");"
+    ],
+    [
+     "com/android/systemui/controlcenter/controls/HyperOSControlsRepository.java",
+     123,
+     "if (Intrinsics.areEqual(encodedSchemeSpecificPart, \"com.milink.service\") || Intrinsics.areEqual(encodedSchemeSpecificPart, \"miui.systemui.plugin\")) {"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/event/NativeExceptionEventHandler.java",
+     93,
+     "add(\"com.milink.service\");"
+    ],
+    [
+     "com/miui/daemon/mqsas/event/OOMEventManager.java",
+     41,
+     "public static String[] SUPPORTED_SYSTEM_PROCCESS = {\"com.android.systemui\", \"system_server\", \"com.android.settings\", \"com.miui.daemon\", \"com.cdgdemo.o"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/facebook/ads/internal/dynamicloading/DexLoadErrorReporter.java",
+     11,
+     "import com.milink.service.api.BuildConfig;"
+    ],
+    [
+     "com/milink/api/v1/MilinkClientManager.java",
+     115,
+     "intent.setPackage(\"com.milink.service\");"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "com/miui/freeform/settings/FreeformGuideSettings.java",
+     49,
+     "public final Uri f2760x0 = Uri.parse(\"content://com.milink.service.circulate\");"
+    ],
+    [
+     "com/miui/freeform/settings/FreeformGuideSettings.java",
+     50,
+     "public final ComponentName y0 = new ComponentName(\"com.milink.service\", \"com.miui.circulate.world.AppCirculateActivity\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.analytics",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "NetworkBoost",
+   "com.android.htmlviewer",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.qualcomm.location",
+   "com.xiaomi.hypercomm",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 59,
+  "manifest_refs": [
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt",
+   "manifests/system_ext/app/CameraMind/CameraMind.apk.txt",
+   "manifests/system_ext/app/MiSightService/MiSightService.apk.txt",
+   "manifests/system_ext/app/MiuiDaemon/MiuiDaemon.apk.txt",
+   "manifests/system_ext/framework/framework-ext-res/framework-ext-res.apk.txt",
+   "manifests/system_ext/priv-app/TouchService/TouchService.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/odm/etc/camera/cameraopt.json"
+  ],
+  "perm_users_kept": [
+   "com.xiaomi.cameramind",
+   "com.miui.misightservice",
+   "com.miui.daemon",
+   "com.miui.rom",
+   "com.xiaomi.touchservice"
+  ],
+  "n_perm_users": 5,
+  "samples": {
+   "NetworkBoost": [
+    [
+     "com/xiaomi/NetworkBoost/NetworkAiService/NetworkAiService.java",
+     687,
+     "intent.setPackage(\"com.miui.analytics\");"
+    ],
+    [
+     "com/xiaomi/NetworkBoost/slaservice/GameLatencyPredict.java",
+     889,
+     "intent.setPackage(\"com.miui.analytics\");"
+    ]
+   ],
+   "com.android.htmlviewer": [
+    [
+     "com/miui/analytics/ITrack.java",
+     1,
+     "package com.miui.analytics;"
+    ],
+    [
+     "com/miui/analytics/ITrack.java",
+     13,
+     "private static final String DESCRIPTOR = \"com.miui.analytics.ITrack\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/OneTrackManager.java",
+     25,
+     "intent.setPackage(\"com.miui.analytics\");"
+    ],
+    [
+     "com/android/settings/OneTrackManager.java",
+     50,
+     "intent.setPackage(\"com.miui.analytics\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/wm/shell/multitasking/common/analytics/MultiTaskingTrackManager.java",
+     14,
+     "import com.miui.analytics.ITrackBinder;"
+    ],
+    [
+     "com/android/wm/shell/multitasking/common/analytics/MultiTaskingTrackManager.java",
+     20,
+     "private static final String SERVER_CLASS_NAME = \"com.miui.analytics.onetrack.TrackService\";"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/analytics/ITrack.java",
+     1,
+     "package com.miui.analytics;"
+    ],
+    [
+     "com/miui/analytics/ITrack.java",
+     25,
+     "@Override // com.miui.analytics.ITrack"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.android.fashiongallery",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.securitycenter",
+   "com.miui.securitycore"
+  ],
+  "n_code_refs": 16,
+  "manifest_refs": [
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt",
+   "manifests/product/data-app/MiGalleryLockScreenGlobalOs3/MiGalleryLockScreenGlobalOs3.apk.txt",
+   "manifests/system_ext/priv-app/Provision/Provision.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/removable_apk_info.xml",
+   "tree/product/pangu/system/etc/permissions/signature-permission-pangu.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/fragment/CarouselSettingFragment.java",
+     55,
+     "ExtraSettings$System.putString(contentResolver, CarouselConstant.OtherConstant.LOCK_WALLPAPER_PROVIDER_AUTHORITY, this.isAgreePrivacy ? \"com.miui.andr"
+    ],
+    [
+     "com/android/provision/fragment/OtherSettingsFragment.java",
+     88,
+     "private static final String CONTENT_AUTHORITY = \"com.miui.android.fashiongallery.lockscreen_magazine_provider\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/AodAndLockScreenSettings.java",
+     278,
+     "return (!Build.IS_INTERNATIONAL_BUILD && \"com.xiaomi.tv.gallerylockscreen.lockscreen_magazine_provider\".equals(str)) || \"com.miui.android.fashiongalle"
+    ],
+    [
+     "com/android/settings/MiuiSecuritySettings.java",
+     110,
+     "intent = \"IN\".equalsIgnoreCase(Build.getRegion()) ? new Intent(\"com.miui.android.fashiongallery.setting.SETTING\") : null;"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/keyguard/WallpaperProvider.java",
+     43,
+     "public static final List WHITE_LIST_FOR_WALLPAPER_PROVIDER = Arrays.asList(\"com.miui.aod\", \"com.android.thememanager\", \"com.miui.android.fashiongaller"
+    ],
+    [
+     "com/android/keyguard/magazine/LockScreenMagazineController.java",
+     168,
+     "str2.equals(\"com.miui.android.fashiongallery.lockscreen_magazine_provider\");"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/fragment/ManageFragment.java",
+     1641,
+     "if (z11 && \"com.miui.android.fashiongallery\".equals(str)) {"
+    ],
+    [
+     "com/miui/powercenter/legacypowerrank/PowerDetailActivity.java",
+     483,
+     "return (z10 && (\"com.facemoji.lite.xiaomi\".equals(strArr[0]) || \"com.kikaoem.xiaomi.qisiemoji.inputmethod\".equals(this.f25663e[0]) || \"com.preff.kb.xm"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "u5/m.java",
+     75,
+     "androidx.activity.d.u(arrayList2, \"cn.wps.xiaomi.abroad.lite\", \"com.mi.globalbrowser\", \"com.miui.android.fashiongallery\", \"com.xiaomi.calendar\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.audiomonitor",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 8,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/InCallUI/InCallUI.apk.txt",
+   "manifests/system/system/priv-app/TeleService/TeleService.apk.txt",
+   "manifests/system_ext/app/MiuiAudioMonitor/MiuiAudioMonitor.apk.txt"
+  ],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.android.incallui",
+   "com.miui.accessibility",
+   "com.android.phone"
+  ],
+  "n_perm_users": 3,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/lab/MiuiVoipAssistantController.java",
+     30,
+     "intent.setComponent(new ComponentName(\"com.miui.audiomonitor\", \"com.miui.audiomonitor.VoipAssistantActivity\"));"
+    ],
+    [
+     "com/android/settings/lab/MiuiVoipAssistantController.java",
+     30,
+     "intent.setComponent(new ComponentName(\"com.miui.audiomonitor\", \"com.miui.audiomonitor.VoipAssistantActivity\"));"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "J2/g.java",
+     36,
+     "private static final String f2211j = \"com.miui.audiomonitor\";"
+    ],
+    [
+     "J2/g.java",
+     39,
+     "private static final String f2212k = \"com.miui.audiomonitor.VoipRecordSettingsActivity\";"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/content/pm/PreloadedAppPolicy.java",
+     59,
+     "sProtectedDataAppsSign.put(\"com.miui.audiomonitor\", PLATFORM_KEY);"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/audio/AudioServiceStubImpl.java",
+     3140,
+     "intent.setComponent(new ComponentName(\"com.miui.audiomonitor\", \"com.miui.audiomonitor.MiuiCameraBTRecordService\"));"
+    ],
+    [
+     "com/android/server/audio/AudioServiceStubImpl.java",
+     3140,
+     "intent.setComponent(new ComponentName(\"com.miui.audiomonitor\", \"com.miui.audiomonitor.MiuiCameraBTRecordService\"));"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.backup",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.backup",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 15,
+  "manifest_refs": [
+   "manifests/system_ext/priv-app/Settings/Settings.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/product/etc/permissions/privapp-permissions-product.xml",
+   "tree/system/system/etc/permissions/privapp-permissions-miui-system.xml"
+  ],
+  "perm_users_kept": [
+   "com.miui.securitycenter"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     209,
+     "hashSet.add(\"com.miui.backup\");"
+    ],
+    [
+     "com/android/settings/MiuiUtils.java",
+     1267,
+     "if (\"com.miui.backup\".equals(it.next().processName)) {"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/statemachine/PadSleepModeController.java",
+     2063,
+     "if (runningServiceInfo.service.getClassName().equals(\"com.miui.backup.service.TransFileService\") && runningServiceInfo.service.getPackageName().equals"
+    ],
+    [
+     "com/miui/powerkeeper/statemachine/PadSleepModeController.java",
+     2063,
+     "if (runningServiceInfo.service.getClassName().equals(\"com.miui.backup.service.TransFileService\") && runningServiceInfo.service.getPackageName().equals"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "miui/cloud/CloudSyncUtils.java",
+     36,
+     "public static final String CLOUD_APP_AUTHORITY = \"com.miui.backup.cloud.CloudAppProvider\";"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     49,
+     "sAutoStartRestrictions.add(\"com.miui.backup\");"
+    ],
+    [
+     "miui/app/backup/BackupManager.java",
+     15,
+     "import com.miui.backup.BackupManagerStub;"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/MiuiRestoreManagerService.java",
+     52,
+     "private static final String PACKAGE_BACKUP = \"com.miui.backup\";"
+    ],
+    [
+     "com/android/server/pm/MiuiDefaultPermissionGrantPolicy.java",
+     50,
+     "private static final String[] MIUI_GLOBAL_APPS = {\"co.sitic.pp\", \"com.miui.backup\", \"com.xiaomi.finddevice\"};"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.bugreport",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.misightservice",
+   "com.miui.securitycore",
+   "com.miui.vsimcore",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 25,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/MIUIContactsTGlobal/MIUIContactsTGlobal.apk.txt",
+   "manifests/product/app/MiBugReportOS3Global/MiBugReportOS3Global.apk.txt",
+   "manifests/product/app/MiLinkOS3GlobalLiteV1/MiLinkOS3GlobalLiteV1.apk.txt",
+   "manifests/product/app/MIUINotificationCenterT/MIUINotificationCenterT.apk.txt",
+   "manifests/product/app/MIUIScreenshot/MIUIScreenshot.apk.txt",
+   "manifests/product/app/MIUISystemUIPlugin/MIUISystemUIPlugin.apk.txt"
+  ],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.android.contacts",
+   "com.miui.notification",
+   "com.miui.screenshot",
+   "miui.systemui.plugin",
+   "com.milink.service",
+   "com.miui.securitycore",
+   "com.android.updater",
+   "com.miui.miwallpaper",
+   "com.xiaomi.mi_connect_service",
+   "com.android.deskclock",
+   "com.miui.notes",
+   "com.miui.screenrecorder"
+  ],
+  "n_perm_users": 21,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/privacy/PrivacyRevocationSettings.java",
+     41,
+     "private static final String[] PACKAGE_ARRAY = {CalendarSyncInfoProvider.AUTHORITY, \"com.xiaomi.calendar\", \"com.miui.videoplayer\", \"com.android.updater"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/keyguard/FeedbackViewUtils$$ExternalSyntheticLambda1.java",
+     55,
+     "Bundle resultFromProvider = ContentProviderUtils.getResultFromProvider(context, Uri.parse(\"content://com.miui.bugreport.CTAProvider\"), \"cta_status\", \""
+    ],
+    [
+     "com/miui/bugreport/logprovider/DumpLogProvider.java",
+     1,
+     "package com.miui.bugreport.logprovider;"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/utils/Utils.java",
+     1924,
+     "intent.setAction(\"com.miui.bugreport.intent.ACTION_DUMP_CACHED_LOG\");"
+    ],
+    [
+     "com/miui/daemon/performance/BugReportReceiver.java",
+     27,
+     "intent2.setPackage(\"com.miui.bugreport\");"
+    ]
+   ],
+   "com.miui.misightservice": [
+    [
+     "com/miui/bugreport/service/DFSMessage.java",
+     1,
+     "package com.miui.bugreport.service;"
+    ],
+    [
+     "d1/a.java",
+     10,
+     "import com.miui.bugreport.service.DFSMessage;"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "com/miui/bugreport/logprovider/DumpLogProvider.java",
+     1,
+     "package com.miui.bugreport.logprovider;"
+    ],
+    [
+     "com/miui/bugreport/logprovider/DumpLogProvider.java",
+     112,
+     "f2707b.putAll(a(getContext(), \"com.miui.bugreport.DEFAULT_LOG_DIR\"));"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.cleaner",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-services"
+  ],
+  "n_code_refs": 9,
+  "manifest_refs": [
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/permissions/privapp-permissions-product.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/cleaner/ICleanerShortcut.java",
+     1,
+     "package com.miui.cleaner;"
+    ],
+    [
+     "com/miui/cleaner/ICleanerShortcut.java",
+     36,
+     "attachInterface(this, \"com.miui.cleaner.ICleanerShortcut\");"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "u5/m.java",
+     65,
+     "androidx.activity.d.u(arrayList2, \"com.xiaomi.pass\", \"com.miui.cleanmaster\", \"com.miui.cleaner\", \"com.xiaomi.mibrain.speech\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/am/SystemPressureController.java",
+     240,
+     "mKillPkgPermList.add(\"com.miui.cleaner\");"
+    ],
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     348,
+     "sSpecialSystemApps.add(\"com.miui.cleaner\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.cloudbackup",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 12,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/etc/permissions/privapp-permissions-product.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1302,
+     "return !Build.IS_INTERNATIONAL_BUILD && applicationInstalled(context, \"com.miui.cloudbackup\");"
+    ],
+    [
+     "com/android/provision/activities/DefaultActivity.java",
+     1339,
+     "State className7 = State.create(\"CloudBackupState\").setPackageName(\"com.miui.cloudbackup\").setClassName(\"com.miui.cloudbackup.ui.ProvisionRestoreActiv"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/AppManageUtils.java",
+     241,
+     "arrayList2.add(\"com.miui.cloudbackup\");"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "o4/a.java",
+     34,
+     "d.u(arrayList, \"com.xiaomi.midrop\", \"com.miui.huanji\", \"com.miui.cloudbackup\", \"com.miui.cloudservice\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     85,
+     "sAllowAutoStartPkgs.add(\"com.miui.cloudbackup\");"
+    ],
+    [
+     "miui/content/pm/ExtraPackageManager.java",
+     31,
+     "public static final String[] MIUI_SYSTEM_APPS = {\"com.android.bips\", \"com.android.fileexplorer\", \"com.android.calendar\", \"com.android.camera\", MiuiCon"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/MiuiRestoreManagerService.java",
+     53,
+     "private static final String PACKAGE_CLOUD_BACKUP = \"com.miui.cloudbackup\";"
+    ],
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     367,
+     "sSilentlyUninstallPackages.add(\"com.miui.cloudbackup\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.cloudservice",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "com.miui.cloudservice",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.android.settings",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 15,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.android.mms",
+   "com.miui.notes",
+   "com.miui.securitycenter",
+   "com.android.providers.contacts",
+   "com.xiaomi.bluetooth",
+   "com.android.settings"
+  ],
+  "n_perm_users": 6,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/CloudBackupConfigHelper.java",
+     16,
+     "private static final String AUTHORITY = \"com.miui.micloud\";"
+    ],
+    [
+     "com/android/provision/CloudBackupConfigHelper.java",
+     29,
+     "Uri uri = Uri.parse(\"content://com.miui.micloud\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/utils/CloudServiceLockScreenManager.java",
+     11,
+     "import com.miui.micloudlockscreen.ILockScreenUpdate;"
+    ],
+    [
+     "com/android/settings/utils/CloudServiceLockScreenManager.java",
+     12,
+     "import com.miui.micloudlockscreen.IRequestSecretPinCallback;"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/securityadd/input/InputProvider.java",
+     166,
+     "if (TextUtils.equals(getCallingPackage(), \"com.miui.micloudsync\") || i.K(str, context, this)) {"
+    ],
+    [
+     "com/miui/securityadd/input/InputProvider.java",
+     178,
+     "if (TextUtils.equals(getCallingPackage(), \"com.miui.micloudsync\") || i.K(str, context, this)) {"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "o4/a.java",
+     36,
+     "arrayList.add(\"com.miui.micloud.sdk\");"
+    ],
+    [
+     "o4/a.java",
+     37,
+     "arrayList.add(\"com.miui.micloudsync\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     146,
+     "sAllowAutoStartPkgs.add(\"com.miui.micloudsync\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.compass",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 11,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml",
+   "tree/mi_ext/system/etc/permissions/signature-permission-miext.xml",
+   "tree/product/etc/device_features/blaze.xml",
+   "tree/product/etc/device_features/flame.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securityadd": [
+    [
+     "com/miui/superpower/AppSelectActivity.java",
+     204,
+     "arrayList2.add(\"com.miui.compass\");"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/AppManageUtils.java",
+     215,
+     "arrayList.add(\"com.miui.compass\");"
+    ],
+    [
+     "com/miui/gamebooster/videobox/settings/VideoBoxAppManageActivity.java",
+     417,
+     "arrayList.add(\"com.miui.compass\");"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "o4/a.java",
+     44,
+     "d.u(arrayList2, \"com.android.email\", \"com.miui.compass\", \"com.miui.calculator\", \"com.miui.weather2\");"
+    ],
+    [
+     "u5/m.java",
+     64,
+     "androidx.activity.d.u(arrayList2, \"com.android.email\", \"com.miui.compass\", \"com.miui.calculator\", \"com.miui.weather2\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     45,
+     "sAutoStartRestrictions.add(\"com.miui.compass\");"
+    ],
+    [
+     "com/android/internal/os/AnrEnhanceImpl.java",
+     50,
+     "private static List<String> WHITE_LIST = new ArrayList(Arrays.asList(\"com.miui.screenrecorder\", \"com.miui.fm\", \"com.xiaomi.vipaccount\", \"com.miui.them"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/wm/PreStartingManager.java",
+     302,
+     "USE_BLACK_COLOR_FIRST_STARTUP.add(\"com.miui.compass\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.daemon",
+  "action": "HOLD",
+  "tier": "T3",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.android.settings",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 11,
+  "manifest_refs": [
+   "manifests/system_ext/app/MiuiDaemon/MiuiDaemon.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/odm/etc/camera/cameraopt.json"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1399,
+     "return applicationInstalled(context, \"com.miui.daemon\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/privacy/PrivacyRevocationSettings.java",
+     41,
+     "private static final String[] PACKAGE_ARRAY = {CalendarSyncInfoProvider.AUTHORITY, \"com.xiaomi.calendar\", \"com.miui.videoplayer\", \"com.android.updater"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/common/utils/C3085a0.java",
+     17,
+     "Object objH = Y7.e.h(Class.forName(\"com.miui.daemon.performance.PerfShielderManager\"), \"getFreeMemory\", null, new Object[0]);"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/ArtMetricsReportImpl.java",
+     14,
+     "import com.miui.daemon.performance.PerfShielderManager;"
+    ],
+    [
+     "android/content/pm/PackageParserImpl.java",
+     44,
+     "sMiuiPersistentEnableList.add(\"com.miui.daemon\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/am/AppProfilerImpl.java",
+     31,
+     "import com.miui.daemon.performance.PerfShielderManager;"
+    ],
+    [
+     "com/android/server/am/MiProcessTracker.java",
+     13,
+     "import com.miui.daemon.performance.PerfShielderManager;"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.extraphoto",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "miui-framework"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/etc/permissions/privapp-permissions-product.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "miui-framework": [
+    [
+     "miui/content/pm/ExtraPackageManager.java",
+     31,
+     "public static final String[] MIUI_SYSTEM_APPS = {\"com.android.bips\", \"com.android.fileexplorer\", \"com.android.calendar\", \"com.android.camera\", MiuiCon"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.fm",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 12,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/permission/PermissionManager.java",
+     282,
+     "arrayList3.add(\"com.miui.fmservice\");"
+    ],
+    [
+     "com/miui/securitycenter/receiver/BootReceiver.java",
+     36,
+     "public static final String[] f26434a = {\"com.miui.player\", \"com.miui.fm\", \"com.android.soundrecorder\", \"com.android.browser\", \"com.miui.voiceassist\", "
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "o4/a.java",
+     46,
+     "d.u(arrayList2, \"com.xiaomi.lens\", \"com.mi.health\", \"com.android.documentsui\", \"com.miui.fm\");"
+    ],
+    [
+     "u5/m.java",
+     67,
+     "androidx.activity.d.u(arrayList2, \"com.miui.miwallpaper\", \"com.miui.fm\", \"com.android.soundrecorder\", \"com.baidu.input_mi\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     53,
+     "sAutoStartRestrictions.add(\"com.miui.fm\");"
+    ],
+    [
+     "com/android/internal/os/AnrEnhanceImpl.java",
+     50,
+     "private static List<String> WHITE_LIST = new ArrayList(Arrays.asList(\"com.miui.screenrecorder\", \"com.miui.fm\", \"com.xiaomi.vipaccount\", \"com.miui.them"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/am/ProcessCleanerBase.java",
+     33,
+     "private static final String RADIO_PROCESS_NAME = \"com.miui.fmservice:remote\";"
+    ],
+    [
+     "com/miui/server/MiuiInitServer.java",
+     405,
+     "packageManager.deletePackage(\"com.miui.fm\", null, 0);"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.fmservice",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.miui.gallery",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 33,
+  "manifest_refs": [
+   "manifests/product/app/MIUIScreenshot/MIUIScreenshot.apk.txt",
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt",
+   "manifests/product/data-app/MIUINotes/MIUINotes.apk.txt",
+   "manifests/product/priv-app/MIUIAod/MIUIAod.apk.txt",
+   "manifests/product/priv-app/MiuiCamera/MiuiCamera.apk.txt",
+   "manifests/system_ext/app/MiuiPrintSpooler/MiuiPrintSpooler.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/odm/etc/camera/cameraopt_reclaim.json",
+   "tree/product/etc/displayconfig/rhythmic_app_category_list_backup.xml",
+   "tree/product/etc/permissions/privapp-permissions-product.xml",
+   "tree/product/etc/precust_theme/theme/.data/meta/theme/6fd57354-7cb2-4e03-8319-d16af4860df9.mrm",
+   "tree/system/system/build.prop"
+  ],
+  "perm_users_kept": [
+   "com.miui.screenshot",
+   "com.android.thememanager",
+   "com.milink.service",
+   "com.miui.securitycore",
+   "com.miui.miwallpaper",
+   "com.miui.notes",
+   "com.mi.android.globallauncher",
+   "com.android.camera",
+   "com.miui.home",
+   "com.android.settings"
+  ],
+  "n_perm_users": 10,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "miuix/android/content/SystemIntent.java",
+     26,
+     "public static final String ACTION_SAVE_TO_CLOUD_GALLERY = \"com.miui.gallery.SAVE_TO_CLOUD\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     207,
+     "hashSet.add(\"com.miui.gallery\");"
+    ],
+    [
+     "com/android/settings/ChooseGalleryLockPattern.java",
+     18,
+     "if (\"com.miui.gallery\".equals(callingPackage) || \"com.android.settings\".equals(callingPackage)) {"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/wm/shell/common/transition/DefaultTransitionImpl.java",
+     194,
+     "arrayList3.add(\"com.miui.gallery/.activity.ExternalPhotoPageActivity\");"
+    ],
+    [
+     "com/miui/systemui/statusbar/shade/domain/interactor/ShadeStatusBarTokenInteractor.java",
+     30,
+     "public static final Set ACTIVITY_TRANS_WHITE_LIST = ArraysKt.toSet(new String[]{\"com.miui.gallery.activity.InternalPhotoPageActivity\", \"com.miui.galle"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/event/NativeExceptionEventHandler.java",
+     89,
+     "add(\"com.miui.gallery\");"
+    ],
+    [
+     "com/miui/daemon/mqsas/event/OOMEventManager.java",
+     41,
+     "public static String[] SUPPORTED_SYSTEM_PROCCESS = {\"com.android.systemui\", \"system_server\", \"com.android.settings\", \"com.miui.daemon\", \"com.cdgdemo.o"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/schedassi/SchedAssi.java",
+     78,
+     "if (packageNameByUid.equals(\"com.miui.gallery\")) {"
+    ],
+    [
+     "com/miui/powerkeeper/statemachine/DisplayFrameSetting.java",
+     504,
+     "this.GALLERY_PKG = \"com.miui.gallery\";"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.global.packageinstaller",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "miui-services"
+  ],
+  "n_code_refs": 9,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.miui.securitycenter"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/StatusBarControllerService.java",
+     41,
+     "private static final String[] googleRelatedPage = {\"com.google.android\", \"com.android.vending\", \"com.android.managedprovisioning\", \"com.android.themem"
+    ],
+    [
+     "com/android/provision/StatusBarControllerService.java",
+     42,
+     "private static final String[] restoreServiceProtectPackages = {\"com.google.android\", \"com.android.vending\", \"com.android.managedprovisioning\", \"com.an"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/miui/common/utils/ActivityUtils.java",
+     15,
+     "public static final String PKG_GLOBAL_PACKAGEINSTALLER = \"com.miui.global.packageinstaller\";"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/antivirus/activity/SettingsActivity.java",
+     684,
+     "if (!p122j1.r.b(this.f15916c, Build.IS_INTERNATIONAL_BUILD ? \"com.miui.global.packageinstaller\" : \"com.miui.packageinstaller\")) {"
+    ],
+    [
+     "com/miui/permcenter/install/PackageVerificationReceiver.java",
+     47,
+     "Intent intent = new Intent(\"com.miui.global.packageinstaller.action.verifypackage\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     371,
+     "sSilentlyUninstallPackages.add(\"com.miui.global.packageinstaller\");"
+    ],
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     797,
+     "Intent intent = new Intent(\"com.miui.global.packageinstaller.action.verifypackage\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.guardprovider",
+  "action": "HOLD",
+  "tier": "T3",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.miui.vsimcore",
+   "com.qualcomm.location",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 55,
+  "manifest_refs": [
+   "manifests/mi_ext/product/app/GoogleOne_arm64/GoogleOne_arm64.apk.txt",
+   "manifests/mi_ext/product/priv-app/Messages_arm64_hdpi/Messages_arm64_hdpi.apk.txt",
+   "manifests/mi_ext/product/priv-app/PrivateComputeServices_arm64/PrivateComputeServices_arm64.apk.txt",
+   "manifests/product/app/LatinImeGoogle/LatinImeGoogle.apk.txt",
+   "manifests/product/app/MIUIGuardProviderGlobal/MIUIGuardProviderGlobal.apk.txt",
+   "manifests/product/app/MIUISystemUIPlugin/MIUISystemUIPlugin.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/product/etc/build.prop",
+   "tree/product/etc/build_flags.json",
+   "tree/product/etc/device_features/blaze.xml",
+   "tree/product/etc/device_features/flame.xml",
+   "tree/product/etc/selinux/product_sepolicy.cil"
+  ],
+  "perm_users_kept": [
+   "com.miui.securitycenter"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "androidx/appcompat/app/AppCompatDelegateImpl.java",
+     1544,
+     "view.setBackgroundColor((ViewCompat.getWindowSystemUiVisibility(view) & 8192) != 0 ? ContextCompat.getColor(this.mContext, androidx.appcompat.R.color."
+    ],
+    [
+     "androidx/appcompat/app/AppCompatDelegateImpl.java",
+     1544,
+     "view.setBackgroundColor((ViewCompat.getWindowSystemUiVisibility(view) & 8192) != 0 ? ContextCompat.getColor(this.mContext, androidx.appcompat.R.color."
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "androidx/appcompat/R$color.java",
+     5,
+     "public static final int abc_decor_view_status_guard = 2131099653;"
+    ],
+    [
+     "androidx/appcompat/R$color.java",
+     6,
+     "public static final int abc_decor_view_status_guard_light = 2131099654;"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "androidx/appcompat/R$color.java",
+     5,
+     "public static final int abc_decor_view_status_guard = 2131099667;"
+    ],
+    [
+     "androidx/appcompat/R$color.java",
+     6,
+     "public static final int abc_decor_view_status_guard_light = 2131099668;"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "androidx/appcompat/app/AppCompatDelegateImpl.java",
+     301,
+     "view5.setBackgroundColor((view5.getWindowSystemUiVisibility() & 8192) != 0 ? appCompatDelegateImpl.mContext.getColor(com.android.systemui.R.color.abc_"
+    ],
+    [
+     "androidx/appcompat/app/AppCompatDelegateImpl.java",
+     301,
+     "view5.setBackgroundColor((view5.getWindowSystemUiVisibility() & 8192) != 0 ? appCompatDelegateImpl.mContext.getColor(com.android.systemui.R.color.abc_"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/MQSService.java",
+     75,
+     "import com.miui.daemon.mqsas.surfaceflinger.Msguard;"
+    ],
+    [
+     "com/miui/daemon/mqsas/MQSService.java",
+     152,
+     "public Msguard mMsguard;"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.mediaeditor",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 4,
+  "manifest_refs": [
+   "manifests/product/app/MIUIScreenshot/MIUIScreenshot.apk.txt",
+   "manifests/product/priv-app/MiuiCamera/MiuiCamera.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/removable_apk_info.xml",
+   "tree/product/etc/displayconfig/rhythmic_app_category_list_backup.xml",
+   "tree/product/pangu/system/etc/permissions/signature-permission-pangu.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycore": [
+    [
+     "u5/m.java",
+     69,
+     "androidx.activity.d.u(arrayList2, \"com.android.deskclock\", \"com.android.providers.downloads.ui\", \"com.miui.mediaeditor\", \"com.miui.themestore\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "com/android/internal/os/AnrEnhanceImpl.java",
+     50,
+     "private static List<String> WHITE_LIST = new ArrayList(Arrays.asList(\"com.miui.screenrecorder\", \"com.miui.fm\", \"com.xiaomi.vipaccount\", \"com.miui.them"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/miui/server/greeze/power/CloudDataUpdate.java",
+     31,
+     "private String mLaunchRestrict = \"enable_24_allowlist_com.miui.voicetrigger_com.miui.voiceassist_com.android.providers.contacts_com.xiaomi.macro_com.m"
+    ],
+    [
+     "com/miui/server/greeze/power/ListAppsManager.java",
+     24,
+     "public static List<String> SLEEP_MODE_LIST = new ArrayList(Arrays.asList(\"com.android.thememanager\", \"com.miui.miservice\", \"com.miui.newhome\", \"com.mi"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.mediaviewer",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 10,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/product/etc/displayconfig/rhythmic_app_category_list_backup.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/gamebooster/videobox/settings/VideoBoxAppManageActivity.java",
+     477,
+     "if (!listL1.contains(str2) && !TextUtils.equals(str2, \"com.miui.mediaviewer\")) {"
+    ],
+    [
+     "com/miui/gamebooster/videobox/settings/VideoBoxAppManageActivity.java",
+     571,
+     "if ((listL1.contains(str) && !p226r1.c.f56281j.contains(str) && !r1(str)) || str.equals(\"com.miui.mediaviewer\")) {"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/media/VideoBoxVppStubImpl.java",
+     21,
+     "private static List<String> mVideoPkg = new ArrayList(Arrays.asList(SecurityManager.SKIP_INTERCEPT_PACKAGE, \"com.miui.video\", \"com.qiyi.video\", \"tv.pp"
+    ],
+    [
+     "android/sizecompat/MiuiAppSizeCompatModeImpl.java",
+     91,
+     "MIUI_NEED_ACCSENSOR.add(\"com.miui.mediaviewer\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/audio/AudioServiceStubImpl.java",
+     345,
+     "private static final List<String> PACKAGE_LIST_FOR_AON = new ArrayList(Arrays.asList(\"com.miui.video\", \"com.miui.mediaviewer\", \"com.miui.videoplayer\","
+    ],
+    [
+     "com/android/server/wm/ActivityStarterImpl.java",
+     130,
+     "private static final Set<String> SECONDARY_DISPLAY_WHITE_PACKAGE = new HashSet(Arrays.asList(AccessController.PACKAGE_CAMERA, AccessController.PACKAGE"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.micloudsync",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "com.miui.cloudservice",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 29,
+  "manifest_refs": [
+   "manifests/system_ext/priv-app/RtMiCloudSDK/RtMiCloudSDK.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "com/android/settings/cloud/util/Client.java",
+     284,
+     "return (context.getPackageManager().getPackageInfo(\"com.miui.cloudservice\", 0).applicationInfo.flags & 1) != 0;"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1306,
+     "return applicationInstalled(context, \"com.miui.cloudservice\");"
+    ],
+    [
+     "com/android/provision/activities/DefaultActivity.java",
+     1335,
+     "State className4 = State.create(\"ActivateDeviceState\").setPackageName(\"com.miui.cloudservice\").setClassName(\"com.miui.cloudservice.ui.ActivateDeviceAc"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/activityembedding/ActivityEmbeddingRulesController.java",
+     99,
+     "addActivityFilter(hashSet, new Intent(\"com.miui.cloudservice.settings_search_proxy\"));"
+    ],
+    [
+     "com/android/settings/backup/PrivacySettings.java",
+     131,
+     "intent.setClassName(Constants.CLOUDSERVICE_PACKAGE_NAME, \"com.miui.cloudservice.ui.MiCloudMainActivity\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/settingslib/wifi/WifiPasspointProvision.java",
+     4,
+     "import com.miui.cloudservice.IPasspointKeyInterface;"
+    ],
+    [
+     "com/android/settingslib/wifi/WifiTracker.java",
+     38,
+     "import com.miui.cloudservice.IPasspointKeyInterface;"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "miui/provider/MiCloudSmsCmd.java",
+     197,
+     "intent.setPackage(\"com.miui.cloudservice\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.misightservice",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.miui.securitycore",
+   "miui-framework"
+  ],
+  "n_code_refs": 2,
+  "manifest_refs": [
+   "manifests/system_ext/app/MiSightService/MiSightService.apk.txt"
+  ],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.android.mms"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.miui.securitycore": [
+    [
+     "u5/m.java",
+     60,
+     "androidx.activity.d.u(arrayList, \"com.mi.global.bbs\", \"com.mi.global.pocobbs\", \"com.miui.misightservice\", \"com.xiaomi.kidspace\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     185,
+     "sAllowAutoStartPkgs.add(\"com.miui.misightservice\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.msa.global",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.securitycenter",
+   "miui-services"
+  ],
+  "n_code_refs": 9,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/MiuiMmsGlobal/MiuiMmsGlobal.apk.txt",
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt",
+   "manifests/product/priv-app/MiLauncherGlobal/MiLauncherGlobal.apk.txt",
+   "manifests/product/priv-app/MiuiHome/MiuiHome.apk.txt",
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.android.mms",
+   "com.android.thememanager",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.miui.home"
+  ],
+  "n_perm_users": 5,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/privacy/PrivacyRevocationSettings.java",
+     41,
+     "private static final String[] PACKAGE_ARRAY = {CalendarSyncInfoProvider.AUTHORITY, \"com.xiaomi.calendar\", \"com.miui.videoplayer\", \"com.android.updater"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/systemui/statusbar/notification/collection/coordinator/MiuiNotifCoordinator.java",
+     945,
+     "notificationStatImpl.sendBlockNotificationEvent(stringExtra, (\"com.miui.systemAdSolution\".equals(stringExtra) || \"com.miui.msa.global\".equals(stringEx"
+    ],
+    [
+     "com/android/systemui/statusbar/notification/collection/coordinator/MiuiNotifCoordinator.java",
+     1254,
+     "notificationStatImpl.sendBlockNotificationEvent(stringExtra, (\"com.miui.systemAdSolution\".equals(stringExtra) || \"com.miui.msa.global\".equals(stringEx"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/msa/util/MsaUtils.java",
+     8,
+     "private static final String MSA_GLOBAL_PACKAGE_NAME = \"com.miui.msa.global\";"
+    ],
+    [
+     "com/miui/msa/util/MsaUtils.java",
+     15,
+     "return (isInternationalBuild() && isPackageInstalled(context, \"com.miui.msa.global\")) ? \"com.miui.msa.global\" : \"com.miui.systemAdSolution\";"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/miui/server/SplashScreenServiceDelegate.java",
+     46,
+     "public static final String SPLASHSCREEN_GLOBAL_PACKAGE = \"com.miui.msa.global\";"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.notification",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 14,
+  "manifest_refs": [
+   "manifests/product/app/MIUINotificationCenterT/MIUINotificationCenterT.apk.txt",
+   "manifests/system_ext/priv-app/MiuiSystemUI/MiuiSystemUI.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.settings"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/MiuiStatusBarSettings.java",
+     378,
+     "startFragment(this, \"com.miui.notification.management.fragment.FoldSettingsFragment\", 0, null);"
+    ],
+    [
+     "com/android/settings/NotificationControlCenterSettings.java",
+     58,
+     "boolean zIsAppEnable = isAppEnable(\"com.miui.notification\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/systemui/shade/NotificationPanelStartable.java",
+     59,
+     "intent.setComponent(new ComponentName(\"com.miui.notification\", \"miui.notification.management.activity.settings.FoldSettingActivity\"));"
+    ],
+    [
+     "com/android/systemui/shade/NotificationPanelStartable.java",
+     90,
+     "intent.setComponent(new ComponentName(\"com.miui.notification\", \"miui.notification.management.activity.settings.FoldSettingActivity\"));"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/event/NativeExceptionEventHandler.java",
+     85,
+     "add(\"com.miui.notification\");"
+    ],
+    [
+     "com/miui/daemon/mqsas/event/OOMEventManager.java",
+     41,
+     "public static String[] SUPPORTED_SYSTEM_PROCCESS = {\"com.android.systemui\", \"system_server\", \"com.android.settings\", \"com.miui.daemon\", \"com.cdgdemo.o"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     91,
+     "sAllowAutoStartPkgs.add(\"com.miui.notification\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/am/ActivityManagerServiceImpl.java",
+     145,
+     "private static final String MIUI_NOTIFICATION = \"com.miui.notification\";"
+    ],
+    [
+     "com/android/server/am/PendingIntentRecordImpl.java",
+     43,
+     "private List<String> mSystemUIApp = new ArrayList(Arrays.asList(\"com.android.systemui\", \"com.miui.notification\"));"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.phrase",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 13,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/inputmethod/InputMethodFunctionSelectUtils.java",
+     284,
+     "ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(\"com.miui.phrase\", 128);"
+    ],
+    [
+     "miui/cloud/sync/providers/PhraseSyncInfoProvider.java",
+     9,
+     "public static final String AUTHORITY = \"miui.phrase\";"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/common/utils/t0.java",
+     42,
+     "private static final String[] f18775f = {\"com.miui.notes\", \"com.xiaomi.aiasst.service\", \"com.miui.handwriting\", \"com.xiaomi.aiasst.vision\", \"com.miui."
+    ],
+    [
+     "miui/cloud/sync/providers/PhraseSyncInfoProvider.java",
+     9,
+     "public static final String AUTHORITY = \"miui.phrase\";"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     145,
+     "sAllowAutoStartPkgs.add(\"com.miui.phrase\");"
+    ],
+    [
+     "android/inputmethodservice/InputMethodServiceInjector.java",
+     109,
+     "return context.createPackageContext(\"com.miui.phrase\", 0);"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/miui/server/greeze/power/ListAppsManager.java",
+     23,
+     "public static List<String> mDataWhiteList = new ArrayList(Arrays.asList(\"com.xiaomi.mibrain.speech\", \"com.miui.voiceassist\", \"com.miui.voicetrigger\", "
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.player",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 27,
+  "manifest_refs": [
+   "manifests/product/data-app/MIUIDeskClockGlobal/MIUIDeskClockGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/permissions/privapp-permissions-product.xml",
+   "tree/system_ext/etc/framepredict_config.xml",
+   "tree/system_ext/etc/framepredict_dynconfig.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml",
+   "tree/system_ext/etc/forcedarkconfig/ForceDarkAppSettings.json"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/miui/maml/elements/MusicControlScreenElement.java",
+     32,
+     "private static final String MIUI_PLAYER_PACKAGE_NAME = \"com.miui.player\";"
+    ],
+    [
+     "com/miui/maml/elements/MusicControlScreenElement.java",
+     364,
+     "this.mMiuiMusicContext = getContext().mContext.createPackageContext(\"com.miui.player\", 2);"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/miui/maml/elements/MusicControlScreenElement.java",
+     37,
+     "private static final String MIUI_PLAYER_PACKAGE_NAME = \"com.miui.player\";"
+    ],
+    [
+     "com/miui/maml/elements/MusicControlScreenElement.java",
+     538,
+     "intent = new Intent(\"com.miui.player.musicservicecommand.togglepause\");"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "miui/util/PlayerActions.java",
+     5,
+     "public static final String BROADCAST_PREFIX = \"com.miui.player\";"
+    ],
+    [
+     "miui/util/PlayerActions.java",
+     11,
+     "public static final String ACTION_MUSIC_NOWPLAYING_PLAYLIST = \"com.miui.player.NOWPLAYING_PLAYLIST\";"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/miui/superpower/AppSelectActivity.java",
+     215,
+     "arrayList2.add(\"com.miui.player\");"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/maml/elements/MusicControlScreenElement.java",
+     33,
+     "private static final String MIUI_PLAYER_PACKAGE_NAME = \"com.miui.player\";"
+    ],
+    [
+     "com/miui/maml/elements/MusicControlScreenElement.java",
+     521,
+     "intent = new Intent(\"com.miui.player.musicservicecommand.togglepause\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.qr",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.miui.daemon",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.qualcomm.location",
+   "miui-services"
+  ],
+  "n_code_refs": 13,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "com/xiaomi/onetrack/util/w.java",
+     31,
+     "c.add(\"com.miui.qr\");"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/fragment/StartupFragment.java",
+     74,
+     "private static final String QR_APPLICATION_ACTION = \"com.miui.qr.QR_LAUNCHE_ACTION\";"
+    ],
+    [
+     "com/android/provision/fragment/StartupFragment.java",
+     75,
+     "private static final String QR_APPLICATION_ID = \"com.miui.qr\";"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/ot/pubsub/util/q.java",
+     30,
+     "c.add(\"com.miui.qr\");"
+    ],
+    [
+     "com/xiaomi/onetrack/util/v.java",
+     30,
+     "c.add(\"com.miui.qr\");"
+    ]
+   ],
+   "com.miui.misightservice": [
+    [
+     "com/ot/pubsub/util/p.java",
+     36,
+     "f4261c.add(\"com.miui.qr\");"
+    ],
+    [
+     "com/xiaomi/onetrack/util/v.java",
+     36,
+     "f5347c.add(\"com.miui.qr\");"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/ot/pubsub/util/p.java",
+     29,
+     "f1028a.add(\"com.miui.qr\");"
+    ],
+    [
+     "com/xiaomi/onetrack/util/u.java",
+     35,
+     "f1968c.add(\"com.miui.qr\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.thirdappassistant",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.daemon",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 14,
+  "manifest_refs": [
+   "manifests/system_ext/app/MiuiDaemon/MiuiDaemon.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/system_ext/etc/default-permissions/default-permissions-miui-common.xml",
+   "tree/system_ext/etc/permissions/package-shareduid-allowlist-miui-system-ext.xml"
+  ],
+  "perm_users_kept": [
+   "com.miui.daemon"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/event/MQSEventManager.java",
+     49,
+     "import com.miui.thirdappassistant.AnrExceptionBean;"
+    ],
+    [
+     "com/miui/daemon/mqsas/event/MQSEventManager.java",
+     50,
+     "import com.miui.thirdappassistant.JavaExceptionBean;"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/AppManageUtils.java",
+     848,
+     "return q0.a(context, \"com.miui.thirdappassistant\");"
+    ],
+    [
+     "com/miui/appmanager/fragment/AMSettingsFragment.java",
+     225,
+     "Intent intent = new Intent(\"com.miui.thirdappassistant.action.EXCEPTION_RESULT\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     184,
+     "sAllowAutoStartPkgs.add(\"com.miui.thirdappassistant\");"
+    ],
+    [
+     "com/android/internal/os/ZygoteConfigImpl.java",
+     67,
+     "private static final String PKN_THIRDAPP = \"com.miui.thirdappassistant\";"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/SmartAppAssistantManagerService.java",
+     21,
+     "private static final String TAA_PACKAGE_NAME = \"com.miui.thirdappassistant\";"
+    ],
+    [
+     "com/android/server/SmartAppAssistantManagerService.java",
+     22,
+     "private static final String TAA_SERVICE_NAME = \"com.miui.thirdappassistant.persistent.SystemExceptionService\";"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.weather2",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 31,
+  "manifest_refs": [
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt",
+   "manifests/product/data-app/MIUIDeskClockGlobal/MIUIDeskClockGlobal.apk.txt",
+   "manifests/product/priv-app/GmsCore/GmsCore.apk.txt",
+   "manifests/product/priv-app/MiLauncherGlobal/MiLauncherGlobal.apk.txt",
+   "manifests/product/priv-app/MIUIAod/MIUIAod.apk.txt",
+   "manifests/product/priv-app/MiuiHome/MiuiHome.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/removable_apk_info.xml",
+   "tree/product/etc/device_features/blaze.xml",
+   "tree/product/etc/device_features/flame.xml",
+   "tree/product/pangu/system/etc/ota_skip_apps",
+   "tree/product/usr/srec/en-US/prons_exception_dictionary_file.txt",
+   "tree/system_ext/etc/framepredict_config.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.thememanager",
+   "com.android.deskclock",
+   "com.miui.aod",
+   "com.mi.android.globallauncher",
+   "com.miui.home",
+   "com.android.systemui",
+   "com.android.settings"
+  ],
+  "n_perm_users": 7,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "androidx/core/text/util/LocalePreferences.java",
+     81,
+     "String identifier = ((UnlocalizedNumberFormatter) ((UnlocalizedNumberFormatter) NumberFormatter.with().usage(\"weather\")).unit(MeasureUnit.CELSIUS)).lo"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "androidx/core/text/util/LocalePreferences.java",
+     27,
+     "String identifier = ((UnlocalizedNumberFormatter) ((UnlocalizedNumberFormatter) NumberFormatter.with().usage(\"weather\")).unit(MeasureUnit.CELSIUS)).lo"
+    ],
+    [
+     "androidx/core/util/PatternsCompat.java",
+     24,
+     "Pattern patternCompile3 = Pattern.compile(\"(?:(?:(?:[a-zA-Z0-9[ -\\ud7ff豈-﷏ﷰ-\\uffef𐀀-\\u1fffd𠀀-\\u2fffd𰀀-\\u3fffd\\u40000-\\u4fffd\\u50000-\\u5fffd\\u60000-\\u6"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/keyguard/ClockEventController.java",
+     124,
+     "public WeatherData weatherData;"
+    ],
+    [
+     "com/android/keyguard/ClockEventController.java",
+     784,
+     "public final void onWeatherDataChanged(WeatherData weatherData) {"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "miui/keyguard/clock/MiuiDualClock.java",
+     35,
+     "private static final String WEATHER_URI = \"content://weather/realtimeLocalWeatherData/4/1\";"
+    ],
+    [
+     "miui/provider/Weather.java",
+     7,
+     "public static final String AQIAUTHROITY = \"weatherinfo\";"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "androidx/core/text/util/LocalePreferences.java",
+     93,
+     "String identifier = ((UnlocalizedNumberFormatter) ((UnlocalizedNumberFormatter) NumberFormatter.with().usage(\"weather\")).unit(MeasureUnit.CELSIUS)).lo"
+    ],
+    [
+     "androidx/core/util/PatternsCompat.java",
+     20,
+     "static final String IANA_TOP_LEVEL_DOMAINS = \"(?:(?:aaa|aarp|abb|abbott|abbvie|abc|able|abogado|abudhabi|academy|accenture|accountant|accountants|aco|"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miui.yellowpage",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.settings",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 25,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/InCallUI/InCallUI.apk.txt",
+   "manifests/mi_ext/product/priv-app/MIUIContactsTGlobal/MIUIContactsTGlobal.apk.txt",
+   "manifests/mi_ext/product/priv-app/MiuiMmsGlobal/MiuiMmsGlobal.apk.txt",
+   "manifests/product/priv-app/MiLauncherGlobal/MiLauncherGlobal.apk.txt",
+   "manifests/product/priv-app/MiuiHome/MiuiHome.apk.txt",
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/mi_ext/product/etc/permissions/privapp-permissions-miext.xml",
+   "tree/product/etc/device_features/blaze.xml",
+   "tree/product/etc/device_features/flame.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.incallui",
+   "com.android.contacts",
+   "com.android.mms",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.miui.home",
+   "com.android.providers.contacts",
+   "com.android.server.telecom",
+   "com.android.providers.telephony"
+  ],
+  "n_perm_users": 9,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "miuix/android/content/MiuiIntent.java",
+     95,
+     "public static final String ACTION_REMIND_USER_SUSPECT_NUMBER = \"com.miui.yellowpage.intent.action.REMIND_USER_SUSPECT_NUMBER\";"
+    ],
+    [
+     "miuix/android/content/MiuiIntent.java",
+     124,
+     "public static final String ACTION_VIEW_YELLOWPAGE = \"com.miui.yellowpage.action.VIEW\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/eldercare/ElderCareBlockCallController.java",
+     82,
+     "Intent intent = new Intent(\"com.miui.yellowpage.intent.action.USER_NOTICE\");"
+    ],
+    [
+     "com/android/settings/eldercare/ElderCareBlockCallController.java",
+     97,
+     "intent.setComponent(new ComponentName(\"com.miui.yellowpage\", \"com.miui.yellowpage.activity.SettingActivity\"));"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/internal/yellowpage/ImageLoader.java",
+     34,
+     "import miui.yellowpage.Log;"
+    ],
+    [
+     "com/miui/internal/yellowpage/ImageLoader.java",
+     35,
+     "import miui.yellowpage.YellowPageContract;"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "miuix/android/content/MiuiIntent.java",
+     94,
+     "public static final String ACTION_REMIND_USER_SUSPECT_NUMBER = \"com.miui.yellowpage.intent.action.REMIND_USER_SUSPECT_NUMBER\";"
+    ],
+    [
+     "miuix/android/content/MiuiIntent.java",
+     123,
+     "public static final String ACTION_VIEW_YELLOWPAGE = \"com.miui.yellowpage.action.VIEW\";"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/antispam/policy/MmsPolicy.java",
+     7,
+     "import miui.yellowpage.YellowPagePhone;"
+    ],
+    [
+     "com/miui/antispam/policy/MmsPolicy.java",
+     8,
+     "import miui.yellowpage.YellowPageUtils;"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.miuix.editor",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "miui-framework"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "miui-framework": [
+    [
+     "com/android/internal/policy/DecorViewStubImpl.java",
+     86,
+     "Context contextCreatePackageContext = view.getContext().createPackageContext(\"com.miuix.editor\", 3);"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.qualcomm.qti.qms.service.connectionsecurity",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [
+   "manifests/vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/vendor/etc/selinux/vendor_seapp_contexts"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.silead.factorytest",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.xiaomi.account",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.android.settings",
+   "com.miui.daemon",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.miui.vsimcore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 28,
+  "manifest_refs": [
+   "manifests/product/app/MiBugReportOS3Global/MiBugReportOS3Global.apk.txt",
+   "manifests/product/app/MiLinkOS3GlobalLiteV1/MiLinkOS3GlobalLiteV1.apk.txt",
+   "manifests/product/data-app/MIUINotes/MIUINotes.apk.txt",
+   "manifests/product/priv-app/MISettings/MISettings.apk.txt",
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt",
+   "manifests/system_ext/app/BluetoothExtension/BluetoothExtension.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.settings"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/activities/DefaultActivity.java",
+     147,
+     "Intent intent = new Intent(\"com.xiaomi.account.action.XIAOMI_ACCOUNT_WELCOME\");"
+    ],
+    [
+     "com/android/provision/activities/DefaultActivity.java",
+     148,
+     "intent.setPackage(\"com.xiaomi.account\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     221,
+     "hashSet.add(\"com.xiaomi.account\");"
+    ],
+    [
+     "com/android/settings/MiuiMasterClear.java",
+     80,
+     "import com.xiaomi.accountsdk.account.IFindDeviceRemoveAccountService;"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/event/OOMEventManager.java",
+     41,
+     "public static String[] SUPPORTED_SYSTEM_PROCCESS = {\"com.android.systemui\", \"system_server\", \"com.android.settings\", \"com.miui.daemon\", \"com.cdgdemo.o"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/google/android/gms/measurement/internal/zzai.java",
+     16,
+     "import com.xiaomi.accountsdk.service.DeviceInfoResult;"
+    ],
+    [
+     "com/google/android/gms/measurement/internal/zzkk.java",
+     10,
+     "import com.xiaomi.accountsdk.service.DeviceInfoResult;"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/applicationlock/ConfirmAccessControl.java",
+     1135,
+     "if (!p200p1.h.d(this.f16748t, \"com.xiaomi.account\")) {"
+    ],
+    [
+     "com/miui/applicationlock/ConfirmAccessControl.java",
+     1136,
+     "p200p1.h.O0(this.f16748t, \"com.xiaomi.account\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.aicr",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 14,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/MiuiMmsGlobal/MiuiMmsGlobal.apk.txt",
+   "manifests/product/app/MIUINotificationCenterT/MIUINotificationCenterT.apk.txt",
+   "manifests/product/app/MIUIScreenshot/MIUIScreenshot.apk.txt",
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt",
+   "manifests/product/data-app/MIUINotes/MIUINotes.apk.txt",
+   "manifests/product/priv-app/MIUIAod/MIUIAod.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/product/etc/permissions/privapp-permissions-product.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.mms",
+   "com.miui.notification",
+   "com.milink.service",
+   "com.miui.notes",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.miui.home",
+   "com.android.phone",
+   "com.miui.rom",
+   "com.xiaomi.hypercomm",
+   "com.android.settings"
+  ],
+  "n_perm_users": 11,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/display/provider/DisplayAiActionProvider.java",
+     61,
+     "return \"com.xiaomi.aicr\".equals((packagesForUid == null || packagesForUid.length <= 0) ? null : packagesForUid[0]) && context.checkCallingPermission(\""
+    ],
+    [
+     "com/android/settings/hyperosai/AiDataQueryTask.java",
+     31,
+     "public final Uri AICR_PROVIDER_URI = Uri.parse(\"content://com.xiaomi.aicr.provider.OpenCapabilityProvider\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/systemui/AiActionsProvider.java",
+     41,
+     "if (context == null || callingUid == 0 || callingUid != MiuiBaseNotifUtil.getPackageUid(context, \"com.xiaomi.aicr\")) {"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "p309x6/r.java",
+     212,
+     "Uri uri = Uri.parse(\"content://com.xiaomi.aicr.provider.OpenCapabilityProvider\");"
+    ],
+    [
+     "p309x6/r.java",
+     361,
+     "Uri uri = Uri.parse(\"content://com.xiaomi.aicr.provider.OpenCapabilityProvider\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     188,
+     "sAllowAutoStartPkgs.add(\"com.xiaomi.aicr\");"
+    ],
+    [
+     "android/userperception/AICRCapabilityAccess.java",
+     54,
+     "public static final Uri uri = Uri.parse(\"content://com.xiaomi.aicr.provider.OpenCapabilityProvider\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/MiuiBatteryIntelligence.java",
+     466,
+     "public static final Uri uri = Uri.parse(\"content://com.xiaomi.aicr.provider.OpenCapabilityProvider\");"
+    ],
+    [
+     "com/android/server/input/shoulderkey/ShoulderKeyManagerService.java",
+     566,
+     "this.mInjcetEeventPackages.add(\"com.xiaomi.aicr\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.aiservice",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 5,
+  "manifest_refs": [
+   "manifests/product/app/MIUIScreenshot/MIUIScreenshot.apk.txt",
+   "manifests/product/priv-app/MIUIAod/MIUIAod.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/system_ext/etc/permissions/platform-miui.xml"
+  ],
+  "perm_users_kept": [
+   "com.miui.screenshot",
+   "com.miui.aod"
+  ],
+  "n_perm_users": 2,
+  "samples": {
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     192,
+     "sAllowAutoStartPkgs.add(\"com.xiaomi.aiservice\");"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/miui/server/greeze/AurogonImmobulusMode.java",
+     162,
+     "private List<String> mLocalAllowList = new ArrayList(Arrays.asList(\"android.uid.shared\", SplashScreenServiceDelegate.SPLASHSCREEN_PACKAGE, \"com.androi"
+    ],
+    [
+     "com/miui/server/greeze/power/CloudDataUpdate.java",
+     18,
+     "public static String mCloudWhiteList = \"com.mi.health;com.miui.systemAdSolution;com.github.uiautomator.test;com.github.uiautomator;com.xiaomi.xaee;com"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.calendar",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework"
+  ],
+  "n_code_refs": 20,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/MiuiMmsGlobal/MiuiMmsGlobal.apk.txt",
+   "manifests/product/app/WallpaperOS3/WallpaperOS3.apk.txt",
+   "manifests/product/priv-app/MiLauncherGlobal/MiLauncherGlobal.apk.txt",
+   "manifests/product/priv-app/MiuiHome/MiuiHome.apk.txt",
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt",
+   "manifests/system/system/priv-app/CalendarProvider/CalendarProvider.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml"
+  ],
+  "perm_users_kept": [
+   "com.miui.miwallpaper",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.miui.home",
+   "com.android.systemui",
+   "com.android.settings"
+  ],
+  "n_perm_users": 6,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/utils/CalendarAutoSwitchManager.java",
+     17,
+     "private static final String MIUI_PACKAGE_CALENDAR = \"com.xiaomi.calendar\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/notification/ChannelNotificationSettings.java",
+     85,
+     "if (!TextUtils.equals(CalendarSyncInfoProvider.AUTHORITY, str) && !TextUtils.equals(\"com.xiaomi.calendar\", str)) {"
+    ],
+    [
+     "com/android/settings/notification/ChannelNotificationSettings.java",
+     244,
+     "return (TextUtils.equals(str, Telephony.Sms.getDefaultSmsPackage(context)) || TextUtils.equals(CalendarSyncInfoProvider.AUTHORITY, str) || TextUtils.e"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/miui/keyguard/biometrics/fod/item/AddEventItem.java",
+     26,
+     "String str = \"com.xiaomi.calendar\";"
+    ],
+    [
+     "com/miui/keyguard/biometrics/fod/item/AddEventItem.java",
+     28,
+     "context.getPackageManager().getPackageInfo(\"com.xiaomi.calendar\", 0);"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "miui/provider/ExtraCalendarContracts.java",
+     20,
+     "private static final String AUTHORITY = \"com.miui.calendar\";"
+    ],
+    [
+     "miui/provider/ExtraCalendarContracts.java",
+     35,
+     "Uri uri = Uri.parse(\"content://com.miui.calendar\");"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/miui/superpower/SuperPowerConst.java",
+     24,
+     "hashSet.add(\"com.xiaomi.calendar\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.cameramind",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.cameramind",
+  "code_ref_labels": [
+   "com.miui.daemon"
+  ],
+  "n_code_refs": 2,
+  "manifest_refs": [
+   "manifests/system_ext/app/CameraMind/CameraMind.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/system_ext/etc/selinux/system_ext_seapp_contexts"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/event/MQSEventManager.java",
+     480,
+     "Utils.queryAppLogFileDescriptors(this.mContext, \"com.xiaomi.cameramind\");"
+    ],
+    [
+     "com/miui/daemon/mqsas/event/MQSEventManager.java",
+     544,
+     "Utils.queryAppLogFileDescriptors(this.mContext, \"com.xiaomi.cameramind\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.continuity.sdkapp",
+  "action": "REMOVE",
+  "tier": "T1",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.xiaomi.discover",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.android.settings",
+   "com.miui.securityadd",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 13,
+  "manifest_refs": [
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/fragment/OtherSettingsFragment.java",
+     114,
+     "private static final String SETTINGS_MARKET_MOBILE_DOWNLOAD = \"com.xiaomi.discover.auto_update_enabled\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/privacy/PrivacyRevocationSettings.java",
+     41,
+     "private static final String[] PACKAGE_ARRAY = {CalendarSyncInfoProvider.AUTHORITY, \"com.xiaomi.calendar\", \"com.miui.videoplayer\", \"com.android.updater"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/market/sdk/DiscoverUpdateManager.java",
+     21,
+     "private static final String SETTINGS_DISCOVER_AUTO_UPDATE = \"com.xiaomi.discover.auto_update_enabled\";"
+    ],
+    [
+     "com/market/sdk/DiscoverUpdateManager.java",
+     22,
+     "private static final String SETTINGS_DISCOVER_METERED_UPDATE_ANSWERED = \"com.xiaomi.discover.metered_update_answered\";"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/provider/MiuiSettings.java",
+     77,
+     "private static final String DISCOVER_AUTO_UPDATE_ENABLED = \"com.xiaomi.discover.auto_update_enabled\";"
+    ],
+    [
+     "android/provider/MiuiSettings.java",
+     78,
+     "private static final String DISCOVER_METERED_SYSTEM_UPDATE_CONFIRM_NEEDED_BY_REGION = \"com.xiaomi.discover.metered_system_update_confirm_needed_by_reg"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     308,
+     "sInstallerSetForMMS.add(\"com.xiaomi.discover\");"
+    ],
+    [
+     "com/android/server/pm/PackageManagerServiceImpl.java",
+     370,
+     "sSilentlyUninstallPackages.add(\"com.xiaomi.discover\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.entitlement.o2",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.phone",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [
+   "manifests/system_ext/priv-app/Entitlement/Entitlement.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/system_ext/etc/permissions/privapp-permissions-miui-system-ext.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ },
+ {
+  "target": "com.xiaomi.finddevice",
+  "action": "REMOVE",
+  "tier": "T3",
+  "signed_by": "platform",
+  "uid": "android.uid.finddevice",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.miui.daemon",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.miui.vsimcore",
+   "com.qualcomm.location",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 36,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/system_ext/etc/permissions/privapp-permissions-miui-system-ext.xml"
+  ],
+  "perm_users_kept": [
+   "com.miui.securityadd",
+   "com.miui.notes",
+   "com.miui.securitycenter",
+   "com.android.phone",
+   "com.miui.vsimcore",
+   "com.android.settings"
+  ],
+  "n_perm_users": 6,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "com/xiaomi/onetrack/util/w.java",
+     25,
+     "c.add(\"com.xiaomi.finddevice\");"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1322,
+     "return applicationInstalled(context, \"com.xiaomi.finddevice\");"
+    ],
+    [
+     "com/android/provision/activities/DefaultActivity.java",
+     108,
+     "private static final String AUTHORITY_FIND_DEVICE = \"com.xiaomi.finddevice.provider\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/xiaomi/security/devicecredential/SecurityDeviceCredentialAbility.java",
+     29,
+     "Intent intent2 = new Intent(\"com.xiaomi.finddevice.action.BIND_SECURITY_DEVICE_CREDENTIAL\");"
+    ],
+    [
+     "com/xiaomi/security/devicecredential/SecurityDeviceCredentialAbility.java",
+     30,
+     "intent2.setPackage(\"com.xiaomi.finddevice\");"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/ot/pubsub/util/q.java",
+     24,
+     "c.add(\"com.xiaomi.finddevice\");"
+    ],
+    [
+     "com/xiaomi/onetrack/util/v.java",
+     24,
+     "c.add(\"com.xiaomi.finddevice\");"
+    ]
+   ],
+   "com.miui.misightservice": [
+    [
+     "com/ot/pubsub/util/p.java",
+     30,
+     "f4261c.add(\"com.xiaomi.finddevice\");"
+    ],
+    [
+     "com/xiaomi/onetrack/util/v.java",
+     30,
+     "f5347c.add(\"com.xiaomi.finddevice\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.glgm",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.miui.securityadd",
+   "com.miui.securitycore"
+  ],
+  "n_code_refs": 3,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/utils/DTCarrierChannelCheckRequest.java",
+     248,
+     "map.put(\"com.xiaomi.glgm\", bool);"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/market/sdk/EnableStateManager.java",
+     64,
+     "sEnableStateControlledPkgList.add(\"com.xiaomi.glgm\");"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "u5/m.java",
+     73,
+     "arrayList.add(\"com.xiaomi.glgm\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.joyose",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "NetworkBoost",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 37,
+  "manifest_refs": [
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt",
+   "manifests/system_ext/app/PowerKeeper/PowerKeeper.apk.txt",
+   "manifests/system_ext/priv-app/Settings/Settings.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/system_ext/etc/selinux/system_ext_seapp_contexts"
+  ],
+  "perm_users_kept": [
+   "com.android.mms"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "NetworkBoost": [
+    [
+     "com/xiaomi/NetworkBoost/StatusManager.java",
+     46,
+     "import com.xiaomi.joyose.IJoyoseInterface;"
+    ],
+    [
+     "com/xiaomi/NetworkBoost/StatusManager.java",
+     47,
+     "import com.xiaomi.joyose.IMiGameBoosterCallback;"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1358,
+     "return !Build.IS_INTERNATIONAL_BUILD && applicationInstalled(context, \"com.xiaomi.joyose\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/search/tree/SecuritySettingsTree.java",
+     74,
+     "public static final String COM_XIAOMI_JOYOSE = \"com.xiaomi.joyose\";"
+    ],
+    [
+     "com/android/settings/special/backstrap/GameAppFragment.java",
+     98,
+     "Uri uri = Uri.parse(\"content://com.xiaomi.Joyose.provider/game_light\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/wm/shell/multitasking/miuifreeform/miuiminifocus/MiuiMiniInfoController.java",
+     35,
+     "import com.xiaomi.joyose.IGameStatusChangeCallback;"
+    ],
+    [
+     "com/android/wm/shell/multitasking/miuifreeform/miuiminifocus/MiuiMiniInfoController.java",
+     36,
+     "import com.xiaomi.joyose.IJoyoseInterface;"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "com/miui/powerkeeper/dfs/DfsUtils.java",
+     16,
+     "import com.xiaomi.joyose.IJoyoseInterface;"
+    ],
+    [
+     "com/miui/powerkeeper/perfengine/MtkBoost.java",
+     29,
+     "intent.setPackage(\"com.xiaomi.joyose\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.mi_connect_service",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.miui.daemon",
+   "com.miui.securitycenter",
+   "miui-framework"
+  ],
+  "n_code_refs": 11,
+  "manifest_refs": [
+   "manifests/product/app/MiLinkOS3GlobalLiteV1/MiLinkOS3GlobalLiteV1.apk.txt",
+   "manifests/product/app/MiTrustService/MiTrustService.apk.txt",
+   "manifests/product/app/mi_connect_service/mi_connect_service.apk.txt",
+   "manifests/product/priv-app/MISettings/MISettings.apk.txt",
+   "manifests/product/priv-app/MiuiCamera/MiuiCamera.apk.txt",
+   "manifests/product/priv-app/MIUISecurityCenterGlobal/MIUISecurityCenterGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.milink.service",
+   "com.xiaomi.trustservice",
+   "com.miui.securitycenter",
+   "com.android.camera",
+   "com.android.phone",
+   "com.xiaomi.bluetooth",
+   "com.miui.audiomonitor",
+   "com.android.provision"
+  ],
+  "n_perm_users": 8,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1388,
+     "ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(\"com.xiaomi.mi_connect_service\", ParticleFlag.tensileParticle);"
+    ],
+    [
+     "com/xiaomi/idm/api/IDMBase$mConnection$1.java",
+     8,
+     "import com.xiaomi.mi_connect_service.IMiConnect;"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/mqsas/event/OOMEventManager.java",
+     41,
+     "public static String[] SUPPORTED_SYSTEM_PROCCESS = {\"com.android.systemui\", \"system_server\", \"com.android.settings\", \"com.miui.daemon\", \"com.cdgdemo.o"
+    ],
+    [
+     "com/miui/daemon/mqsas/utils/Utils.java",
+     178,
+     "JE_Foreground_BLACKLIST = Arrays.asList(\"com.miui.powerkeeper\", \"com.xiaomi.misettings\", \"com.xiaomi.mi_connect_service\");"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/xiaomi/continuity/networking/NetworkingManager.java",
+     26,
+     "private static final String PACKAGE_NAME = \"com.xiaomi.mi_connect_service\";"
+    ],
+    [
+     "com/xiaomi/continuity/networking/NetworkingManager.java",
+     91,
+     "intent.setPackage(\"com.xiaomi.mi_connect_service\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     127,
+     "sAllowAutoStartPkgs.add(\"com.xiaomi.mi_connect_service\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.micloud.sdk",
+  "action": "STUB",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [
+   "manifests/system_ext/priv-app/RtMiCloudSDK/RtMiCloudSDK.apk.txt"
+  ],
+  "xml_rc_refs": [],
+  "perm_users_kept": [
+   "com.android.contacts",
+   "com.android.mms",
+   "com.miui.securityadd",
+   "com.android.thememanager",
+   "com.miui.bugreport",
+   "com.android.updater",
+   "com.xiaomi.mi_connect_service",
+   "com.miui.notes",
+   "com.miui.securitycenter",
+   "com.android.camera",
+   "com.android.providers.calendar",
+   "com.android.providers.contacts"
+  ],
+  "n_perm_users": 14,
+  "samples": {}
+ },
+ {
+  "target": "com.xiaomi.midrop",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework"
+  ],
+  "n_code_refs": 6,
+  "manifest_refs": [],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml",
+   "tree/product/etc/device_features/blaze.xml",
+   "tree/product/etc/device_features/flame.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/AppManageUtils.java",
+     238,
+     "arrayList2.add(\"com.xiaomi.midrop\");"
+    ],
+    [
+     "p226r1/c.java",
+     178,
+     "arrayList3.add(\"com.xiaomi.midrop\");"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "o4/a.java",
+     34,
+     "d.u(arrayList, \"com.xiaomi.midrop\", \"com.miui.huanji\", \"com.miui.cloudbackup\", \"com.miui.cloudservice\");"
+    ],
+    [
+     "u5/m.java",
+     57,
+     "arrayList.add(\"com.xiaomi.midrop\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "miui/app/ToggleManager.java",
+     95,
+     "public static final String COMPONENT_NAME_MIDROP_STARTUP_RECEIVER = \"com.xiaomi.midrop.startup.StartupReceiver\";"
+    ],
+    [
+     "miui/app/ToggleManager.java",
+     107,
+     "public static final String PKG_NAME_MIDROP = \"com.xiaomi.midrop\";"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.mipicks",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.provision",
+   "com.android.settings",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 22,
+  "manifest_refs": [
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/odm/etc/camera/cameraopt.json"
+  ],
+  "perm_users_kept": [
+   "com.android.incallui",
+   "com.android.contacts",
+   "com.android.mms",
+   "com.miui.screenshot",
+   "com.miui.securityadd",
+   "com.android.thememanager",
+   "com.milink.service",
+   "com.xiaomi.trustservice",
+   "com.android.updater",
+   "com.miui.miwallpaper",
+   "com.xiaomi.mi_connect_service",
+   "com.android.deskclock"
+  ],
+  "n_perm_users": 24,
+  "samples": {
+   "com.android.provision": [
+    [
+     "com/android/provision/fragment/OtherSettingsFragment.java",
+     91,
+     "private static final String GET_APPS_PKG_NAME = \"com.xiaomi.mipicks\";"
+    ],
+    [
+     "com/android/provision/fragment/OtherSettingsFragment.java",
+     1001,
+     "} else if (Utils.judgeGetAppsEnable(ProvisionApplication.getContext(), \"com.xiaomi.mipicks\")) {"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/privacy/PrivacyRevocationSettings.java",
+     41,
+     "private static final String[] PACKAGE_ARRAY = {CalendarSyncInfoProvider.AUTHORITY, \"com.xiaomi.calendar\", \"com.miui.videoplayer\", \"com.android.updater"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/market/sdk/homeguide/AppstoreUserGuide.java",
+     118,
+     "int i2 = SettingsCompat.System.getInt(AppGlobal.getContext(), \"com.xiaomi.mipicks.need_show_user_guide_status\", -1);"
+    ],
+    [
+     "com/market/sdk/homeguide/AppstoreUserGuideService.java",
+     18,
+     "private static final String TARGET_PKG = \"com.xiaomi.mipicks\";"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/AppManagerMainActivity.java",
+     370,
+     "intent.setPackage(\"com.xiaomi.mipicks\");"
+    ],
+    [
+     "com/miui/appmanager/AppManageUtils.java",
+     204,
+     "f17246e = Build.IS_INTERNATIONAL_BUILD ? \"com.xiaomi.mipicks\" : \"com.xiaomi.market\";"
+    ]
+   ],
+   "com.miui.securitycore": [
+    [
+     "o4/a.java",
+     29,
+     "d.u(arrayList, \"com.miui.mipub\", \"com.miui.stepsprovider\", \"com.xiaomi.joyose\", \"com.xiaomi.mipicks\");"
+    ],
+    [
+     "u5/m.java",
+     52,
+     "androidx.activity.d.u(arrayList, \"com.miui.stepsprovider\", \"com.xiaomi.joyose\", \"com.xiaomi.mipicks\", \"com.miui.tsmclient\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.mtb",
+  "action": "STUB",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "miui-framework"
+  ],
+  "n_code_refs": 1,
+  "manifest_refs": [
+   "manifests/system_ext/app/ModemTestBox/ModemTestBox.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/odm/etc/camera/cameraopt_reclaim.json"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "miui-framework": [
+    [
+     "android/app/AppOpsManagerInjector.java",
+     101,
+     "sAllowAutoStartPkgs.add(\"com.xiaomi.mtb\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.payment",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.settings",
+   "com.miui.powerkeeper",
+   "com.miui.securitycenter",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 9,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.settings": [
+    [
+     "com/android/settings/AccessControlSetApp.java",
+     222,
+     "hashSet.add(\"com.xiaomi.payment\");"
+    ],
+    [
+     "com/android/settings/applications/SystemAppSettings.java",
+     153,
+     "this.mCls2SystemHeader.put(\"com.xiaomi.payment.MiliCenterEntryActivity\", getMiMoneyHeader());"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "miui/payment/PaymentManager.java",
+     51,
+     "private static final String PACKAGE_PAYMENT = \"com.xiaomi.payment\";"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/AppManageUtils.java",
+     233,
+     "arrayList2.add(\"com.xiaomi.payment\");"
+    ]
+   ],
+   "miui-framework": [
+    [
+     "android/util/MiuiMultiWindowAdapter.java",
+     130,
+     "public static final String PAYMENT_TRANSLUCENTACTIVITY = \"com.xiaomi.payment/com.mipay.common.ui.TranslucentActivity\";"
+    ],
+    [
+     "miui/content/pm/ExtraPackageManager.java",
+     31,
+     "public static final String[] MIUI_SYSTEM_APPS = {\"com.android.bips\", \"com.android.fileexplorer\", \"com.android.calendar\", \"com.android.camera\", MiuiCon"
+    ]
+   ],
+   "miui-services": [
+    [
+     "com/android/server/wm/MiuiFreeFormGestureController.java",
+     494,
+     "if (activityRecord == null || !activityRecord.inFreeformWindowingMode() || activityRecord.app == null || !\"com.xiaomi.payment/com.mipay.common.ui.Tran"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.scanner",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework",
+   "miui-services"
+  ],
+  "n_code_refs": 23,
+  "manifest_refs": [
+   "manifests/product/priv-app/MiuiCamera/MiuiCamera.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml",
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/mi_ext/system/etc/permissions/signature-permission-miext.xml",
+   "tree/product/etc/device_features/blaze.xml",
+   "tree/product/etc/device_features/flame.xml",
+   "tree/system_ext/etc/selinux/system_ext_seapp_contexts"
+  ],
+  "perm_users_kept": [
+   "com.android.camera"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "com/android/settings/search/Config.java",
+     9,
+     "public static final String GLOBAL_SEARCH_PKG_SCANNER = \"com.xiaomi.scanner\";"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/aon/VisualPerceptionSettings.java",
+     116,
+     "this.mContext.getPackageManager().getPackageInfo(\"com.xiaomi.scanner\", 1);"
+    ],
+    [
+     "com/android/settings/aon/VisualPerceptionSettings.java",
+     142,
+     "Uri uri = Uri.parse(\"mimarket://details?id=com.xiaomi.scanner&detailStyle=1\");"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/miui/keyguard/biometrics/fod/item/QrCodeItem.java",
+     29,
+     "intent.setComponent(new ComponentName(\"com.xiaomi.scanner\", \"com.xiaomi.scanner.app.ScanActivity\"));"
+    ],
+    [
+     "com/miui/keyguard/biometrics/fod/item/QrCodeItem.java",
+     29,
+     "intent.setComponent(new ComponentName(\"com.xiaomi.scanner\", \"com.xiaomi.scanner.app.ScanActivity\"));"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/miui/superpower/AppSelectActivity.java",
+     206,
+     "arrayList2.add(\"com.xiaomi.scanner\");"
+    ]
+   ],
+   "com.miui.securitycenter": [
+    [
+     "com/miui/appmanager/AppManageUtils.java",
+     219,
+     "arrayList.add(\"com.xiaomi.scanner\");"
+    ],
+    [
+     "com/miui/gamebooster/videobox/settings/VideoBoxAppManageActivity.java",
+     414,
+     "arrayList.add(\"com.xiaomi.scanner\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.simactivate.service",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "miui-framework"
+  ],
+  "n_code_refs": 11,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/MiuiMmsGlobal/MiuiMmsGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml"
+  ],
+  "perm_users_kept": [
+   "com.android.mms"
+  ],
+  "n_perm_users": 1,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "miuix/android/content/SystemIntent.java",
+     39,
+     "public static final String ACTIVATE_SERVICE_HOST_PACKAGE_NEW = \"com.xiaomi.simactivate.service\";"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1435,
+     "return !isWifiOnly(context) && applicationInstalled(context, \"com.xiaomi.simactivate.service\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/privacy/PrivacyRevocationSettings.java",
+     41,
+     "private static final String[] PACKAGE_ARRAY = {CalendarSyncInfoProvider.AUTHORITY, \"com.xiaomi.calendar\", \"com.miui.videoplayer\", \"com.android.updater"
+    ]
+   ],
+   "com.miui.powerkeeper": [
+    [
+     "miui/provider/MiCloudSmsCmd.java",
+     82,
+     "intent.setPackage(\"com.xiaomi.simactivate.service\");"
+    ],
+    [
+     "miui/provider/MiCloudSmsCmd.java",
+     118,
+     "intent.setPackage(\"com.xiaomi.simactivate.service\");"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "com/xiaomi/accountsdk/activate/b.java",
+     200,
+     "Intent intent = new Intent(\"com.xiaomi.simactivate.service.action.BIND\");"
+    ],
+    [
+     "miuix/android/content/SystemIntent.java",
+     39,
+     "public static final String ACTIVATE_SERVICE_HOST_PACKAGE_NEW = \"com.xiaomi.simactivate.service\";"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.smarthome",
+  "action": "REMOVE",
+  "tier": "T2",
+  "signed_by": "other",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.qualcomm.location",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 23,
+  "manifest_refs": [
+   "manifests/product/app/MiLinkOS3GlobalLiteV1/MiLinkOS3GlobalLiteV1.apk.txt",
+   "manifests/product/app/MIUISystemUIPlugin/MIUISystemUIPlugin.apk.txt",
+   "manifests/product/data-app/MIUIDeskClockGlobal/MIUIDeskClockGlobal.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/miext_removable_apk_info.xml",
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/odm/etc/camera/cameraopt_reclaim.json",
+   "tree/system_ext/etc/perf_pkgconfig.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "com/xiaomi/onetrack/OneTrack.java",
+     296,
+     "if (TextUtils.equals(a.e(), \"com.xiaomi.smarthome\")) {"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/utils/DTCarrierChannelCheckRequest.java",
+     253,
+     "Utils.uninstallApp(this.mContextRef.get(), \"com.xiaomi.smarthome\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "com/android/settings/smarthome/SmartHomePreferenceManager.java",
+     59,
+     "return Build.IS_INTERNATIONAL_BUILD ? \"\" : \"com.xiaomi.smarthome/com.xiaomi.smarthome.controls.MiControlsProviderService\";"
+    ],
+    [
+     "com/android/settings/smarthome/SmartHomePreferenceManager.java",
+     59,
+     "return Build.IS_INTERNATIONAL_BUILD ? \"\" : \"com.xiaomi.smarthome/com.xiaomi.smarthome.controls.MiControlsProviderService\";"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/keyguard/WallpaperProvider.java",
+     108,
+     "if (PackageUtils.isAppInstalledForUser(getContext(), UserUtils.getCurrentUserId(), \"com.xiaomi.smarthome\")) {"
+    ],
+    [
+     "com/android/keyguard/WallpaperProvider.java",
+     112,
+     "Uri uri = Uri.parse(\"content://com.xiaomi.smarthome.ext_cp\");"
+    ]
+   ],
+   "com.miui.securityadd": [
+    [
+     "miuix/internal/util/UrlResolverHelper.java",
+     18,
+     "private static final String[] WHITE_PACKAGE_LIST = {\"com.xiaomi.channel\", \"com.duokan.reader\", \"com.duokan.hdreader\", \"com.duokan.fiction\", \"com.duoka"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.trustservice",
+  "action": "DISABLE",
+  "tier": "T2",
+  "signed_by": "platform",
+  "uid": "android.uid.system",
+  "code_ref_labels": [
+   "com.android.systemui"
+  ],
+  "n_code_refs": 4,
+  "manifest_refs": [
+   "manifests/product/app/MiTrustService/MiTrustService.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/system_ext/bin/init.rootpub.sh",
+   "tree/system_ext/bin/init.rotatekey.sh",
+   "tree/system_ext/bin/init.socid.sh",
+   "tree/system_ext/etc/misight/ot_event.xml"
+  ],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {
+   "com.android.systemui": [
+    [
+     "com/android/keyguard/CrossEndsUnlockController.java",
+     31,
+     "import com.xiaomi.trustservice.remoteauthservice.IMiRemoteAuthUnlockUI;"
+    ],
+    [
+     "com/android/keyguard/CrossEndsUnlockController.java",
+     59,
+     "parcel.enforceInterface(\"com.xiaomi.trustservice.remoteauthservice.IMiRemoteAuthUnlockUICallback\");"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.xmsf",
+  "action": "REMOVE",
+  "tier": "T3",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [
+   "com.android.htmlviewer",
+   "com.android.provision",
+   "com.android.settings",
+   "com.android.systemui",
+   "com.miui.daemon",
+   "com.miui.misightservice",
+   "com.miui.powerkeeper",
+   "com.miui.securityadd",
+   "com.miui.securitycenter",
+   "com.miui.securitycore",
+   "com.qualcomm.location",
+   "miui-framework",
+   "miui-services",
+   "miui-wifi-service"
+  ],
+  "n_code_refs": 36,
+  "manifest_refs": [
+   "manifests/mi_ext/product/priv-app/MiuiMmsGlobal/MiuiMmsGlobal.apk.txt",
+   "manifests/product/app/MiBugReportOS3Global/MiBugReportOS3Global.apk.txt",
+   "manifests/product/app/MIUISecurityAdd/MIUISecurityAdd.apk.txt",
+   "manifests/product/app/MIUIThemeManagerGlobal/MIUIThemeManagerGlobal.apk.txt",
+   "manifests/product/priv-app/MiLauncherGlobal/MiLauncherGlobal.apk.txt",
+   "manifests/product/priv-app/MiuiHome/MiuiHome.apk.txt"
+  ],
+  "xml_rc_refs": [
+   "tree/mi_ext/product/etc/cust_features/cust_features.xml",
+   "tree/odm/etc/camera/cameraopt.json",
+   "tree/odm/etc/camera/cameraopt_reclaim.json"
+  ],
+  "perm_users_kept": [
+   "com.miui.securityadd",
+   "com.android.thememanager",
+   "com.miui.securitycenter",
+   "com.mi.android.globallauncher",
+   "com.miui.home",
+   "com.miui.rom"
+  ],
+  "n_perm_users": 6,
+  "samples": {
+   "com.android.htmlviewer": [
+    [
+     "miuix/android/content/MiuiIntent.java",
+     84,
+     "public static final String ACTION_PAYMENT = \"com.xiaomi.xmsf.action.PAYMENT\";"
+    ],
+    [
+     "miuix/android/content/SystemIntent.java",
+     38,
+     "public static final String ACTIVATE_SERVICE_HOST_PACKAGE = \"com.xiaomi.xmsf\";"
+    ]
+   ],
+   "com.android.provision": [
+    [
+     "com/android/provision/Utils.java",
+     1471,
+     "return Build.IS_INTERNATIONAL_BUILD && applicationInstalled(context, \"com.xiaomi.xmsf\");"
+    ]
+   ],
+   "com.android.settings": [
+    [
+     "miui/cloud/Constants.java",
+     10,
+     "public static final String XMSF_PACKAGE_NAME = \"com.xiaomi.xmsf\";"
+    ]
+   ],
+   "com.android.systemui": [
+    [
+     "com/android/systemui/statusbar/notification/NotificationClicker.java",
+     470,
+     "if (\"com.xiaomi.xmsf\".equals(expandedNotification3.getOpPkg()) || \"com.miui.systemAdSolution\".equals(expandedNotification3.getOpPkg())) {"
+    ],
+    [
+     "com/android/systemui/statusbar/notification/NotificationProvider.java",
+     221,
+     "if ((callingUid == 0 || callingUid != MiuiBaseNotifUtil.getPackageUid(context7, \"com.xiaomi.xmsf\")) && !MiuiBaseNotifUtil.isUidSystem(Binder.getCallin"
+    ]
+   ],
+   "com.miui.daemon": [
+    [
+     "com/miui/daemon/performance/statistics/notifications/NotificationUtils.java",
+     56,
+     "if (TextUtils.isEmpty(packageName) || !\"com.xiaomi.xmsf\".equals(str)) {"
+    ],
+    [
+     "com/xiaomi/onetrack/api/a.java",
+     29,
+     "private static final Set<String> r = new HashSet(Arrays.asList(\"com.xiaomi.xmsf\", \"com.xiaomi.market\", \"com.miui.packageinstaller\"));"
+    ]
+   ]
+  }
+ },
+ {
+  "target": "com.xiaomi.xmsfkeeper",
+  "action": "REMOVE",
+  "tier": "T3",
+  "signed_by": "platform",
+  "uid": "",
+  "code_ref_labels": [],
+  "n_code_refs": 0,
+  "manifest_refs": [],
+  "xml_rc_refs": [],
+  "perm_users_kept": [],
+  "n_perm_users": 0,
+  "samples": {}
+ }
+]

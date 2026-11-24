@@ -1,0 +1,6 @@
+total 18956
+-rw-r--r-- 1 runner runner      153 Nov 24 08:57 bootconfig
+-rw-r--r-- 1 runner runner  3860431 Nov 24 08:57 dtb
+drwxr-xr-x 2 runner runner     4096 Nov 24 08:57 vendor-ramdisk-by-name
+-rw-r--r-- 1 runner runner 13056316 Nov 24 08:57 vendor_ramdisk00
+-rw-r--r-- 1 runner runner  2478170 Nov 24 08:57 vendor_ramdisk01

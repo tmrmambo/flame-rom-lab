@@ -1,0 +1,4 @@
+total 299008
+-rw-r--r-- 1 runner runner 100663296 Dec 31  2007 boot.img
+-rw-r--r-- 1 runner runner 104857600 Dec 31  2007 recovery.img
+-rw-r--r-- 1 runner runner 100663296 Dec 31  2007 vendor_boot.img

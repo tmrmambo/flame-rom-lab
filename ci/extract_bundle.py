@@ -319,7 +319,7 @@ def scan_part(part):
             continue
         if rel.endswith('.apk'):
             apks.append((part, rel, p))
-        elif rel.endswith('.jar') and '/framework/' in rel:
+        elif rel.endswith('.jar') and ('/framework/' in rel or '/javalib/' in rel):
             jars.append((part, rel, p))
         elif r[8] == 'elf' and any(x in rel for x in ('/bin/', '/sbin/', '/xbin/')):
             elfs.append((part, rel, p))

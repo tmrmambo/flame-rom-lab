@@ -75,6 +75,46 @@ jobs:
           compression-level: 0
           retention-days: 3
 
+  apex:
+    if: ${{ inputs.mode == 'apex' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ci/free_space.sh
+      - run: bash ci/setup_tools.sh
+      - name: APEX unpack and scan
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/apex_job.sh "$URL"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: apex
+          path: bundle_apex.tar.gz
+          compression-level: 0
+          retention-days: 3
+
+  jadx:
+    if: ${{ inputs.mode == 'jadx' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ci/free_space.sh
+      - run: bash ci/setup_tools.sh
+      - name: JADX targets
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/jadx_job.sh "$URL"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jadx
+          path: jadx_out.tar
+          compression-level: 0
+          retention-days: 3
+
   boot:
     if: ${{ inputs.mode == 'boot' }}
     runs-on: ubuntu-latest

@@ -1,0 +1,171 @@
+tier,action,target,part,category,risk,source,note_or_evidence,signed_by,uid,cert12
+T1,REMOVE,com.facebook.appmanager,product,telemetry,L,A1,"INTERNET+RECEIVE_BOOT_COMPLETED; urls graph.facebook.com/logging_client_events, facebook.com/android_upgrade; trackers analytics/facebook/firebase/sentry; /pangu/system/app",other,,b92109b59095
+T1,REMOVE,com.facebook.services,product,telemetry,L,A1,"INTERNET+RECEIVE_BOOT_COMPLETED; urls graph.facebook.com/logging_client_events, facebook.com/mobile/generic_android_crash_logs",other,,b92109b59095
+T1,REMOVE,com.facebook.system,product,telemetry,L,A1,no network perms; priv-app facebook-installer; silent installer for FB apps (tracker kw facebook),other,,b92109b59095
+T1,REMOVE,com.miui.phrase,product,cloud-sync,L,A2,"perms=['INTERNET'] acts:['RECEIVE', 'REGISTRATION'] vhosts(4):['pdc.micloud.xiaomi.net', 'pdcapi.micloud.preview.n.xiaomi.net', 'relocationapi.micloud.preview.n.xiaomi.net', 'relocationapi.micloud.xiaomi.net']",platform,,c9009d01ebf9
+T1,REMOVE,com.miuix.editor,product,other,L,A2,perms=[] acts:[] vhosts(0):[],platform,,c9009d01ebf9
+T1,REMOVE,com.miui.mediaviewer,product,cloud-sync,L,A2,"perms=['INTERNET', 'QUERY_ALL_PACKAGES'] acts:[] vhosts(6):['i.mi.com', 'mcc.india.inf.miui.com', 'mcc.inf.miui.com', 'mcc.intl.inf.miui.com', 'mcc.russia.inf.miui.com', 'staging.mcc.inf.miui.com']",platform,,c9009d01ebf9
+T1,REMOVE,com.xiaomi.continuity.sdkapp,product,other,L,A2,perms=['INTERNET'] acts:[] vhosts(0):[],platform,,c9009d01ebf9
+T1,REMOVE,com.miui.fm,product,ads,L,A2,"perms=['INTERNET', 'AD_ID', 'ACCESS_ADSERVICES_AD_ID'] acts:[] vhosts(1):['www.miui.com']",platform,,c9009d01ebf9
+T1,REMOVE,com.miui.fmservice,product,other,L,A2,"perms=['INTERNET', 'READ_PHONE_STATE'] acts:[] vhosts(0):[]",platform,,c9009d01ebf9
+T1,REMOVE,com.miui.mediaeditor,product,ads,L,A2,"perms=['INTERNET', 'ACCESS_MEDIA_LOCATION', 'AUTHENTICATE_ACCOUNTS', 'MANAGE_ACCOUNTS', 'QUERY_ALL_PACKAGES', 'MIPUSH_RECEIVE', 'GET_TASKS', 'AD_ID', 'ACCESS_ADSERVICES_AD_ID'] acts:['BOOT_COMPLETED', 'CONNECTIVITY_CHANGE'] vhosts(0):[]",platform,,c9009d01ebf9
+T1,PATCH,com.miui.calculator,product,telemetry,L,A2,"perms=['ACCESS_COARSE_LOCATION', 'INTERNET', 'GET_TASKS'] acts:[] vhosts(0):[]",other,,d45f076fe23a
+T1,REMOVE,com.miui.qr,product,other,L,A2,perms=[] acts:[] vhosts(0):[],platform,android.uid.system,c9009d01ebf9
+T1,REMOVE,com.goodix.gftest,product,other,L,A2,perms=[] acts:[] vhosts(0):[],platform,,c9009d01ebf9
+T1,REMOVE,com.fingerprints.sensortesttool,product,other,L,A2,perms=[] acts:[] vhosts(0):[],platform,,c9009d01ebf9
+T1,REMOVE,android.autoinstalls.config.Xiaomi.model,product,other,L,A2,perms=[] acts:[] vhosts(0):[],platform,,c9009d01ebf9
+T1,REMOVE,com.miui.compass,mi_ext,ads,L,A3,perms=11 sharedUid=- persistent=False comps=3 path=/product/data-app/MIUICompassGlobal/MIUICompassGlobal.apk,platform,,c9009d01ebf9
+T1,DISABLE,com.android.printspooler,system_ext,telemetry,L,A4,"DISGUISED-candidate: AOSP name but INTERNET + ACCESS_FINE_LOCATION + QUERY_ALL_PACKAGES, mistat provider (printspooler.mistat.miprintstatprov), hosts app.xiaomi.com api.comm.miui.com/miprint; AOSP printspooler needs none of these",other,,d45f076fe23a
+T1,PATCH,com.android.storagemanager,system_ext,other,L,A4,"BOOT, PACKAGE_USAGE_STATS QUERY_ALL_PACKAGES; no INTERNET; host noise only",platform,,c9009d01ebf9
+T1,REMOVE,com.android.egg,system,other,L,A5,"Easter egg, no INTERNET; tracker hit is string noise",platform,,c9009d01ebf9
+T1,DISABLE,system_ext:/etc/init/init.miui.ext.rc:su_daemon,system_ext,security-keep,L,A6,"rc: service su_daemon /system/xbin/su --daemon, user root, class main, not disabled; no /xbin/su entry in filelists (system.tsv) -> dangling",n/a,,
+T1,DISABLE,system_ext:/etc/init/init.miui.ext.rc:mqsasd,system_ext,telemetry,L,A6,"rc: /system_ext/xbin/mqsasd daemon, root, sockets mqsasd/mqsasd_pr 0666, started on post-fs; filelists has NO mqsasd binary; libmqsas.so + hypsys_system.so strings contain miui.mqsas (MQS = Xiaomi quality stats)",n/a,,
+T1,DISABLE,system_ext:/etc/init/init.offline.log.rc:logcatkernel,system_ext,telemetry,L,A6,"rc: logcatkernel/bootlog/logcatlog/poweroff_charger_log/mtdoopslog all /system/bin/sh, disabled, local log files",n/a,,
+T1,DISABLE,product:/etc/init/sdlog.rc:sdlog,product,telemetry,L,A6,"rc: /product/bin/sdlog root caps DAC_READ_SEARCH DAC_OVERRIDE, disabled; start on persist.service.sdlog.enable / sys.logd.enable / sys.logd_t2.enable; ELF no hosts",n/a,,
+T1,PATCH,persist.multisence.cloud.enable,product,perfcloud,L,B,product build.prop =true (per D report),n/a,,
+T1,PATCH,prop:persist.multisence.cloud.enable,product,perfcloud,L,D,product/etc/build.prop=true; multi-scene cloud scheduling flag,n/a,,
+T1,PATCH,prop:persist.sys.miui_art_report.enable,product,telemetry,L,D,"product build.prop =59 (ART report switch, name = reporting)",n/a,,
+T1,PATCH,prop:persist.sys.prestart.feedback.enable,product,telemetry,L,D,product build.prop =true; feedback of prestart data,n/a,,
+T1,PATCH,prop:persist.sys.offlinelog.bootlog,product,telemetry,L,D,product build.prop =true; with init.offline.log.rc starts logcatkernel/bootlog/logcatlog scripts writing local logs,n/a,,
+T1,PATCH,prop:persist.sys.spc.process.tracker.enable,product,telemetry,L,D,product build.prop =true; process tracker,n/a,,
+T1,PATCH,prop:persist.sys.stability.fault_report,product,telemetry,L,D,system init.rc has on property:persist.sys.stability.fault_report=true/false handlers,n/a,,
+T1,PATCH,prop:ro.com.google.clientidbase,mi_ext,ads,L,D,set via rc (see above); values contain android-xiaomi,n/a,,
+T1,PATCH,prop:ro.appsflyer.preinstall.path,mi_ext,ads,L,D,=/data/miui/pai/pre_install.appsflyer (AppsFlyer attribution),n/a,,
+T1,PATCH,prop:ro.com.agoda.consumer.preload,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.zalo.tracking,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.netflix.channel,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.wps.prop.channel.path,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.trackingId.com.lzd.appid,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.trilo.channel.com.einnovation.temu,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.csc.spotify.music.referrerid,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.csc.spotify.music.partnerid,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.booking.channel.path,product,ads,L,D,product/etc/build.prop partner attribution/channel id; paths point to /cust/etc/*,n/a,,
+T1,PATCH,prop:ro.miui.carrier.cota,product,update,L,D,=true in product build.prop; enables COTA (carrier OTA of opcust/opconfig),n/a,,
+T1,PATCH,prop:ro.fota.oem,system_ext,update,L,D,=Xiaomi,n/a,,
+T1,PATCH,preflight anti<=1 unlocked product,cmd,security-keep,L,F,stock only checks device>package,n/a,,
+T1,PATCH,Provision RecommendedState (com.xiaomi.market; com.aura.oobe.xiaomi),system_ext,ads,L,J2,needs isCaptivePortalValidated (GlobalDefaultActivity.java:369-381); CLOUD_CONTROL_URL DefaultActivity.java:856,n/a,,
+T1,PATCH,securitycenter OneTrack/Firebase (StatManager),product,telemetry,L,J3,"StatManager.java:372-377,409-418 OneTrack.setAccessNetworkEnable(u0.b())",n/a,,
+T1,PATCH,securitycenter monthreport,product,telemetry,L,J3,monthreport/c.java:193 data.sec.intl.miui.com/data/upload,n/a,,
+T1,PATCH,securitycenter adv layout,product,ads,L,J3,"adv.sec.intl.miui.com/info/layout x10 (t7/e.java, W1/b.java:72, l6/c.java:81)",n/a,,
+T1,PATCH,securitycenter networkassistant,product,cloud-sync,L,J3,WebApiAccessHelper.java:101 v1/traffic/report; :107 whiteList/listByModule,n/a,,
+T1,PATCH,securitycenter privacy agree,product,telemetry,L,J3,"q7/j.java:21,30 privacy.api.intl.miui.com/collect/privacy/agree/v1 (firebase id/uuid)",n/a,,
+T1,PATCH,com.miui.powerkeeper thermal log upload,system_ext,telemetry,L,J4,"port.sec.miui.com/mqsas/fileUploadWithUrlId?bizName=themal; daily alarm UploadManager.java:48, ThermalCollector.java:232",n/a,,
+T1,PATCH,persist.sys.cloud.enable / persist.sys.cloud_boot_dexopt.enable,system_ext,perfcloud,L,J4,pm/MiuiDexoptImpl.java:552; art/report/ArtReportCompilationJob.java:193,n/a,,
+T1,PATCH,com.android.htmlviewer:settings.cloud.JobTask/CloudNetworkUtils (POST CLOUD_APP_CONTROL_ALL_URL + ARRIVAL_RATE_URL),system,telemetry,L,J6,"Sends to api.sec.intl.miui.com: ihash/im (IMEI hash/md5), oaid, gaid, aid (android-id md5), d=ro.product.device, r=region, MIUI version, android ver; arrival-rate and rollback reports (JobTask.reportRollbackDataToServer); JobTask.java:106-175,250; CloudNetworkUtils.java:70-86",n/a,,
+T1,DISABLE,com.android.htmlviewer:ota.OtaService/OtaH5Activity/OtaCheckReceiver,system,update,L,J6,huanji OTA-guide: downloads fileList.json + H5 from api.huanji.comm(.intl).miui.com after UPDATE_SUCCESSED; payload ro.product.marketname/incremental/OAID (DeviceUtils); OneTrackInterfaceUtils,n/a,,
+T1,REMOVE,sdkconfig/ad hosts in downloads.ui,product,ads,L,J6,"SdkInitProvider auto-init (com.xiaomi.miglobaladsdk.SdkInitProvider), CrashMonitorService",n/a,,
+T1,DISABLE,OneTrackWifiUtil -> com.miui.analytics TrackService (miui-wifi-service),bundle_apex/com.android.bt,telemetry,L,J7,OneTrackWifiUtil.java binds com.miui.analytics TrackService appId 31000000072; 27 reporters; Wi-Fi diag payload; upload by analytics app,n/a,,
+T1,DISABLE,NetworkAiService onetrack.action.TRACK_EVENT,NetworkBoost,telemetry,L,J7,NetworkAiService.java:682-686 broadcast AI_ROAMING_QOE_STATISTIC_EVENT,n/a,,
+T1,PATCH,com.android.networkstack.overlay.miui,product/overlay/NetworkStackOverlay.apk,other,L,J7,"strings connect.rom.miui.com http+https, baidu, gstatic",platform,,c9009d01ebf9
+T2,PATCH,com.android.networkstack.overlay.miui (NetworkStackOverlay.apk),product,other,M,A1,"overlay of com.google.android.networkstack; condition=None None; urls/hosts(n_urls n_hosts)=4 1; apk_endpoints: http(s)://connect.rom.miui.com/generate_204, https://www.baidu.com, https://connectivitycheck.gstatic.com/generate_204",n/a,,
+T2,DISABLE,com.qualcomm.qti.qms.service.connectionsecurity,vendor,telemetry,M,A1,INTERNET+BOOT_COMPLETED; url https://config.qms.quicinc.com/qms/2/configurations?items=; native libs libssgccs/libminksocket/liblocservice; requests perm com.qualcomm.permission.qti.VENDORSSGTZD,platform,,c9009d01ebf9
+T2,PATCH,GATE-1 captive portal URL (connect.rom.miui.com),system,other,M,A1,NetworkStackOverlay hosts connect.rom.miui.com/generate_204 + baidu,n/a,,
+T2,REMOVE,com.miui.analytics,product,telemetry,M,A2,guarded callers (J5/J1) but wifi-service rebinds ~1/s: check logcat/battery (J7),platform,,c9009d01ebf9
+T2,REMOVE,com.miui.msa.global,product,ads,M,A2,"perms=['AD_ID', 'MIPUSH_RECEIVE', 'INTERNET', 'GET_TASKS', 'REAL_GET_TASKS', 'QUERY_ALL_PACKAGES'] acts:['BOOT_COMPLETED', 'CONNECTIVITY_CHANGE', 'PUSH_AD', 'delete'] vhosts(2):['api.ad.intl.xiaomi.com', 'gtglobal.intl.miui.com']",platform,,c9009d01ebf9
+T2,REMOVE,com.miui.cloudservice,product,cloud-sync,M,A2,remove together with micloudsync (same uid); Settings entry hidden on Global (J1),platform,com.miui.cloudservice,c9009d01ebf9
+T2,REMOVE,com.miui.micloudsync,product,cloud-sync,M,A2,same uid as cloudservice,platform,com.miui.cloudservice,c9009d01ebf9
+T2,REMOVE,com.miui.global.packageinstaller,product,other,H,A2,after-install scanner/ads; system does not wait for it (J3),platform,,c9009d01ebf9
+T2,REMOVE,com.xiaomi.discover,product,update,M,A2,"perms=['INTERNET', 'READ_PHONE_STATE', 'PACKAGE_USAGE_STATS', 'GET_TASKS', 'REAL_GET_TASKS', 'QUERY_ALL_PACKAGES', 'AD_ID', 'GET_ACCOUNTS', 'GET_ACCOUNTS_PRIVILEGED', 'AUTHENTICATE_ACCOUNTS', 'MANAGE_ACCOUNTS', 'ACCESS_ADSERVICES_AD_ID'] acts:['BOOT_COMPLETED', 'CONNECTIVITY_CHANGE', 'PACKAGE_ADDED'",platform,,c9009d01ebf9
+T2,DISABLE,com.android.updater,product,update,M,A2,"perms=['INTERNET', 'AUTHENTICATE_ACCOUNTS', 'MANAGE_ACCOUNTS', 'READ_PHONE_STATE', 'GET_TASKS', 'REAL_GET_TASKS', 'QUERY_ALL_PACKAGES'] acts:['BOOT_COMPLETED'] vhosts(22):['account.preview.n.xiaomi.net', 'account.xiaomi.com', 'api.account.preview.n.xiaomi.net', 'api.account.xiaomi.com', 'api.device.",platform,android.uid.updater,c9009d01ebf9
+T2,REMOVE,com.xiaomi.account,product,account,H,A2,remove with cloud group; wizard steps skip when absent (J2),platform,,c9009d01ebf9
+T2,REMOVE,com.xiaomi.simactivate.service,product,account,M,A2,"perms=['INTERNET', 'GET_ACCOUNTS', 'GET_ACCOUNTS_PRIVILEGED', 'READ_PHONE_STATE', 'AUTHENTICATE_ACCOUNTS', 'QUERY_ALL_PACKAGES', 'MANAGE_ACCOUNTS'] acts:[] vhosts(17):['.account.preview.n.xiaomi.net', '.account.xiaomi.com', 'account.preview.n.xiaomi.net', 'account.xiaomi.com', 'act.account.xiaomi.co",platform,,c9009d01ebf9
+T2,DISABLE,com.miui.notification,product,telemetry,M,A2,"perms=['INTERNET'] acts:['BOOT_COMPLETED'] vhosts(2):['privacy.mi.com', 'terms.miui.com']",platform,android.uid.system,c9009d01ebf9
+T2,DISABLE,com.xiaomi.trustservice,product,telemetry,M,A2,"perms=['INTERNET', 'INTERNET'] acts:['CONNECTION_SERVICE_CHANGED_OFF', 'CONNECTION_SERVICE_CHANGED_ON'] vhosts(2):['deviceapi.micloud.xiaomi.net', 'find.api.micloud.xiaomi.net']",platform,android.uid.system,c9009d01ebf9
+T2,DISABLE,com.xiaomi.mi_connect_service,product,telemetry,M,A2,"perms=['INTERNET', 'ACCESS_FINE_LOCATION', 'ACCESS_COARSE_LOCATION', 'REAL_GET_TASKS'] acts:['BOOT_COMPLETED'] vhosts(8):['api.home.mi.com', 'app.xiaomi.com', 'de-idm.api.io.mi.com', 'g.hyperconnect.mi.com', 'i2-idm.api.io.mi.com', 'ru-idm.api.io.mi.com']",platform,android.uid.system,c9009d01ebf9
+T2,DISABLE,com.miui.bugreport,product,telemetry,M,A2,"perms=['INTERNET', 'READ_PHONE_STATE', 'GET_TASKS', 'MIPUSH_RECEIVE', 'QUERY_ALL_PACKAGES', 'MANAGE_ACCOUNTS', 'AUTHENTICATE_ACCOUNTS', 'AD_ID'] acts:['BOOT_COMPLETED', 'CONNECTIVITY_CHANGE', 'ERROR', 'MESSAGER', 'MESSAGE_ARRIVED', 'PING_TIMER', 'RECEIVE_MESSAGE'] vhosts(17):['.account.preview.n.xia",platform,android.uid.system,c9009d01ebf9
+T2,DISABLE,com.milink.service,product,cloud-sync,M,A2,"perms=['MANAGE_ACCOUNTS', 'INTERNET', 'READ_PHONE_STATE', 'ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION', 'ACCESS_BACKGROUND_LOCATION', 'REAL_GET_TASKS', 'QUERY_ALL_PACKAGES', 'GET_TASKS', 'GET_ACCOUNTS_PRIVILEGED', 'REAL_GET_TASKS', 'AUTHENTICATE_ACCOUNTS'] acts:[] vhosts(9):['.account.preview.n.",platform,,c9009d01ebf9
+T2,PATCH,com.miui.screenrecorder,product,telemetry,M,A2,"perms=['QUERY_ALL_PACKAGES', 'INTERNET'] acts:[] vhosts(2):['gallery.i.mi.com', 'privacy.mi.com']",platform,android.uid.system,c9009d01ebf9
+T2,REMOVE,com.mi.android.globalFileexplorer,product,cloud-sync,M,A2,"perms=['INTERNET', 'GET_ACCOUNTS', 'MANAGE_ACCOUNTS', 'GET_ACCOUNTS_PRIVILEGED', 'GET_TASKS', 'QUERY_ALL_PACKAGES', 'READ_PHONE_STATE', 'AUTHENTICATE_ACCOUNTS', 'AD_ID'] acts:['BOOT_COMPLETED', 'CONNECTIVITY_CHANGE', 'RECEIVE', 'REGISTRATION'] vhosts(18):['account.preview.n.xiaomi.net', 'api.account",platform,,c9009d01ebf9
+T2,PATCH,com.miui.screenshot,product,cloud-sync,M,A2,"perms=['READ_PHONE_STATE', 'REAL_GET_TASKS', 'QUERY_ALL_PACKAGES', 'INTERNET'] acts:['BOOT_COMPLETED'] vhosts(9):['api.micloud.preview.n.xiaomi.net', 'fileapi.micloud.xiaomi.net', 'galleryapi.micloud.xiaomi.net', 'i.mi.com', 'micloud.preview.n.xiaomi.net', 'relocationapi.micloud.preview.n.xiaomi.net",platform,,c9009d01ebf9
+T2,REMOVE,com.miui.thirdappassistant,product,push,M,A2,"perms=['INTERNET', 'QUERY_ALL_PACKAGES', 'MIPUSH_RECEIVE'] acts:['CONNECTIVITY_CHANGE', 'ERROR', 'MESSAGE_ARRIVED', 'NotificationClickedActivity', 'PING_TIMER', 'RECEIVE_MESSAGE'] vhosts(3):['cn.register.xmpush.xiaomi.com', 'resolver.msg.xiaomi.net', 'web.vip.miui.com']",other,,d45f076fe23a
+T2,REMOVE,com.miui.weather2,product,telemetry,M,A2,"perms=['INTERNET', 'ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION', 'ACCESS_BACKGROUND_LOCATION'] acts:['BOOT_COMPLETED', 'CONNECTIVITY_CHANGE'] vhosts(12):['cdn.awsind0-fusion.fds.api.mi-img.com', 'globalmiuiweather.firebaseio.com', 'monitor-check.ad.xiaomi.com', 'o2o.api.xiaomi.com', 'open.recomm",other,,d45f076fe23a
+T2,DISABLE,com.miui.android.fashiongallery,product,ads,M,A2,"perms=['INTERNET', 'GET_TASKS', 'AD_ID', 'ACCESS_ADSERVICES_AD_ID'] acts:['BOOT_COMPLETED', 'CONNECTIVITY_CHANGE'] vhosts(0):[]",platform,,c9009d01ebf9
+T2,PATCH,com.miui.notes,product,cloud-sync,M,A2,"perms=['INTERNET', 'MANAGE_ACCOUNTS', 'AUTHENTICATE_ACCOUNTS', 'GET_ACCOUNTS_PRIVILEGED', 'READ_PHONE_STATE'] acts:['BOOT_COMPLETED', 'RECEIVE', 'REGISTRATION'] vhosts(18):['.account.preview.n.xiaomi.net', 'account-staging.ai.xiaomi.com', 'account.preview.n.xiaomi.net', 'act.preview.account.xiaomi.c",platform,,c9009d01ebf9
+T2,PATCH,com.android.deskclock,product,telemetry,M,A2,"perms=['INTERNET'] acts:['BOOT_COMPLETED', 'LOCKED_BOOT_COMPLETED'] vhosts(4):['account.preview.n.xiaomi.net', 'account.xiaomi.com', 'privacy.mi.com', 'www.miui.com']",platform,,c9009d01ebf9
+T2,REMOVE,com.longcheertel.AutoTest,product,telemetry,M,A2,"perms=['INTERNET', 'READ_PHONE_STATE', 'INTERNET', 'ACCESS_FINE_LOCATION'] acts:[] vhosts(0):[]",platform,android.uid.system,c9009d01ebf9
+T2,REMOVE,com.longcheertel.cit,product,telemetry,M,A2,"perms=['READ_PHONE_STATE', 'INTERNET', 'ACCESS_FINE_LOCATION'] acts:['BOOT_COMPLETED'] vhosts(0):[]",platform,android.uid.system,c9009d01ebf9
+T2,REMOVE,com.bsp.logmanager,product,telemetry,M,A2,perms=[] acts:[] vhosts(0):[],platform,android.uid.system,c9009d01ebf9
+T2,REMOVE,com.silead.factorytest,product,other,M,A2,perms=[] acts:[] vhosts(0):[],platform,android.uid.system,c9009d01ebf9
+T2,REMOVE,com.xiaomi.glgm,mi_ext,ads,M,A3,perms=24 sharedUid=- persistent=False comps=55 path=/product/app/GameCenterGlobal/GameCenterGlobal.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.indus.appstore,mi_ext,ads,M,A3,perms=41 sharedUid=- persistent=False comps=122 path=/product/app/IndusAppstore/IndusAppstore.apk,other,,31ea35de2bda
+T2,REMOVE,com.xiaomi.mipicks,mi_ext,ads,H,A3,GetApps; permission definer also in com.miui.system (J5),platform,,c9009d01ebf9
+T2,REMOVE,com.xiaomi.joyose,mi_ext,perfcloud,M,A3,"cloud perf control; system_server null-checks, rebind spam only (J4)",platform,android.uid.system,c9009d01ebf9
+T2,REMOVE,com.xiaomi.payment,mi_ext,ads,M,A3,perms=16 sharedUid=- persistent=False comps=36 path=/product/app/PaymentService_Global/PaymentService_Global.apk,platform,,c9009d01ebf9
+T2,REMOVE,cn.wps.xiaomi.abroad.lite,mi_ext,ads,M,A3,perms=17 sharedUid=- persistent=False comps=120 path=/product/data-app/GlobalWPSLITE/GlobalWPSLITE.apk,other,,643990878d3c
+T2,REMOVE,com.xiaomi.midrop,mi_ext,ads,M,A3,perms=53 sharedUid=- persistent=False comps=137 path=/product/data-app/MIDrop/MIDrop.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.mi.global.shop,mi_ext,ads,M,A3,perms=45 sharedUid=- persistent=False comps=163 path=/product/data-app/MISTORE_OVERSEA/MISTORE_OVERSEA.apk,other,,ff639e68b0fe
+T2,REMOVE,com.android.soundrecorder,mi_ext,ads,M,A3,perms=60 sharedUid=- persistent=False comps=67 path=/product/data-app/MIUISoundRecorderTargetSdk30Global/MIUISoundRecorderTargetSdk30Global.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.xiaomi.calendar,mi_ext,ads,M,A3,perms=61 sharedUid=- persistent=False comps=154 path=/product/data-app/MiuiCalendarGlobal/MiuiCalendarGlobal.apk,other,,d45f076fe23a
+T2,REMOVE,com.xiaomi.scanner,mi_ext,ads,M,A3,perms=23 sharedUid=- persistent=False comps=20 path=/product/data-app/MiuiScanner/MiuiScanner.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.xiaomi.smarthome,mi_ext,ads,M,A3,perms=83 sharedUid=- persistent=False comps=847 path=/product/data-app/SmartHome/SmartHome.apk,other,,b031fe98a4db
+T2,REMOVE,com.mi.appfinder,mi_ext,ads,M,A3,perms=50 sharedUid=- persistent=False comps=65 path=/product/priv-app/AppFinder/AppFinder.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.mi.globalminusscreen,mi_ext,ads,M,A3,perms=58 sharedUid=- persistent=False comps=128 path=/product/priv-app/MIUIGlobalMinusScreenWidget/MIUIGlobalMinusScreenWidget.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.miui.yellowpage,mi_ext,ads,M,A3,perms=39 sharedUid=- persistent=False comps=12 path=/product/priv-app/MIUIYellowPageGlobal/MIUIYellowPageGlobal.apk,other,,e4431422e25a
+T2,REMOVE,com.xiaomi.aiservice,product,ads,M,A3,perms=12 sharedUid=- persistent=False comps=39 path=/priv-app/AIService/AIService.apk,other,,d45f076fe23a
+T2,REMOVE,com.miui.backup,product,cloud-sync,M,A3,perms=80 sharedUid=android.uid.backup persistent=False comps=27 path=/priv-app/Backup/Backup.apk,platform,android.uid.backup,c9009d01ebf9
+T2,REMOVE,com.android.providers.downloads.ui,product,telemetry,M,A3,disguised ad app; DocumentsUI serves VIEW_DOWNLOADS (J6),other,android.media,5e1299153a37
+T2,REMOVE,com.miui.extraphoto,product,ads,M,A3,perms=20 sharedUid=- persistent=False comps=20 path=/priv-app/ExtraPhotoGlobal/ExtraPhotoGlobal.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.xiaomi.aicr,product,ads,M,A3,perms=117 sharedUid=- persistent=False comps=129 path=/priv-app/MIUIAICR/MIUIAICR.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.miui.cleaner,product,ads,M,A3,perms=58 sharedUid=- persistent=False comps=99 path=/priv-app/MIUICleanMasterGlobal-cleaner/MIUICleanMasterGlobal-cleaner.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.miui.cloudbackup,product,cloud-sync,M,A3,consumer of PROVISION_COMPLETE broadcast; guarded (J2/J5),platform,,c9009d01ebf9
+T2,REMOVE,com.miui.gallery,product,ads,M,A3,perms=87 sharedUid=- persistent=False comps=212 path=/priv-app/MIUIGalleryGlobal/MIUIGalleryGlobal.apk,platform,,c9009d01ebf9
+T2,REMOVE,com.miui.player,product,ads,M,A3,perms=55 sharedUid=- persistent=False comps=248 path=/priv-app/MIUIMusicGlobal/MIUIMusicGlobal.apk,platform,,c9009d01ebf9
+T2,PATCH,com.miui.securitycenter,product,security-keep,H,A3,"verification agent + permission UI: never remove; disable ad/report components, block hosts",platform,android.uid.system,c9009d01ebf9
+T2,DISABLE,com.miui.misightservice,system_ext,telemetry,M,A4,pure telemetry (J4),platform,android.uid.system,c9009d01ebf9
+T2,PATCH,com.miui.powerkeeper,system_ext,perfcloud,H,A4,"KEEP app (thermal brightness, 13 dependents); disable CloudUpdateJobService, block host (J4)",platform,android.uid.system,c9009d01ebf9
+T2,DISABLE,com.miui.audiomonitor,system_ext,telemetry,M,A4,"uid.system, INTERNET, 43 host strings, trackers analytics/sentry (SDK strings)",platform,android.uid.system,c9009d01ebf9
+T2,STUB,com.xiaomi.mtb,system_ext,telemetry,M,A4,"uid.system, INTERNET, READ_PHONE_STATE, BOOT; hosts fds.api.xiaomi.com cdn.fds.api.xiaomi.com (file upload)",platform,android.uid.system,c9009d01ebf9
+T2,DISABLE,com.xiaomi.cameramind,system_ext,telemetry,M,A4,own uid android.uid.cameramind; INTERNET; hosts cdn.fds.api.xiaomi.com files.fds.api.xiaomi.com (model download),platform,android.uid.cameramind,c9009d01ebf9
+T2,STUB,com.xiaomi.micloud.sdk,system_ext,cloud-sync,M,A4,"RtMiCloudSDK; no INTERNET itself; hosts i.mi.com, micloudsync endpoints; defines com.xiaomi.permission.CLOUD_MANAGER (35 perms)",platform,,c9009d01ebf9
+T2,DISABLE,com.xiaomi.entitlement.o2,system_ext,telemetry,M,A4,uid.phone; INTERNET READ_PRIVILEGED_PHONE_STATE BOOT; carrier entitlement (O2); cust_features lists it,platform,android.uid.phone,c9009d01ebf9
+T2,STUB,com.android.intentresolver,system_ext,telemetry,M,A4,"DISGUISED-candidate: AOSP name but path MiIntentResolver; INTERNET, PACKAGE_USAGE_STATS, QUERY_ALL_PACKAGES, BOOT; hosts tracking.eu.miui.com sdkconfig.*.xiaomi.com api.ad.xiaomi.com (Xiaomi analytics SDK)",platform,,c9009d01ebf9
+T2,PATCH,com.android.htmlviewer,system,telemetry,M,A5,"disguised cloud-control client: keep provider+permission, disable upload/boot/OTA components (J6)",other,,d45f076fe23a
+T2,DISABLE,system_ext:/etc/init/init.misight.rc:misight,system_ext,telemetry,M,A6,"rc: /system_ext/bin/misight root, class main, groups readproc media_rw, seclabel u:r:misight:s0; ELF strings com.misight*, persist.sys.miui.sno; libmisight.so loaded also by odm citsensorservice, tidad, mlipayd, vsimd, fidoca, hypsys_vendor, millet_monitor",n/a,,
+T2,PATCH,GATE-6 captive portal fallback http://connect.rom.miui.com/generate_204,system_ext,other,M,A6,miui-wifi-service.jar and miui-framework.jar urls: http://connect.rom.miui.com/generate_204 alongside connectivitycheck.gstatic.com/generate_204,n/a,,
+T2,PATCH,system_ext:/framework/miui-wifi-service.jar,system_ext,other,M,A6,"hosts xiaomi.net, com.miui.analytics/bugreport; connect.rom.miui.com url",n/a,,
+T2,PATCH,prop:ro.miui.enable_cloud_verify,product,security-keep,M,D,set true in system/build.prop and system_ext/build.prop; name says cloud verification of apps/installs,n/a,,
+T2,PATCH,prop:ro.miui.customized_clientid,mi_ext,ads,M,D,mi_ext build.prop =2; init.miui.google_revenue_share_v4_tier2.rc then sets ro.com.miui.rsa.search/feature=tier2 and ro.com.google.clientidbase=android-xiaomi (+ .ms/.vs/.tx/.pg android-xiaomi-terr1-rso2/deo2),n/a,,
+T2,PATCH,prop:ro.miui.pai.preinstall.path,mi_ext,ads,M,D,=/data/miui/pai/ ; PAI = preinstall app installer of promoted apps,n/a,,
+T2,REMOVE,"storsec,qweslicstore_ab,toolsfv,rtice,logfs,xbl_ramdump_ab,xbl_sc_test_mode,rescue",firmware,security-keep,M,F,flash_all.bat,n/a,,
+T2,PATCH,erase boot_ab,cmd,security-keep,M,F,flash_all.bat,n/a,,
+T2,PATCH,vbmeta_a,avb,security-keep,M,F,avb\vbmeta.txt RI 0 loc 0; chains vbmeta_system loc2 recovery loc1,n/a,,
+T2,PATCH,vbmeta_system_a,avb,security-keep,M,F,avb\vbmeta_system.txt RI 1790812800,n/a,,
+T2,PATCH,super,super,security-keep,M,F,6.65GB sparse; max-download-size 370147328,n/a,,
+T2,DISABLE,com.miui.powerkeeper/.cloudcontrol.CloudUpdateJobService,system_ext,perfcloud,M,J4,"JobScheduler persisted job, scheduled on BOOT (CloudUpdateReceiver.java:244-247; CloudUpdateJobService.java:40-55)",n/a,,
+T2,PATCH,com.xiaomi.hypercomm:OneTrackProxy,system_ext,telemetry,M,J6,OneTrackProxy.java:43-136 builds OneTrack SDK + custom DAU events; network enabled only if isProvisionClauseAgreed,n/a,,
+T3,REMOVE,com.xiaomi.xmsf,product,push,M,A2,MiPush; owner OK; 12 packages carry own SDK,platform,,c9009d01ebf9
+T3,REMOVE,com.xiaomi.xmsfkeeper,product,push,L,A2,MiPush keeper,platform,,c9009d01ebf9
+T3,HOLD,com.miui.guardprovider,product,security-keep,H,A2,verifier rejects path-based installs without it (J3); keep until tested,platform,,c9009d01ebf9
+T3,UNSURE,com.miui.securityadd,product,telemetry,H,A2,game booster add-on with Firebase; Settings/Security Center reference it,platform,,c9009d01ebf9
+T3,UNSURE,com.miui.securitycore,product,telemetry,H,A2,disguised (ad/experiment hosts); dependencies unchecked,platform,android.uid.system,c9009d01ebf9
+T3,PATCH,GATE-3 (app install verification),product,other,H,A3,"SecurityCenter holds PACKAGE_VERIFICATION_AGENT + PackageVerificationReceiver(INSTALL_PACKAGES perm), AdbInstallActivity/AdbInstallVerifyActivity/UnknownSourceVerifyActivity, VirusAutoUpdateJobService, GuardService; hosts api.sec.intl.miui.com/GuardProviderV2/GetResourceZipFile,/data/check,data.sec.",n/a,,
+T3,HOLD,com.miui.daemon,system_ext,telemetry,M,A4,"consumes cloud data, sets persist.sys.*; decide after Joyose/PowerKeeper test (J4)",platform,android.uid.system,c9009d01ebf9
+T3,STUB,com.xiaomi.bluetooth,system_ext,telemetry,H,A4,"uid.bluetooth; INTERNET+BOOT; 64 perms; 100+ hosts incl account.xiaomi.com, i.mi.com micloud; defines 8 perms",other,android.uid.bluetooth,9ce631cbfb2d
+T3,REMOVE,com.xiaomi.finddevice,system_ext,account,H,A4,"persistent, in core-apps list, Settings factory-reset check queries it (J5): test as DISABLE first",platform,android.uid.finddevice,c9009d01ebf9
+T3,STUB,com.lbe.security.miui,system_ext,telemetry,H,A4,AuthManager (permission manager); INTERNET QUERY_ALL_PACKAGES READ_PRIVILEGED_PHONE_STATE BOOT; hosts api.sec.miui.com auth-engine.sec.intl.miui.com data.sec.intl.miui.com,platform,,c9009d01ebf9
+T3,PATCH,com.android.systemui,system_ext,security-keep,H,A4,MiuiSystemUI; INTERNET GET_ACCOUNTS PACKAGE_USAGE_STATS; hosts api.ad.xiaomi.com gallery.i.mi.com home.mi.com,platform,android.uid.systemui,c9009d01ebf9
+T3,PATCH,com.android.settings,system_ext,security-keep,H,A4,"uid.system; 207 perms; hosts account.xiaomi.com micloud i.mi.com; 520 exported comps; cloud receivers UpdateReleaseDataReceive/UpdateReleaseDataTransferReceiver, MiuiUpdatePluginsReceiver, SettingsCloudBackupService, mqsas.PrivacyDialogActivity",platform,android.uid.system,c9009d01ebf9
+T3,PATCH,com.android.phone,system,telemetry,H,A5,"169 perms; exported com.xiaomi.phone.service.FirewallService; ModemDebugService/ModemDumpCollectService; trackers joyose,mistat,umeng,analytics; hosts api.ad.xiaomi.com,tracking.*.miui.com,sdkconfig.*.xiaomi.com,satellite.mi.com",platform,android.uid.phone,c9009d01ebf9
+T3,PATCH,system_ext:/framework/miui-framework.jar,system_ext,telemetry,H,A6,"jar_endpoints: hosts com.miui.analytics, com.miui.cloudservice, com.miui.bugreport; trackers mistat, joyose, xmpush, alipay, analytics; url http://connect.rom.miui.com/generate_204",n/a,,
+T3,PATCH,system_ext:/framework/miui-services.jar,system_ext,telemetry,H,A6,"hosts com.xiaomi.net*, com.miui.analytics, com.miui.bugreport, com.miui.cloudservice; trackers appsflyer, bugly, crashlytics, firebase, mistat, joyose, xmpush; url uagnss.allystar.com ephemeris (contains an embedded credential-like token string; not reproduced)",n/a,,
+T3,REMOVE,"xbl_ab,xbl_config_ab",firmware,security-keep,H,F,flash_all.bat flash xbl_ab; fw\xbl_s.melf.txt AntiRollbackMgr.cpp,n/a,,
+T3,REMOVE,abl_ab,firmware,security-keep,H,F,flash_all.bat flash abl_ab; in crclist,n/a,,
+T3,REMOVE,"tz_ab,hyp_ab,devcfg_ab",firmware,security-keep,H,F,fw\tz.mbn.txt qsee_is_sw_fuse_blown / Anti-rollback check failed,n/a,,
+T3,REMOVE,"keymaster_ab,uefi_ab,uefisecapp_ab,featenabler_ab,qupfw_ab",firmware,security-keep,H,F,flash_all.bat both slots,n/a,,
+T3,REMOVE,"shrm_ab,aop_ab,aop_config_ab,cpucp_ab",firmware,security-keep,H,F,flash_all.bat,n/a,,
+T3,REMOVE,"multiimgoem_ab,multiimgqti_ab,imagefv_ab",firmware,security-keep,H,F,flash_all.bat erase+flash,n/a,,
+T3,REMOVE,flash partition:2 gpt_both2.bin,gpt,security-keep,H,F,flash_all.bat,n/a,,
+T3,REMOVE,"apdp,ddr,cdt,frp,persist,modemst1,modemst2,fsg,fsc,keystore,devinfo,secdata",edl,security-keep,H,F,rawprogram0-5.xml labels,n/a,,
+T3,REMOVE,flash crclist / sparsecrclist,pkg,security-keep,H,F,flash_gen_crc_list.py CRCs of ORIGINAL images; split 353MiB; super 20 parts,n/a,,
+T3,REMOVE,oem lock,cmd,security-keep,H,F,flash_all_lock.bat,n/a,,
+T3,REMOVE,oem erase-vb-index,cmd,security-keep,H,F,flash_all.bat commented line,n/a,,
+OPT,REMOVE,com.google.android.gms.location.history,product,telemetry,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,8a2978953e44
+OPT,REMOVE,com.google.android.apps.docs,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,f0fd6c5b410f
+OPT,REMOVE,com.google.android.gm,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,
+OPT,REMOVE,com.google.android.apps.maps,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,com.google.android.apps.maps,
+OPT,REMOVE,com.google.android.apps.tachyon,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,
+OPT,REMOVE,com.google.android.apps.photos,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,
+OPT,REMOVE,com.google.android.youtube,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,
+OPT,REMOVE,com.google.android.apps.youtube.music,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,
+OPT,REMOVE,com.google.android.videos,product,other,L,A2,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,
+OPT,REMOVE,com.google.android.printservice.recommendation,system,other,L,A5,"Google app: optional, owner decides (not Xiaomi telemetry)",other,,7ef3eedb4f48

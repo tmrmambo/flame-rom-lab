@@ -1,0 +1,2 @@
+/home/runner/jw/GooglePartnerSetup/resources/res/values-en-rGB/strings.xml:12:    <string name="common_google_play_services_unsupported_text">%1$s won\'t run without Google Play services, which are not supported by your device.</string>
+/home/runner/jw/GooglePartnerSetup/resources/res/values/strings.xml:13:    <string name="common_google_play_services_unsupported_text">%1$s won\'t run without Google Play services, which are not supported by your device.</string>

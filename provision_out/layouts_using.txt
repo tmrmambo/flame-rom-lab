@@ -1,0 +1,3 @@
+/home/runner/pv/resources/res/values-zh-rCN/strings.xml
+/home/runner/pv/resources/res/values/strings.xml
+/home/runner/pv/resources/res/values/public.xml

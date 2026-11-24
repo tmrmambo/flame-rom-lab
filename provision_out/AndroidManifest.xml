@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sharedUserId="android.uid.system"
+    android:versionCode="36"
+    android:versionName="16"
+    android:compileSdkVersion="36"
+    android:compileSdkVersionCodename="16"
+    package="com.android.provision"
+    platformBuildVersionCode="36"
+    platformBuildVersionName="16">
+    <uses-sdk
+        android:minSdkVersion="36"
+        android:targetSdkVersion="36"/>
+    <original-package android:name="com.android.provision"/>
+    <permission
+        android:name="android.provision.permission.SEND_PROVISION_COMPLETE_BROADCAST"
+        android:protectionLevel="signatureOrSystem"/>
+    <permission
+        android:name="com.android.provision.provider.READ_PROVIDER"
+        android:protectionLevel="signatureOrSystem"/>
+    <permission
+        android:name="com.android.provision.provider.WRITE_PROVIDER"
+        android:protectionLevel="signatureOrSystem"/>
+    <protected-broadcast android:name="android.provision.action.PROVISION_START"/>
+    <protected-broadcast android:name="android.provision.action.PROVISION_COMPLETE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="miui.os.permisson.INIT_MIUI_ENVIRONMENT"/>
+    <uses-permission android:name="android.provision.permission.SEND_PROVISION_COMPLETE_BROADCAST"/>
+    <uses-permission android:name="miui.permission.USE_INTERNAL_GENERAL_API"/>
+    <uses-permission android:name="android.permission.SHUTDOWN"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.miui.tsmclient.permission.INVOKE_TSMCLIENT"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="com.miui.huanji.receivebroadcast"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <queries>
+        <package android:name="com.miui.android.fashiongallery"/>
+    </queries>
+    <uses-permission android:name="com.xiaomi.permission.BIND_CONTINUITY_SERVICE"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <uses-permission android:name="com.android.settings.permission.PROVISION_ENABLE_ACCESSIBILITY"/>
+    <original-package android:name="com.android.provision"/>
+    <protected-broadcast android:name="android.provision.action.PROVISION_START"/>
+    <protected-broadcast android:name="android.provision.action.PROVISION_COMPLETE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application
+        android:theme="@style/MainTheme"
+        android:label="@string/app_name"
+        android:name="com.android.provision.ProvisionApplication"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:extractNativeLibs="true"
+        android:defaultToDeviceProtectedStorage="true"
+        android:directBootAware="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:usesNonSdkApi="true">
+        <property
+            android:name="android.view.PROPERTY_MIUI_SMOOTH_CORNER_ENABLED"
+            android:value="true"/>
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait"/>
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.2"/>
+        <meta-data
+            android:name="provision.carousel.message.version"
+            android:value="1"/>
+        <meta-data
+            android:name="miui.screenOrientation"
+            android:value="4.portrait"/>
+        <meta-data
+            android:name="miui.supportFlipFullScreen"
+            android:value="0"/>
+        <activity
+            android:name="com.android.provision.activities.DefaultActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"
+            android:immersive="true"
+            android:directBootAware="true"
+            android:enableOnBackInvokedCallback="false">
+            <meta-data
+                android:name="miui.supportFlipFullScreen"
+                android:value="0"/>
+            <intent-filter>
+                <action android:name="com.android.provision.global.STARTUP"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.provision.activities.LanguagePickerActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:theme="@style/FlipPlaceHolderTheme"
+            android:name="com.android.provision.activities.SubScreenActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <meta-data
+                android:name="miui.rear.policy"
+                android:value="1"/>
+        </activity>
+        <activity
+            android:name="com.android.provision.activities.PlaceHolderActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <meta-data
+                android:name="miui.supportFlipFullScreen"
+                android:value="0"/>
+        </activity>
+        <activity
+            android:name="com.android.provision.activities.InputMethodActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.SimCardDetectionActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.MultiSimSettingsActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.OtherSettingsActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.NavigationModePickerActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <meta-data
+                android:name="switchanimationtype"
+                android:value="true"/>
+        </activity>
+        <activity
+            android:name="com.android.provision.activities.RecentTaskStyleActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.CarouselSettingActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.LocationInformationActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.CMTermsActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.CongratulationActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"
+            android:enableOnBackInvokedCallback="false"/>
+        <activity
+            android:name="com.android.provision.activities.InputMethodLicenseActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.TermsActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.LocalePickerActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.GoogleAccountActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.FingerprintActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <intent-filter>
+                <action android:name="com.android.provision.global.SECOND.PRE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.provision.activities.CUTermsActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.HomeSettingsActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.BootVideoActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.FontStyleActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:theme="@style/ActivityTheme"
+            android:label="@string/other_settings_user_experience_summary_index"
+            android:name="com.android.provision.activities.SendUsageAndDiagnosticDataActvity"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <activity
+            android:name="com.android.provision.activities.KindTipActivity"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc"/>
+        <receiver
+            android:name="com.android.provision.TimeReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.provision.activities.TimeReceiver"/>
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="com.android.provision.global.CheckWifiActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <intent-filter>
+                <action android:name="com.android.provision.global.MIUI_CHECK_WIFI"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.provision.global.NoPairingActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <intent-filter>
+                <action android:name="com.android.provision.global.MIUI_NO_PAIRING"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.provision.global.HavePairingActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <intent-filter>
+                <action android:name="com.android.provision.global.MIUI_HAVE_PAIRING"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.provision.global.OemPostActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <intent-filter>
+                <action android:name="com.android.setupwizard.OEM_POST_SETUP"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.provision.global.GlobalDefaultActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <intent-filter>
+                <action android:name="com.android.provision.global.SECOND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.provision.global.SplitAndReorganizedFlow"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:configChanges="fontScale|layoutDirection|keyboardHidden|locale|mnc|mcc">
+            <intent-filter>
+                <action android:name="com.android.provision.global.PRE_SECOND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.android.provision.global.EnableDataReceiver"/>
+        <receiver
+            android:name="com.android.provision.global.PartnerReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.setupwizard.action.PARTNER_CUSTOMIZATION"/>
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="com.android.provision.provider.ProvisionProvider"
+            android:readPermission="com.android.provision.provider.READ_PROVIDER"
+            android:writePermission="com.android.provision.provider.WRITE_PROVIDER"
+            android:exported="true"
+            android:authorities="com.android.provision.provider"/>
+        <service
+            android:name="com.android.provision.ProvisionAnimService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="miui.intent.action.OOBSERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.android.provision.global.ProvisionBackIconService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="miui.intent.action.SHOW_BACKSERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.android.provision.StatusBarControllerService"
+            android:enabled="true"
+            android:exported="true"/>
+        <service
+            android:name="com.android.provision.CoverScreenService"
+            android:enabled="true"
+            android:exported="false"/>
+        <meta-data
+            android:name="miuixpreference"
+            android:value="3.1"/>
+        <meta-data
+            android:name="os_private_label"
+            android:value="PRIVATE_OS030"/>
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false"/>
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false"/>
+        <meta-data
+            android:name="recyclerview_card"
+            android:value="1"/>
+        <meta-data
+            android:name="cardview"
+            android:value="1"/>
+        <meta-data
+            android:name="appcompat"
+            android:value="3.1"/>
+        <meta-data
+            android:name="graphics"
+            android:value="2"/>
+        <meta-data
+            android:name="miuixbasewidget"
+            android:value="1"/>
+        <meta-data
+            android:name="miuixstretchablewidget"
+            android:value="1"/>
+        <meta-data
+            android:name="slidingwidget"
+            android:value="1"/>
+        <meta-data
+            android:name="viewpager"
+            android:value="2"/>
+        <meta-data
+            android:name="popupwidget"
+            android:value="1"/>
+        <meta-data
+            android:name="androidbasewidget"
+            android:value="1"/>
+        <meta-data
+            android:name="springback"
+            android:value="3.1"/>
+        <meta-data
+            android:name="pickerwidget"
+            android:value="1"/>
+        <meta-data
+            android:name="flexible"
+            android:value="1"/>
+        <meta-data
+            android:name="viewpager2"
+            android:value="2"/>
+        <meta-data
+            android:name="recyclerview"
+            android:value="2"/>
+        <meta-data
+            android:name="spring"
+            android:value="1"/>
+        <meta-data
+            android:name="recyclerview_animator"
+            android:value="2"/>
+        <meta-data
+            android:name="nest"
+            android:value="2"/>
+        <meta-data
+            android:name="dynamicoverscroller"
+            android:value="2"/>
+        <meta-data
+            android:name="pinyin"
+            android:value="1"/>
+        <meta-data
+            android:name="transition"
+            android:value="1"/>
+        <meta-data
+            android:name="visualcheck"
+            android:value="1"/>
+        <meta-data
+            android:name="folme"
+            android:value="2"/>
+        <meta-data
+            android:name="animation"
+            android:value="1"/>
+        <meta-data
+            android:name="haptic"
+            android:value="1"/>
+        <meta-data
+            android:name="smooth"
+            android:value="1"/>
+        <meta-data
+            android:name="core"
+            android:value="2"/>
+        <meta-data
+            android:name="devicebaseinfo"
+            android:value="1"/>
+        <meta-data
+            android:name="theme"
+            android:value="1"/>
+    </application>
+</manifest>

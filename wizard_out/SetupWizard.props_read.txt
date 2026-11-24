@@ -1,0 +1,1 @@
+/home/runner/jw/SetupWizard/sources/com/google/android/setupwizard/SetupWizardEnterTradeInModeReceiver.java:24:        if (SystemProperties.getInt("persist.adb.tradeinmode", 0) != 2) {

@@ -75,6 +75,45 @@ jobs:
           compression-level: 0
           retention-days: 3
 
+  jadx2:
+    if: ${{ inputs.mode == 'jadx2' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ci/free_space.sh
+      - run: bash ci/setup_tools.sh
+      - name: JADX second target set
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/jadx_job.sh "$URL" analysis/jadx_targets2.txt jadx_out2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jadx2
+          path: jadx_out2.tar
+          compression-level: 0
+          retention-days: 3
+
+  recovery:
+    if: ${{ inputs.mode == 'recovery' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash ci/setup_tools.sh
+      - name: Recovery strings
+        env:
+          URL: ${{ inputs.firmware_url }}
+        run: bash ci/recovery_job.sh "$URL"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recovery
+          path: recovery_out.tar.gz
+          compression-level: 0
+          retention-days: 3
+
   wizard:
     if: ${{ inputs.mode == 'wizard' }}
     runs-on: ubuntu-latest

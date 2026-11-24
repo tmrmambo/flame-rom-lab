@@ -1,0 +1,12 @@
+/home/runner/pv/resources/res/values-zh-rCN/strings.xml:784:    <string name="software_account_mismatch">账号校验</string>
+/home/runner/pv/resources/res/values-zh-rCN/strings.xml:785:    <string name="software_account_mismatch_summary">正在进行账号校验…</string>
+/home/runner/pv/resources/res/values-zh-rCN/strings.xml:786:    <string name="software_version_mismatch">软件版本不匹配</string>
+/home/runner/pv/resources/res/values-zh-rCN/strings.xml:787:    <string name="software_version_mismatch_summary">该设备与软件版本不匹配，有不可知风险，请联系经销商解决。</string>
+/home/runner/pv/resources/res/values/strings.xml:911:    <string name="software_account_mismatch">Account verification</string>
+/home/runner/pv/resources/res/values/strings.xml:912:    <string name="software_account_mismatch_summary">Verifying account…</string>
+/home/runner/pv/resources/res/values/strings.xml:913:    <string name="software_version_mismatch">Unsupported software</string>
+/home/runner/pv/resources/res/values/strings.xml:914:    <string name="software_version_mismatch_summary">This software version isn\'t supported by your device. Using it may pose security risks. Contact your sales agent for details.</string>
+/home/runner/pv/resources/res/values/public.xml:7845:    <public type="string" name="software_account_mismatch" id="0x7f100395" />
+/home/runner/pv/resources/res/values/public.xml:7846:    <public type="string" name="software_account_mismatch_summary" id="0x7f100396" />
+/home/runner/pv/resources/res/values/public.xml:7847:    <public type="string" name="software_version_mismatch" id="0x7f100397" />
+/home/runner/pv/resources/res/values/public.xml:7848:    <public type="string" name="software_version_mismatch_summary" id="0x7f100398" />

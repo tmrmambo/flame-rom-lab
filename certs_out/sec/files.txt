@@ -1,0 +1,17 @@
+/mnt/lab/system_ext/etc/selinux/system_ext_mac_permissions.xml
+/mnt/lab/system_ext/etc/selinux/system_ext_seapp_contexts
+/mnt/lab/odm/etc/selinux/odm_mac_permissions.xml
+/mnt/lab/odm/etc/selinux/odm_seapp_contexts
+/mnt/lab/system/system/bin/keystore2
+/mnt/lab/system/system/bin/keystore_cli_v2
+/mnt/lab/system/system/etc/selinux/plat_mac_permissions.xml
+/mnt/lab/system/system/etc/selinux/plat_seapp_contexts
+/mnt/lab/system/system/etc/init/keystore2.rc
+/mnt/lab/system/system/etc/security/otacerts.zip
+/mnt/lab/system/system/etc/security/fsverity/fsverity-release.x509.der
+/mnt/lab/product/etc/security/fsverity/gms_fsverity_cert.der
+/mnt/lab/product/etc/security/fsverity/play_store_fsi_cert.der
+/mnt/lab/product/etc/selinux/product_mac_permissions.xml
+/mnt/lab/product/etc/selinux/product_seapp_contexts
+/mnt/lab/vendor/etc/selinux/vendor_mac_permissions.xml
+/mnt/lab/vendor/etc/selinux/vendor_seapp_contexts

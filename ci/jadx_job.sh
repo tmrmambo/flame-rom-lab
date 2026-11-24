@@ -5,14 +5,14 @@
 set -uo pipefail
 HERE="$PWD"; BIN="$HOME/lab-bin"; export PATH="$BIN:$PATH"
 bash "$HERE/ci/prep_mount.sh" "$1" || exit 1
-OUT="$HERE/jadx_out"; mkdir -p "$OUT" "$HOME/jx"
+OUT="$HERE/${3:-jadx_out}"; mkdir -p "$OUT" "$HOME/jx"
 export JAVA_OPTS="-Xmx10g"
 SUM="$OUT/_summary.tsv"; echo -e "label\ttag\tpath\tsize\tseconds\texit\tjava_files\tout_mb" > "$SUM"
 
 # order: smallest first so most results exist early
 while IFS='|' read -r part path tag; do
   f="/mnt/lab/$part$path"; [ -f "$f" ] && echo -e "$(stat -c %s "$f")\t$part\t$path\t$tag" || echo "MISSING $f" >&2
-done < "$HERE/analysis/jadx_targets.txt" | sort -n > "$HOME/jx/order.txt"
+done < "$HERE/${2:-analysis/jadx_targets.txt}" | sort -n > "$HOME/jx/order.txt"
 
 while IFS=$'\t' read -r size part path tag; do
   f="/mnt/lab/$part$path"
@@ -42,4 +42,4 @@ fi
 for r in /mnt/lab/system_ext/etc/init/*mcd*.rc /mnt/lab/system_ext/etc/init/*.rc; do grep -l 'mcd' "$r" 2>/dev/null; done | sort -u | head -n 5 > "$OUT/mcd.rc_files.txt"
 cat "$SUM"
 du -sh "$OUT"
-tar -cf jadx_out.tar -C "$HERE" jadx_out && ls -l jadx_out.tar
+tar -cf "${3:-jadx_out}.tar" -C "$HERE" "${3:-jadx_out}" && ls -l "${3:-jadx_out}.tar"

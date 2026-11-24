@@ -12,7 +12,7 @@ if ! command -v apksigner >/dev/null 2>&1; then
 fi
 command -v apksigner || { echo "NO APKSIGNER"; exit 1; }
 
-python3 - <<'PY'
+sudo env "PATH=$PATH" python3 - <<'PY'
 import os, re, subprocess, csv
 from concurrent.futures import ThreadPoolExecutor
 ROOT='/mnt/lab'; OUT=os.environ.get('OUT_DIR') or os.path.join(os.getcwd(),'certs_out')

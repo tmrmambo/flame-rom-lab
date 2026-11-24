@@ -53,4 +53,5 @@ def main():
     print('hits', n, 'problems', bad)
 
 
-main()
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,16 @@
+### NON-HLOS.bin
+%s(): unsupported version(%d) & device(%d)
+2904,I,WMI_BPF_GET_VDEV_STATS_CMDID not supported from APF V3 %x
+DIAG_CTRL_MSG_CLIENT_SETTINGS unsupported version = %d
+ELEM-WISE software job %u is not supported
+Unknown/unsupported version: %x
+bpf_offload.c:WMI_BPF_GET_VDEV_STATS_CMDID not supported from APF V3 %x
+capi_soft_vol_utils.cpp: ADSP: CAPI SOFT_VOL:[%lX] Set property for INPUT MEDIA FORMATfailed due to unsupported version %lu
+### boot.img
+4overlayfs: metacopy file '%pd' has unsupported version
+Unsupported firmware endianness
+Unsupported version
+### vmlinux-selfbuild
+4overlayfs: metacopy file '%pd' has unsupported version
+Unsupported firmware endianness
+Unsupported version

@@ -86,6 +86,7 @@ jobs:
       - name: Find the Unsupported-software text
         env:
           URL: ${{ inputs.firmware_url }}
+          SKIP_IMG: '1'
         run: bash ci/strings_job.sh "$URL"
       - uses: actions/upload-artifact@v4
         if: always()

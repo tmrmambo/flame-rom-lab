@@ -1,0 +1,144 @@
+[08:20:18] download
+[08:21:22] firmware image strings
+[08:21:49] super -> partitions
+[08:22:23] mounted mi_ext
+[08:22:23] mounted odm
+[08:22:25] mounted product
+[08:22:25] mounted system
+[08:22:25] mounted system_dlkm
+[08:22:25] mounted system_ext
+[08:22:25] mounted vendor
+[08:22:25] mounted vendor_dlkm
+[08:22:25] resource scan
+apks 412
+apks 412
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; from multiprocessing.forkserver import main; main(11, 12, ['__main__'], sys_argv=sys.argv[1:], **{'sys_path': ['/home/runner/work/flame-rom-lab/flame-rom-lab/ci', '/usr/lib/python314.zip', '/usr/lib/python3.14', '/usr/lib/python3.14/lib-dynload', '/usr/local/lib/python3.14/dist-packages', '/usr/lib/python3/dist-packages'], 'main_path': '/home/runner/work/flame-rom-lab/flame-rom-lab/ci/res_scan.py', 'authkey_r': 14})
+                                                             ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/forkserver.py", line 230, in main
+    spawn.import_main_path(main_path)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/spawn.py", line 307, in import_main_path
+    _fixup_main_from_path(main_path)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                                  run_name="__mp_main__")
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/runner/work/flame-rom-lab/flame-rom-lab/ci/res_scan.py", line 56, in <module>
+    main()
+    ~~~~^^
+  File "/home/runner/work/flame-rom-lab/flame-rom-lab/ci/res_scan.py", line 46, in main
+    for path, hits, err in ex.map(scan, apks):
+                           ~~~~~~^^^^^^^^^^^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 850, in map
+    results = super().map(partial(_process_chunk, fn),
+                          itertools.batched(zip(*iterables), chunksize),
+                          timeout=timeout,
+                          buffersize=buffersize)
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 618, in map
+    fs = [self.submit(fn, *args) for args in zipped_iterables]
+          ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 816, in submit
+    self._adjust_process_count()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 775, in _adjust_process_count
+    self._spawn_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 793, in _spawn_process
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/context.py", line 306, in _Popen
+    return Popen(process_obj)
+  File "/usr/lib/python3.14/multiprocessing/popen_forkserver.py", line 35, in __init__
+    super().__init__(process_obj)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/popen_forkserver.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+  File "/usr/lib/python3.14/multiprocessing/spawn.py", line 164, in get_preparation_data
+    _check_not_importing_main()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/spawn.py", line 140, in _check_not_importing_main
+    raise RuntimeError('''
+    ...<16 lines>...
+    ''')
+RuntimeError: 
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+
+        The "freeze_support()" line can be omitted if the program
+        is not going to be frozen to produce an executable.
+
+        To fix this issue, refer to the "Safe importing of main module"
+        section in https://docs.python.org/3/library/multiprocessing.html
+        
+Traceback (most recent call last):
+  File "/home/runner/work/flame-rom-lab/flame-rom-lab/ci/res_scan.py", line 56, in <module>
+    main()
+    ~~~~^^
+  File "/home/runner/work/flame-rom-lab/flame-rom-lab/ci/res_scan.py", line 46, in main
+    for path, hits, err in ex.map(scan, apks):
+                           ~~~~~~^^^^^^^^^^^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 850, in map
+    results = super().map(partial(_process_chunk, fn),
+                          itertools.batched(zip(*iterables), chunksize),
+                          timeout=timeout,
+                          buffersize=buffersize)
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 618, in map
+    fs = [self.submit(fn, *args) for args in zipped_iterables]
+          ~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 816, in submit
+    self._adjust_process_count()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 775, in _adjust_process_count
+    self._spawn_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/process.py", line 793, in _spawn_process
+    p.start()
+    ~~~~~~~^^
+  File "/usr/lib/python3.14/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+                  ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/context.py", line 306, in _Popen
+    return Popen(process_obj)
+  File "/usr/lib/python3.14/multiprocessing/popen_forkserver.py", line 35, in __init__
+    super().__init__(process_obj)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/popen_fork.py", line 20, in __init__
+    self._launch(process_obj)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/popen_forkserver.py", line 51, in _launch
+    self.sentinel, w = forkserver.connect_to_new_process(self._fds)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/forkserver.py", line 106, in connect_to_new_process
+    connection.answer_challenge(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+            wrapped_client, self._forkserver_authkey)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/multiprocessing/connection.py", line 992, in answer_challenge
+    message = connection.recv_bytes(256)         # reject large message
+  File "/usr/lib/python3.14/multiprocessing/connection.py", line 223, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+  File "/usr/lib/python3.14/multiprocessing/connection.py", line 448, in _recv_bytes
+    buf = self._recv(4)
+  File "/usr/lib/python3.14/multiprocessing/connection.py", line 413, in _recv
+    chunk = read(handle, to_read)
+ConnectionResetError: [Errno 104] Connection reset by peer
+[08:22:25] text-file scan (props, xml, rc) for the same phrases

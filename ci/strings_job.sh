@@ -16,6 +16,7 @@ tar -xzf fw.tgz --strip-components=1 --exclude='*/images/userdata.img'
 rm -f fw.tgz
 
 log "firmware image strings"
+if [ "${SKIP_IMG:-0}" = "1" ]; then log "skipped"; else
 STRICT='unsupported (software|rom|system|version|build|firmware)|software.{0,25}not supported|not supported.{0,25}(software|rom)|unsupported_software'
 : > "$OUT/img_strings_strict.txt"; : > "$OUT/img_strings_counts.txt"
 for f in images/*; do
@@ -29,6 +30,7 @@ for f in images/*; do
   if [ -n "$a" ]; then { echo "### $n"; echo "$a"; } >> "$OUT/img_strings_strict.txt"; fi
 done
 cat "$OUT/img_strings_counts.txt" | awk -F'\t' '$2!="broad=0" || $3!="zh_utf8_lines=0"' | head -n 50
+fi
 
 log "super -> partitions"
 simg2img images/super.img super.raw && rm -f images/super.img
